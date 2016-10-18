@@ -1,1 +1,14 @@
 /* CSS declarations go here */
+.chat{
+    background-color: #3b5998;
+    height: 700px;
+    overflow:scroll ;
+}
+.chat-li{
+    background-color: #3b5bbb;
+    color: white;
+}
+.chat-li a{
+    color: white;
+    
+}
