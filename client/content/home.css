@@ -1,0 +1,63 @@
+.portada{
+    height: 580px;
+    width: 100%;
+    position: relative;
+    background-image: url('./image/fut.jpg');
+    background-size: cover !important;
+    /*background-color: white; opacity: 0.3;*/
+    
+}
+#derecha{
+    padding: 30px;
+    padding-top: 95px;
+    /*border: solid 12px red;*/
+    
+         
+}
+.form-group{
+    /*border: solid 12px red;*/
+    margin: 20px; 
+    width: 70%  
+}
+.btn-primary{
+    background-color: limegreen;
+    width: 70%;
+    font-size: 25px;
+}
+#texto1{
+    color: white;
+    width: 70%;
+}
+.form-control{
+    font-size: 20px;
+    padding: 20px;
+}
+#texto2{
+    color: white;
+    font-family: "Roboto";
+    
+   
+}
+#textop{
+    color: white;
+    text-align: center;
+    font-family: "roboto";
+    font-size: 36px;
+     
+}
+#row1{    
+    /*border: solid 12px red;*/
+    height: 250px;
+    text-align: center;
+    padding-top: 120px;
+    padding-left: 100px;
+}
+#row2{
+    /*border:solid 12px blue;*/
+    padding-left:100px;
+}
+#textop { 
+ 
+-webkit-text-fill-color:white; 
+-webkit-text-stroke: 0.2px blue; 
+}
