@@ -109,3 +109,11 @@ div.upload input {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.publi-todo{
+    background-color: #ff8c00;
+    border-bottom: 68px solid #eceef1;
+    border-top: 9px solid #eceef1;
+    padding:50px;
+
+}
