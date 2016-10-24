@@ -1,5 +1,20 @@
 /* CSS declarations go here */
 
+.chat{
+    background-color: #3b5998;
+    height: 700px;
+    overflow:scroll ;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 10px;
+}
+.chat-li{
+    background-color: #3b5bbb;
+    color: white;
+}
+.chat-li a{
+    color: white;
+}
 .img-perfil {
     width: 250px;
     height: 250px;
@@ -7,7 +22,7 @@
 }
 
 div.upload {
-    width: 157px;
+    width: 100px;
     height: 57px;
     background: red;
     overflow: hidden;
@@ -31,9 +46,9 @@ div.upload input {
     font-size: 17px;
 }
 
-.col-md-2 {
-    width: 30%;
-}
+/*.col-md-2 {
+    width: 30px;
+}*/
 
 .topbar {
     background: #3b5998;
@@ -49,14 +64,14 @@ div.upload input {
 
 .navbar .nav>li>a {
     display: block;
-    color: black;
+    color: white;
     font-weight: bold;
     border-bottom: none;
 }
 
 .navbar .nav >li>a:hover{
     background-color: #eceef1;
-    color: #3b5998 !important;
+    color: blue !important;
     border-bottom: none;
 }
 
@@ -68,6 +83,7 @@ div.upload input {
     background-color: #3498bd;
     border-bottom: 6px solid #eceef1;
     border-top: 6px solid #eceef1;
+    padding:30px;
 
 }
 
@@ -83,13 +99,23 @@ div.upload input {
     padding-top: 30px;
     text-align: center;
     display: inline-block;
-    margin-right: auto;
+    margin-right: 10%;
     margin-left: auto;
 
 }
 .app-btn-form {
+    
     text-align: center;
-    border-top: 6px solid #3b5998;
+    /*border-top: 6px solid #3b5998;*/
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.publi-todo{
+    background-color: #ff8c00;
+    border-bottom: 68px solid #eceef1;
+    border-top: 9px solid #eceef1;
+    padding:50px;
+
+}
+
