@@ -22,7 +22,7 @@
 }
 
 div.upload {
-    width: 100%px;
+    width: 100px;
     height: 57px;
     background: red;
     overflow: hidden;
@@ -104,6 +104,7 @@ div.upload input {
 
 }
 .app-btn-form {
+    
     text-align: center;
     /*border-top: 6px solid #3b5998;*/
     padding-top: 15px;
