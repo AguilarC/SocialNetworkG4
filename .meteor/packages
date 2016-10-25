@@ -26,7 +26,7 @@ kadira:blaze-layout
 #estilos
 twbs:bootstrap
 #cuentas
-accounts-ui@1.1.9
+ropdown
 accounts-password
 #ian:accounts-ui-bootstrap-3
 #accounts-facebook
