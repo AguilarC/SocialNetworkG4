@@ -29,7 +29,7 @@ kadira:blaze-layout
 twbs:bootstrap
 
 #cuentas
-ropdown
+
 accounts-password
 accounts-base
 accounts-facebook
