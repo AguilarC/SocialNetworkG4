@@ -1,3 +1,4 @@
+
 .portada{
     height: 580px;
     width: 100%;
@@ -14,12 +15,12 @@
     
          
 }
-.form-group{
+.j-form-group{
     /*border: solid 12px red;*/
     margin: 20px; 
     width: 70%  
 }
-.btn-primary{
+.j-btn-primary{
     background-color: limegreen;
     width: 70%;
     font-size: 25px;
@@ -28,7 +29,7 @@
     color: white;
     width: 70%;
 }
-.form-control{
+.j-form-control{
     font-size: 20px;
     padding: 20px;
 }

@@ -1,8 +1,12 @@
 /* CSS declarations go here */
-
+.icono{
+    border: solid 4px white;
+    padding: 10px;
+    border-radius: 4px;
+    }
 .chat{
     background-color: #3b5998;
-    height: 700px;
+    height: 580px;
     overflow:scroll ;
     padding: 2%;
     margin: 2%;
@@ -12,7 +16,7 @@
     background-color: #3b5bbb;
     color: white;
 }
-.chat-li a{
+.chat-li a:hover{
     color: white;
 }
 .img-perfil {
@@ -46,13 +50,10 @@ div.upload input {
     font-size: 17px;
 }
 
-/*.col-md-2 {
-    width: 30px;
-}*/
 
 .topbar {
     background: #3b5998;
-    color: #99c00f;
+    color: white;
     border-radius: 0;
     opacity: 1;
 }
@@ -112,10 +113,10 @@ div.upload input {
 }
 
 .publi-todo{
-    background-color: #ff8c00;
-    border-bottom: 68px solid #eceef1;
-    border-top: 9px solid #eceef1;
-    padding:50px;
-
+    background-color: #3b5995;
+    border: 4px solid #eceef1;
+    height: 580px;
+    padding: 1% 10%;
+  
 }
 
