@@ -29,14 +29,16 @@ kadira:blaze-layout
 twbs:bootstrap
 
 #cuentas
-accounts-ui@1.1.9
+#accounts-ui@1.1.9
 accounts-password
 accounts-base
 accounts-facebook
 accounts-google
 accounts-twitter
-
+#softwarerero:accounts-t9n
 
 
 #peppelg:bootstrap-3-modal
 #themeteorchef:jquery-validation
+altapp:recaptcha
+useraccounts:bootstrap
