@@ -119,4 +119,21 @@ div.upload input {
     padding: 1% 10%;
   
 }
-
+.datos-t{
+    background-color: #3b5998;
+    height: 580px;
+    padding: 4%;
+    margin: 4%;
+    border-radius: 5px;
+}
+.img-per img {
+    width: 100px;
+    height: 100px;
+    
+}
+.form-group-nom{
+    font-size: 12pt;
+    font-weight: bold; 
+    color: orange;
+    text-align: center;
+}
