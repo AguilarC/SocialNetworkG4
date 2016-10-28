@@ -119,6 +119,38 @@ div.upload input {
     margin: 4%;
     border-radius: 5px;
 }
+
+.app-prin{
+    background-color: white;
+   border-radius: 4px;
+    height: auto;
+    margin-top: 4px;
+}
+
+.app-datos{
+    background-color: white !important;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+    width: auto;
+}
+.app-amigos{
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+    width: auto;
+}
+.app-grupos{
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+
+    width: auto;
+}
+
+
 .img-per img {
     width: 100px;
     height: 100px;
@@ -133,6 +165,11 @@ div.upload input {
 
 .dropdown-menu{
     background-color: #337ab7;
+
 }
 
+
+.dropdown-menu{
+    background-color: #337ab7;
+}
 
