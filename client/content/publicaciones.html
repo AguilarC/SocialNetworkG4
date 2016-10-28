@@ -1,12 +1,12 @@
 <template name="publicaciones">
-    <div class="publi-todo">
+    <div class="publi-todo-t">
         <br>
         <form class="form-horizontal" >
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-8">
                     <div class="form-group">
-                        <div class="col-xs-5">
-                           <select  class="form-control" >
+                        <div class="col-xs-4">
+                           <select  class="form-control-t" >
                                 <option >publico</option>
                                 <option >amigos</option>
                                 <option >solo yo</option>
@@ -14,16 +14,15 @@
                             </select>
                         </div>
                 </div>
-                <div class="col-md-8 ">
                 <div class="col-md-8">
-                    <textarea class="form-control" id="mensaje" name="mensaje" placeholder="escribe aqui tu publicacion" rows="10" style="width:100%" ></textarea>
+                <div class="col-md-8">
+                    <textarea class="form-control-p" id="mensaje" name="mensaje" placeholder="escribe aqui tu publicacion" rows="9" ></textarea>
                                 
                 </div>
                     <div class="row">
                         <div class="app-centrar-btn col-xs-12">
                             <div class="col-xs-8">
-                                <input type="file" class="text-center" name="fileUpload" id="FileUpload" >
-                            <br>                            
+                                <input type="file" class="text-center" name="fileUpload" id="FileUpload" >                          
                             </div>
                         </div>   
                     </div>                  
@@ -32,7 +31,7 @@
        </div>
        <div class="row">
                     <div class="app-btn-form">
-                        <button type="submit" class="btn btn-success">PUBLICAR</button>
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-play-circle "></span> PUBLICAR</button>
                     </div> 
                 </div> 
        </form>       
