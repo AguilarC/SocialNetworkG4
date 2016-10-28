@@ -119,6 +119,7 @@ div.upload input {
     padding: 1% 10%;
   
 }
+
 .datos-t{
     background-color: #3b5998;
     height: 580px;
@@ -137,3 +138,9 @@ div.upload input {
     color: orange;
     text-align: center;
 }
+
+.dropdown-menu{
+    background-color: #337ab7;
+}
+
+
