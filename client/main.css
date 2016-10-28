@@ -119,4 +119,30 @@ div.upload input {
     padding: 1% 10%;
   
 }
+.app-prin{
+    background-color: white;
+   border-radius: 4px;
+    height: auto;
+    margin-top: 4px;
+}
+
+.app-datos{
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+}
+.app-amigos{
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+}
+.app-grupos{
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+}
+
 
