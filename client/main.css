@@ -127,22 +127,29 @@ div.upload input {
 }
 
 .app-datos{
-    background-color: white;
+    background-color: white !important;
     border-radius: 4px;
     padding-left: 20px;
     margin-top: 4px;
+    width: auto;
 }
 .app-amigos{
     background-color: white;
     border-radius: 4px;
     padding-left: 20px;
     margin-top: 4px;
+    width: auto;
 }
 .app-grupos{
     background-color: white;
     border-radius: 4px;
     padding-left: 20px;
     margin-top: 4px;
+    width: auto;
 }
 
+
+.dropdown-menu{
+    background-color: #337ab7;
+}
 
