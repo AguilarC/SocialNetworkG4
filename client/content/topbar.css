@@ -1,0 +1,42 @@
+.icono{
+    border: solid 4px white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.topbar {
+    background: #3b5998;
+    color: white;
+    border-radius: 0;
+    opacity: 1;
+}
+
+.navbar-app {
+    background-color: #3b5998;
+    margin-bottom: 0px;
+}
+
+.navbar .nav>li>a {
+    display: block;
+    color: white;
+    font-weight: bold;
+    border-bottom: none;
+}
+
+.navbar .nav >li>a:hover{
+    background-color: #eceef1;
+    color: blue !important;
+    border-bottom: none;
+}
+
+.navbar li a:hover,
+.navbar li a:active {
+    color: aliceblue !important;
+}
+
+.dropdown-menu{
+    background-color: #337ab7;
+}
+#login-dropdown-list a{
+    color:white;
+}
