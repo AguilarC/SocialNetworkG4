@@ -4,6 +4,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
 
+
 Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
