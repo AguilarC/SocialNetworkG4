@@ -2,13 +2,12 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
-
-
-
+import './content/chat.js';
+import './content/chat.html';
 Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
-        fieldName: 'first-name',
+        fieldName: 'username',
         fieldLabel: 'Nombres',
         inputType: 'text',
         visible: true,
@@ -21,7 +20,7 @@ Accounts.ui.config({
           }
         }
     }, {
-        fieldName: 'last-name',
+        fieldName: 'userlastname',
         fieldLabel: 'Apellidos',
         inputType: 'text',
         visible: true,
@@ -42,36 +41,6 @@ Accounts.ui.config({
             checked: 'checked'
         }],
         visible: true
-    }, {
-        fieldName: 'country',
-        fieldLabel: 'Pais',
-        inputType: 'select',
-        showFieldLabel: true,
-        empty: 'Please select your country of residence',
-        data: [{
-            id: 1,
-            label: 'United States',
-            value: 'us'
-          }, {
-            id: 2,
-            label: 'Spain',
-            value: 'es',
-        }],
-        visible: true
-    }, {
-        fieldName: 'terms',
-        fieldLabel: 'Yo acepto los terminos y condiciones',
-        inputType: 'checkbox',
-        visible: true,
-        saveToProfile: false,
-        validate: function(value, errorFunction) {
-            if (value) {
-                return true;
-            } else {
-                errorFunction('You must accept the terms and conditions.');
-                return false;
-            }
-        }
     }]
 });
 accountsUIBootstrap3.setLanguage('es');

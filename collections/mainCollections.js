@@ -6,8 +6,25 @@ PUBLICACIONES  = new Mongo.Collection('publicaciones');
 COMENTARIOS = new Mongo.Collection('comentarios');
 GRUPOS = new Mongo.Collection('grupos');
 AMIGOS = new Mongo.Collection('amigos');
-
-
+SOLICITUDES=new Mongo.Collection('solicitudes');
+var datos_usuarioSchema =new SimpleSchema({
+    userId : {
+        type : String,
+        autoValue : function(){
+            return Meteror.userId();
+        }
+    },
+    userInterest : {
+        type:String,
+    },
+    Slogan : {
+        type : String
+    },
+    imageId : {
+        type : String
+    }
+});
+DATOS_USUARIO.attachSchema(datos_usuarioSchema);
 var mensajesSchema = new SimpleSchema({
     msj : {
         type : String
@@ -21,7 +38,7 @@ var mensajesSchema = new SimpleSchema({
     remitente : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     destinatario : {
@@ -45,7 +62,7 @@ var publicacionesSchema = new SimpleSchema({
     usuario : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     like : {
@@ -66,7 +83,7 @@ var comentariosSchema = new SimpleSchema({
     usuario : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     idMsj : {
@@ -78,10 +95,13 @@ var gruposSchema = new SimpleSchema({
     nombreGrupo : {
         type : String
     },
+    aceptado : {
+        type : Boolean
+    },
     idUsuario : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     nivel : {
@@ -90,14 +110,23 @@ var gruposSchema = new SimpleSchema({
 });
 GRUPOS.attachSchema(gruposSchema);
 var amigosSchema = new SimpleSchema({
-    idUsuario : {
+    _id : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
+        }
+    },
+    nombreUsuario :{
+        type: String,
+        autoValue : function(){
+            return  Meteor.user().username+" "+Meteor.user().profile.userlastname;
         }
     },
     idAmigo : {
         type : String
+    },
+    aceptado : {
+        type : Boolean
     }
 });
 AMIGOS.attachSchema(amigosSchema);
