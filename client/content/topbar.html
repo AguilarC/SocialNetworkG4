@@ -1,6 +1,6 @@
 <template name="topbar">
     <div class="topbar">
-        <div class="logo">
+        <div class="">
             <h1 style="padding: 20px"><span class="icono glyphicon glyphicon-fire"  aria-hidden="true"></span> SocialNetworkG4</h1>
         </div>
 
@@ -29,11 +29,13 @@
 
                     <li><a   ><span class="glyphicon glyphicon-user" aria-hidden="true" ></span>&nbsp;</a></li>
                     <li> {{>loginButtons}} </li>
-                 
-
+                    {{#if currentUser}}
+                    <li><a href="/perfil" ><span class="glyphicon glyphicon-user" tiaria-hidden="true"></span>&nbsp;</a></li>
+                    
                     <li><a href="/perfil" ><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>&nbsp; Perfil</a></li>
                     <li><a href="/publicaciones" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp; Publicar</a></li>
-                     <li><a href="/datos" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp; Datos</a></li>                 
+                    <li><a href="/datos" ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp; Datos</a></li>
+                    {{/if}}                
 
                   </ul>
                 </div><!-- /.navbar-collapse -->
