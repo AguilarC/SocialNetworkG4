@@ -31,28 +31,38 @@ var mensajesSchema = new SimpleSchema({
 MENSAJES.attachSchema(mensajesSchema);
 var publicacionesSchema = new SimpleSchema({
     texto : {
-        type : String
+        type:String
     },
     multimedia : {
-        type : String
+        type:String,
+        autoValue:function(){
+            return "";
+        }
     },
     fecha : {
-        type : Date,
-        autoValue : function(){
+        type:Date,
+        autoValue:function(){
             return new Date();
         }
     },
     usuario : {
-        type : String,
-        autoValue : function(){
-            return this.userId();
+        type:String,
+        autoValue:function(){
+            return this.userId
         }
     },
-    like : {
+    /*like : {
         type : Number,
-    } 
+    }*/ 
 });
+
 PUBLICACIONES.attachSchema(publicacionesSchema);
+
+PUBLICACIONES.allow({
+    insert:function(userId,params){
+        return !!userId;
+    }
+});
 var comentariosSchema = new SimpleSchema({
     texto : {
         type : String
@@ -66,14 +76,22 @@ var comentariosSchema = new SimpleSchema({
     usuario : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return this.userId;
         }
     },
     idMsj : {
         type : String
     }
 });
+
 COMENTARIOS.attachSchema(comentariosSchema);
+
+COMENTARIOS.allow({
+    insert:function(userId,params){
+        return !!userId;
+    }
+});
+
 var gruposSchema = new SimpleSchema({
     nombreGrupo : {
         type : String

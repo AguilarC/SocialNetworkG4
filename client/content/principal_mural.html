@@ -1,0 +1,89 @@
+<template name="principalmural">
+	<ul>
+		<li>
+			{{>principalmuralform}}
+		</li>
+		<li>
+			{{>cargarmensajes}}			
+		</li>
+	</ul>
+</template>
+
+<template name="principalmuralform">
+	<form action="" method="POST" role="form" id="principalm">
+		<legend>mural</legend>
+	
+		<div class="form-group">
+			<textarea name="mensaje" id="input" class="form-control" rows="3" required="required" placeholder="¿Que estas pensando?"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">ENVIAR</button>
+	</form>
+</template>
+
+<template name ="cargarmensajes">
+	{{#if isReady}}
+		<ul>		
+		{{#each items}}
+			<li>{{>publicacionesver}}</li>
+		{{/each}}
+		</ul>
+	{{else}}
+		<b>CARGANDO...</b>
+	{{/if}}
+</template>
+
+<template name="publicacionesver">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<ul>
+				<li>
+					<span class ="badge">{{fecha}}</span>
+					<div class="usuariostylos">
+						John Aguilar
+					</div>
+				</li>
+				<li>
+					{{texto}}		
+				</li>
+				<li>
+					<ul>
+						<li>
+							<a href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
+						</li>
+						<li>
+							<a href="" id="comentarbtn"><span class="glyphicon glyphicon-comment comment" aria-hidden="true" id="{{_id}}"></span> Comentar</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			{{#if mostrarcomentarios}}
+			<div class="comentarios">
+				{{>comentariospublicaciones}}
+			</div>
+			{{/if}}
+		</div>
+	</div>
+</template>
+
+<template name ="comentariospublicaciones">
+	<form action="" method="POST" role="form" id="comentariosform">
+		<legend>Comentar</legend>
+			<textarea name="comentarios" id="input" class="form-control" rows="1" required="required" placeholder="Escribe un comentario"></textarea>
+		<button type="submit" class="btn btn-primary">Enviar</button>
+	</form>
+	{{#if Ready}}
+		{{#each listadecomentarios}}
+			<ul>
+				{{>itemscomentarios}}
+			</ul>
+		{{/each}}
+	{{else}}
+		<b>CARGANDO...</b>
+	{{/if}}
+</template>
+
+<template name="itemscomentarios">
+	<li>
+		{{texto}}
+	</li>
+</template>
