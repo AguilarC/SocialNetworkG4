@@ -1,8 +1,7 @@
 <template  name="chatLayout">
     {{#if currentUser}}
     <div class="chat">
-            {{>users}}
-            {{>solicitudes}}
+            {{>users}}            
             <center><h1>CHAT</h1></center>
             {{>listAmigos}}
     </div>
@@ -51,7 +50,7 @@
 </template>
 <template name="itemSol">
     <li>
-        <a class="aceptarSol" id="{{idUsuario}}" href="">{{nombreUsuario}} : Aceptar solicitud</a>
+        <a class="aceptarSol" id="{{_id}}" href="">{{nombreUsuario}} : Aceptar solicitud</a>
     </li>
 
 </template>
@@ -69,7 +68,7 @@
         {{/if}}
 </template>
 <template name="itemAmigo">
-    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display" id="1">{{nombreUsuario}} </a></li><br>
+    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display" id="{{_id}}">{{nombreUsuario}} </a></li><br>
                 <form id="11" action="" style="display:none" method="POST" role="form">
                     <div class="panel panel-default">
                     <div class="panel-body">

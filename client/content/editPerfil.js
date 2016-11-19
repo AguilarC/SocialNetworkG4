@@ -6,3 +6,9 @@ Template.editPerfil.onRendered(function(){
         NProgress.done();
     });
 });
+Template.editPerfil.events({
+	'click #enviar': function () {
+		// ...
+		Meteor.call('insertarDatos');
+	}
+});

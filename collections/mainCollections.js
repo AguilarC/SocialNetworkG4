@@ -1,23 +1,53 @@
 import {Mongo} from "meteor/mongo";
 
-DATOS_USUARIO = new Mongo.Collection('datos_usuario');
+DATOS_USUARIO = new Mongo.Collection('datos_usuario',{
+    transform:function(row){
+        //row.username="Ditmaros";
+        var user = Meteor.users.findOne({_id:row.userId})
+        if(!!user.profile)
+        {
+            row.username = user.profile.username;
+            row.userlastname = user.profile.userlastname;
+            row.gender = user.profile.gender;             
+        }
+        if(!!user.emails)
+        {
+            row.email = user.emails[0].address;
+        }
+        return row;
+    }
+});
 MENSAJES = new Mongo.Collection('mensajes');
 PUBLICACIONES  = new Mongo.Collection('publicaciones');
 COMENTARIOS = new Mongo.Collection('comentarios');
 GRUPOS = new Mongo.Collection('grupos');
-AMIGOS = new Mongo.Collection('amigos');
-SOLICITUDES=new Mongo.Collection('solicitudes');
+AMIGOS = new Mongo.Collection('amigos',{
+    transform : function(item){
+        console.log(item);
+        _.extend(item,{user:DATOS_USUARIO.findOne({userId:item.idAmigo})});
+        return item;
+    }
+});
+if (Meteor.isClient) {
+  Meteor.subscribe('datos.all');
+}
+
+if (Meteor.isServer) {
+  Meteor.publish('datos.all', function () {
+    return DATOS_USUARIO.find();
+  });
+}
 var datos_usuarioSchema =new SimpleSchema({
     userId : {
         type : String,
         autoValue : function(){
-            return Meteror.userId();
+            return Meteor.userId();
         }
     },
     userInterest : {
         type:String,
     },
-    Slogan : {
+    slogan : {
         type : String
     },
     imageId : {
@@ -114,12 +144,6 @@ var amigosSchema = new SimpleSchema({
         type : String,
         autoValue : function(){
             return Meteor.userId();
-        }
-    },
-    nombreUsuario :{
-        type: String,
-        autoValue : function(){
-            return  Meteor.user().username+" "+Meteor.user().profile.userlastname;
         }
     },
     idAmigo : {

@@ -52,15 +52,16 @@ Template.chatLayout.events({
         e.preventDefault();
         var id=event.target.id;
         $('#'+id+id).toggle("slow");
-        //console.log(""+id);
+        console.log(""+id);
 
     },
 });
 
 Template.itemSol.events({
     'click .aceptarSol':function(e){
+        e.preventDefault();
         var idUs=e.target.id;
-        //console.log(idUs);
+        console.log(idUs);
         Meteor.call('aceptarAmigo',idUs);
     }
 });
