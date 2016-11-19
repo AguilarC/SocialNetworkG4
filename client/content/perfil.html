@@ -1,82 +1,68 @@
 <template name="perfil">
-<div class="app-todo">
-    <div class="app-prin">
+<div class="row app-todo-perfil">
+<section class="main ">
+    
+    <aside class="col-md-8">
+        <div class="app-content">
+                 <form class="form-horizontal">
+                    <div class="container-fluid app-content">
+                            <label for="nombre" class="control-label">Nombres:</label>
+                            <input class="form-control" type="text" name="nombre">
+                        
+                            <label for="sexo" class="control-label">Sexo:</label>
+                            <input class="form-control" type="text" name="sexo">
+                        
+                            <label for="telefono" class="control-label">Telefono:</label>
+                            <input class="form-control" type="number" name="telefono">
+                        
+                            <label for="email" class="control-label">Email:</label>
+                            <input class="form-control" type="email" name="email">
+                        
+                            <label for="fecha" class="control-label">Fecha Nacimiento:</label>
+                            <input class="form-control" type="date" name="nacimiento">
+                        
+                            <label for="direcion" class="control-label">Direción:</label>
+                            <input class="form-control" type="text" name="direccion">
+                            <br>
+                    </div>    
+                      
+                </form>       
+        </div>
+
+             
+    </aside>
+    <div class="col-md-4 app-prin">
                     <div class="img-perfil">
                         <figure>
-                            <img src="./avatar.png" alt="profile" class="img-responsive img-perfil ">
+                            <img src="./avatar.png" alt="profile" class="img-responsive img-perfil">
                         </figure>
-                    </div>       
-                    <div class="container-fluid">
+                    </div> 
+                    <br>
+                    <div class="app-amigos app-line">
+                        <ul class="nav nav-pills app-nav" role="tablist">
+                            <li role="presentation"><a href="#"><span class="badge"></span></a></li>  
+                        </ul>
+                    </div>    
 
-                                    
-                    </div>            
+                    <div class="app-grupos app-line">
+                        <ul class="nav nav-pills app-nav">
+                            <li role="presentation"><a href="#">Grupos <span class="badge">3</span></a></li> 
+                        </ul>  
+                    </div>
+                    <div class="app-amigos">
+                        <ul class="nav nav-pills app-nav" role="tablist">
+                            <li role="presentation"><a href="#">Amigos <span class="badge">3</span></a></li>  
+                        </ul>
+                    </div>                  
     </div>
-    <div class="app-datos col-md-6">
-        
-
-                 <form class="form-horizontal col-md-4">
-                        <div class="form-group control-label">
-                            <label for="nombre" class="control-label">Nombres:</label>
-                            <input type="text" name="nombre">
-
-
-
-                        </div>
-                        <div class="form-group control-label">
-                            <label for="sexo" class="control-label">Sexo:</label>
-                            <input type="text" name="sexo">
-                            
-                        </div>
-
-<<<<<<< HEAD
-                        <div class="form-group control-label">
-                            <label for="telefono" class="control-label">Telefono:</label>
-                            <input type="number" name="telefono">
-                        </div>                
-
-                        <div class="form-group control-label">
-                            <label for="email" class="control-label">Email:</label>
-                            <input type="email" name="email">
-                        </div>
-
-                        <div class="form-group control-label">
-                            <label for="fecha" class="control-label">Fecha Nacimiento:</label>
-                            <input type="date" name="nacimiento">
-                        </div>
-
-                        <div class="form-group control-label">
-                            <label for="direcion" class="control-label">Direción:</label>
-                                <input type="text" name="direccion">
-
-
-
-                        <div class="form-group">
-                            <label for="fecha" class="col-md-4">Fecha Nacimiento:</label>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="direcion" class="col-md-4">Direción:</label>
-
-                        </div>
-                </form>       
-    </div>
+    
+</section>
+    
 
    
-    <div class="col-md-6 app-amigos">
-        <ul class="nav nav-pills" role="tablist">
-            <li role="presentation"><a href="#">Amigos <span class="badge">3</span></a></li>  
-        </ul>
-          
+   
 
+</div> 
 
-
-    <div class="col-md-6 app-grupos">
-        <ul class="nav nav-pills">
-            <li role="presentation"><a href="#">Grupos <span class="badge">3</span></a></li> 
-    </ul>
-         
-    </div>
-</div>
-    
+   
 </template>

@@ -1,0 +1,23 @@
+.modal-header{
+	border-bottom: 1px solid #3b5998 !important;
+}
+.panel-heading{
+	background-color: #3b5998 !important;
+	color: white !important;
+	border-color:#3b5998 !important; 
+	 border-top: 10px !important;
+}
+.panel-default{
+    border-color: #3b5998 !important;
+}
+.modal-content{
+   	color: #3b5998;
+	overflow: auto;
+	border-radius: 1;
+}
+.btn-default{
+	background-color: #3b5998 !important;
+	color: white !important;
+
+
+}
