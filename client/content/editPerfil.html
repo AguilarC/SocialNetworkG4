@@ -1,26 +1,28 @@
 <template name="editPerfil">
     <div class="app-principal">
         <h3 class="text-center"><strong>Datos del usuario</strong></h3>
-        <form class="form-horizontal" >
+        <form class="form-horizontal" id="datossave">
             <div class="row">
                 <div class="col-md-6">
+                    {{#if isready}}
+                    {{#each recdatos}}
                     <div class="form-group">
                         <label for="nombre" class="col-md-4">Nombres:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres">
+                            <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres" value="{{username}}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="Ap_paterno" class="col-md-4">Apellido Paterno:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno">
+                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{profile.userlastnamep}}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Ap_materno" class="col-md-4">Apellido Materno:</label>
                         <div class="col-md-8">
-                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno">
+                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{profile.userlastnamem}}">
                         </div>
                     </div>
 
@@ -30,7 +32,7 @@
                            <select name="regsexo"  class="form-control" id="regsexo">
                                 <option value="">Masculino</option>
                                 <option value="">Femenino</option>
-                                <option value="">Otros</option>
+                                <option value="" selected>{{profile.gender}}</option>
                             </select>
                         </div>
                     </div>
@@ -43,10 +45,12 @@
                     </div>                
 
                     <div class="form-group">
+                        {{#each emails}}
                         <label for="email" class="col-md-4">Email:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="email" name="regemail" class="form-control" id="regemail" placeholder="ejemplo@gmail.com">
+                            <input type="email" name="regemail" class="form-control" id="regemail" placeholder="ejemplo@gmail.com" value="{{address}}">
                         </div>
+                        {{/each}}
                     </div>
 
                     <div class="form-group">
@@ -62,6 +66,8 @@
                             <input type="text" name="regdireccion" class="form-control" id="regdireccion" placeholder="Direccion">
                         </div>
                     </div>
+                    {{/each}}
+                    {{/if}}
                 </div>
         
                 <div class="col-md-6">
@@ -81,6 +87,7 @@
                     </div>
                                       
                 </div>
+                
             </div>
             
 
