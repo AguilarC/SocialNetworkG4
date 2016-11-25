@@ -36,10 +36,11 @@ accounts-facebook@1.0.11
 accounts-google@1.0.11
 accounts-twitter@1.1.12
 ian:accounts-ui-bootstrap-3
-stylus@2.513.8
-
+#subir archivos
+ostrio:files
 #colecciones
 aldeed:collection2
-ostrio:files
 
+#barra de progresocarga
+mrt:nprogress
 

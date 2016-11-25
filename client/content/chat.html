@@ -1,90 +1,99 @@
 <template  name="chatLayout">
+    {{#if currentUser}}
     <div class="chat">
+            {{>users}}            
             <center><h1>CHAT</h1></center>
- 
-            <ul>
-                <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a id="1" href=""> Friend 1</a></li><br>
 
-               
-
-             
-                <form id="11" action="" style="display:none" method="POST" role="form">
-                    <div class="panel panel-default">
-                    <div class="panel-body">
-                       mensajes Anteriores.: <br>  
-                       msj 1 <br>
-                       msj 2 <br>
-                    </div>
-                </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="Escribe un mensaje">
-                    </div>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </form>
-
-                <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a id="2" href=""> Friend 2</a></li><br>
-
-
-                    <form id="22" action="" style="display:none" method="POST" role="form">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                            mensajes Anteriores: <br>  
-                            msj 1 <br>
-                            msj 2 <br>
-                            </div>
-                            </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="" placeholder="Escribe un mensaje">
-                        </div>
-                        <button type="button" class="btn btn-primary">Enviar</button>
-                    </form>
-
-                <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a id="3" href=""> Friend 3</a></li><br>
-
-                
-                <form id="33" action=""  style="display:none" method="POST" role="form">
-                    <div class="panel panel-default">
-                    <div class="panel-body">
-                       mensajes Anteriores.: <br>  
-                       msj 1 <br>
-                       msj 2 <br>
-                    </div>
-                    </div>                   
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="Escribe un mensaje">
-                    </div>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </form>
-
-                <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a id="4" href=""> Friend 4</a></li><br>
-
-                    <form id="44" action="" style="display:none" method="POST" role="form">
-                    <div class="panel panel-default">
-                    <div class="panel-body" style="overflow:scroll">
-                       mensajes Anteriores.: <br>  
-                       msj 1 <br>
-                       msj 2 <br>
-                    </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="Escribe un mensaje">
-                    </div>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </form>
-                <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"><a id="4" href=""></a></span> Friend 5</li><br>
-                 <form id="44" action="" style="display:none" method="POST" role="form">
-                    <div class="panel panel-default">
-                    <div class="panel-body" style="overflow:scroll">
-                       mensajes Anteriores.: <br>  
-                       msj 1 <br>
-                       msj 2 <br>
-                    </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="Escribe un mensaje">
-                    </div>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </form>
-            </ul>
+            {{>listAmigos}}
     </div>
+    {{else}}
+        <b>Logueese para ver el chat</b>
+    {{/if}}
+</template>
+<template name="users">
+    <div>
+            {{#if ready}}
+            <label for="">LISTA DE USUARIOS</label>
+            <ul>
+                {{#each usersList}}
+                    {{>usersItems}}
+                {{/each}}
+            </ul>
+            {{else}}
+            <b>no hay usuarios registrados</b>
+            {{/if}}
+    </div>
+</template>
+<template name="usersItems">
+    <div class="">
+        <li class=" f-li list-group-item" >
+            {{username}}
+            <a title="Enviar solicitud de amistad" class="solAmistad" ><span class="glyphicon glyphicon-plus"  id="{{_id}}" ></span></a>
+        </li>   
+    </div>
+</template>
+<template name="solicitudes">
+    <div>
+        
+        {{#if readyS}}
+            <label for="">Solicitudes de amistad</label>
+            <ul>
+                {{#each solList}}
+                    {{>itemSol}}
+                {{else}}
+                <b>no hay</b>   
+                {{/each}}
+
+            </ul>
+        {{else}}
+           <b>no hay solicitudes de amistad</b> 
+        {{/if}}
+    </div>
+</template>
+<template name="itemSol">
+    <li>
+        <a class="aceptarSol" id="{{idUser}}" href="">{{userI.username}} : Aceptar solicitud</a>
+    </li>
+
+</template>
+<template name="listAmigos">
+    {{#if readyA}}
+        <ul>
+            {{#each amigosList}}
+                {{>itemAmigo}}
+            {{else}}
+                <b>no hay amigos ....</b>   
+            {{/each}}
+        </ul>
+        {{else}}
+           <b>cargando Lista de Amigos</b> 
+        {{/if}}
+</template>
+<template name="itemAmigo">
+    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display a" id="{{userA.userId}}">{{userA.username}} </a></li><br>
+        <div id="{{userA.userId}}1" style="display:none" >
+             <form id="formMsj" action=""  method="POST" role="form">
+                <div class="panel panel-default">
+                <div class="panel-body">
+                   Mensajes Anteriores : <br>
+                   <div class="contenedor-msjs">
+                   {{>mensajes}}
+                   </div>
+                </div>
+            </div>
+                <textarea name="text" id="input" class="form-control" rows="2" required="required"></textarea>
+                <button type="submit" class="btn btn-primary" id="" >Enviar</button>
+            </form>   
+        </div>   
+            
+</template>
+<template name="mensajes" >
+    {{#if ReadyMsj}}
+            {{#each msjList}}
+                        {{remitente}}<br><span name="" id="{{remitente}}" identify="{{remitente}}" class="label label-primary">{{msj}}</span><br>
+                
+            {{/each}}
+    {{else}}
+       <p>Loading....</p>
+    {{/if}}
 </template>

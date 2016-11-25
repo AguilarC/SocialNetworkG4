@@ -1,13 +1,9 @@
 <template name="datos">
+    {{#if currentUser}}
     <div class="datos-t">
         <br>
         <h4>DATOS</h4>
 
-         <!--div class="img-per img">
-              <figure>
-                <img src="./perfil.png" alt="" class="img-responsive img-centrar">
-                    </figure>
-          </div>-->
             <div class="img-per">
                 <figure>
                     <img src="./perfil.png" alt="" class="img-responsive img-centrar">
@@ -46,12 +42,12 @@
                             
               <div class="row">
                     <div class="app-btn-form">
-                        <button type="submit" class="btn btn-warning">EDITAR PERFIL</button>
+                        <a href="/editPerfil"><button type="submit" class="btn btn-warning">EDITAR PERFIL</button></a>
                     </div> 
                 </div> 
                
         
          </form>
     </div>
-
+{{/if}}
 </template>

@@ -2,13 +2,20 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
+import './content/chat.js';
+import './content/chat.html';
+Template.mainLayout.onRendered(function(){
 
+    var ancho = $("body").width()
+    var objw = $(".floatwindow").width();
+    console.log(objw);
 
-
+    $(".floatwindow").css("margin-left",ancho/2);
+});
 Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
-        fieldName: 'first-name',
+        fieldName: 'username',
         fieldLabel: 'Nombres',
         inputType: 'text',
         visible: true,
@@ -21,8 +28,14 @@ Accounts.ui.config({
           }
         }
     }, {
-        fieldName: 'last-name',
-        fieldLabel: 'Apellidos',
+        fieldName: 'userlastnamep',
+        fieldLabel: 'Apellido Paterno',
+        inputType: 'text',
+        visible: true,
+    },
+    {
+        fieldName: 'userlastnamem',
+        fieldLabel: 'Apellido Materno',
         inputType: 'text',
         visible: true,
     }, {
@@ -34,44 +47,18 @@ Accounts.ui.config({
         data: [{                    // Array of radio options, all properties are required
     		id: 1,                  // id suffix of the radio element
             label: 'Masculino',          // label for the radio element
-            value: 'm'              // value of the radio element, this will be saved.
+            value: 'Masculino'              // value of the radio element, this will be saved.
           }, {
             id: 2,
             label: 'Femenino',
-            value: 'f',
+            value: 'Femenino',
             checked: 'checked'
         }],
         visible: true
-    }, {
-        fieldName: 'country',
-        fieldLabel: 'Pais',
-        inputType: 'select',
-        showFieldLabel: true,
-        empty: 'Please select your country of residence',
-        data: [{
-            id: 1,
-            label: 'United States',
-            value: 'us'
-          }, {
-            id: 2,
-            label: 'Spain',
-            value: 'es',
-        }],
-        visible: true
-    }, {
-        fieldName: 'terms',
-        fieldLabel: 'Yo acepto los terminos y condiciones',
-        inputType: 'checkbox',
-        visible: true,
-        saveToProfile: false,
-        validate: function(value, errorFunction) {
-            if (value) {
-                return true;
-            } else {
-                errorFunction('You must accept the terms and conditions.');
-                return false;
-            }
-        }
     }]
 });
 accountsUIBootstrap3.setLanguage('es');
+/*
+Accounts.onCreatedUser(function(op,us){
+    console.log('hola mundo');
+});*/
