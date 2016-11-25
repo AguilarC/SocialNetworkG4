@@ -12,9 +12,16 @@
 <template name="principalmuralform">
 	<form action="" method="POST" role="form" id="principalm">
 		<legend>mural</legend>
-	
+		<div>
+			<button type="button" class="btn btn-primary">button</button>
+			<button type="button" class="btn btn-success">button</button>
+		</div>
 		<div class="form-group">
 			<textarea name="mensaje" id="input" class="form-control" rows="3" required="required" placeholder="¿Que estas pensando?"></textarea>
+			
+		</div>
+		<div>
+			{{>uploadForm}}
 		</div>
 		<button type="submit" class="btn btn-primary">ENVIAR</button>
 	</form>
@@ -25,6 +32,7 @@
 		<ul>		
 		{{#each items}}
 			<li>{{>publicacionesver}}</li>
+
 		{{/each}}
 		</ul>
 	{{else}}
@@ -43,24 +51,27 @@
 					</div>
 				</li>
 				<li>
-					{{texto}}		
+					{{texto}}
 				</li>
+				{{#if isImage}}
+					<img src="{{media.link}}" class="img-responsive" alt="Image" id ="imagen">
+				{{/if}}
 				<li>
 					<ul>
 						<li>
 							<a href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
 						</li>
 						<li>
-							<a href="" id="comentarbtn"><span class="glyphicon glyphicon-comment comment" aria-hidden="true" id="{{_id}}"></span> Comentar</a>
+							<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon-comment comment" aria-hidden="true" ></span> Comentar</a>
 						</li>
 					</ul>
 				</li>
 			</ul>
-			{{#if mostrarcomentarios}}
-			<div class="comentarios">
+			
+			<div class="comentarios " style="display: none" id ="{{_id}}1">
 				{{>comentariospublicaciones}}
 			</div>
-			{{/if}}
+			
 		</div>
 	</div>
 </template>
@@ -71,7 +82,7 @@
 			<textarea name="comentarios" id="input" class="form-control" rows="1" required="required" placeholder="Escribe un comentario"></textarea>
 		<button type="submit" class="btn btn-primary">Enviar</button>
 	</form>
-	{{#if Ready}}
+	{{#if isReady}}
 		{{#each listadecomentarios}}
 			<ul>
 				{{>itemscomentarios}}

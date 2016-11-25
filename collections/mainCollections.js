@@ -1,8 +1,13 @@
 import {Mongo} from "meteor/mongo";
 
-DATOS_USUARIO = new Mongo.Collection('datos_usuario');
+DATOS_USUARIO = new  Mongo.Collection('datos_usuario');
 MENSAJES = new Mongo.Collection('mensajes');
-PUBLICACIONES  = new Mongo.Collection('publicaciones');
+PUBLICACIONES  = new Mongo.Collection('publicaciones',{
+    transform: function(item){
+        _.extend(item,{media:Images.findOne({_id:item.multimedia})});
+        return item;
+    }
+});
 COMENTARIOS = new Mongo.Collection('comentarios');
 GRUPOS = new Mongo.Collection('grupos');
 AMIGOS = new Mongo.Collection('amigos');
@@ -35,9 +40,7 @@ var publicacionesSchema = new SimpleSchema({
     },
     multimedia : {
         type:String,
-        autoValue:function(){
-            return "";
-        }
+        
     },
     fecha : {
         type:Date,
@@ -79,7 +82,7 @@ var comentariosSchema = new SimpleSchema({
             return this.userId;
         }
     },
-    idMsj : {
+    idPub : {
         type : String
     }
 });
@@ -119,3 +122,27 @@ var amigosSchema = new SimpleSchema({
     }
 });
 AMIGOS.attachSchema(amigosSchema);
+/*OSTRIO  FILES */
+
+Images = new FilesCollection({
+  collectionName: 'Images',
+  allowClientCode: false, // Disallow remove files from Client
+  onBeforeUpload: function (file) {
+    // Allow upload files under 10MB, and only in png/jpg/jpeg formats
+    if (file.size <= 10485760 && /png|jpg|jpeg|mp4/i.test(file.extension)) {
+      return true;
+    } else {
+      return 'Please upload image, with size equal or less than 10MB';
+    }
+  }
+});
+
+if (Meteor.isClient) {
+  Meteor.subscribe('files.images.all');
+}
+
+if (Meteor.isServer) {
+  Meteor.publish('files.images.all', function () {
+    return Images.find().cursor;
+  });
+}
