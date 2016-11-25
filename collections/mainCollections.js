@@ -1,13 +1,71 @@
 import {Mongo} from "meteor/mongo";
 
-DATOS_USUARIO = new Mongo.Collection('datos_usuario');
+DATOS_USUARIO = new Mongo.Collection('datos_usuario',{
+    transform:function(row){
+        //row.username="Ditmaros";
+        var user = Meteor.users.findOne({_id:row.userId})
+        if(!!user.profile)
+        {
+            row.username = user.profile.username;
+            row.userlastnamep = user.profile.userlastnamep;
+            row.userlastnamem = user.profile.userlastnamem;
+            row.gender = user.profile.gender;             
+        }
+        if(!!user.emails)
+        {
+            row.email = user.emails[0].address;
+        }
+        return row;
+    }
+});
 MENSAJES = new Mongo.Collection('mensajes');
 PUBLICACIONES  = new Mongo.Collection('publicaciones');
 COMENTARIOS = new Mongo.Collection('comentarios');
 GRUPOS = new Mongo.Collection('grupos');
-AMIGOS = new Mongo.Collection('amigos');
+AMIGOS = new Mongo.Collection('amigos',{
+    transform : function(itemA){       
+        _.extend(itemA,
+            {userA:DATOS_USUARIO.findOne({userId:itemA.idAmigo})},
+            {userI:DATOS_USUARIO.findOne({userId:itemA.idUser})});
+        return itemA;
+    }
+});
+if (Meteor.isClient) {
+  Meteor.subscribe('datos.all');
+}
 
-
+if (Meteor.isServer) {
+  Meteor.publish('datos.all', function () {
+    return DATOS_USUARIO.find();
+  });
+}
+var datos_usuarioSchema =new SimpleSchema({
+    userId : {
+        type : String,
+        autoValue : function(){
+            return Meteor.userId();
+        }
+    },
+    userInterest : {
+        type:String,
+    },
+    slogan : {
+        type : String
+    },
+    imageId : {
+        type : String
+    },
+    fechaNac : {
+        type : String
+    },
+    telefono : {
+        type : Number
+    },
+    direccion : {
+        type : String
+    }
+});
+DATOS_USUARIO.attachSchema(datos_usuarioSchema);
 var mensajesSchema = new SimpleSchema({
     msj : {
         type : String
@@ -21,7 +79,7 @@ var mensajesSchema = new SimpleSchema({
     remitente : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     destinatario : {
@@ -45,7 +103,7 @@ var publicacionesSchema = new SimpleSchema({
     usuario : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     like : {
@@ -66,7 +124,7 @@ var comentariosSchema = new SimpleSchema({
     usuario : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     idMsj : {
@@ -78,10 +136,13 @@ var gruposSchema = new SimpleSchema({
     nombreGrupo : {
         type : String
     },
+    aceptado : {
+        type : Boolean
+    },
     idUsuario : {
         type : String,
         autoValue : function(){
-            return this.userId();
+            return Meteor.userId();
         }
     },
     nivel : {
@@ -90,14 +151,14 @@ var gruposSchema = new SimpleSchema({
 });
 GRUPOS.attachSchema(gruposSchema);
 var amigosSchema = new SimpleSchema({
-    idUsuario : {
-        type : String,
-        autoValue : function(){
-            return this.userId();
-        }
+    idUser: {
+        type : String
     },
     idAmigo : {
         type : String
+    },
+    aceptado : {
+        type : Boolean
     }
 });
 AMIGOS.attachSchema(amigosSchema);

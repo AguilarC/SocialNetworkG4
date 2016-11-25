@@ -62,3 +62,31 @@ div.upload input {
     color: red;
     font-size: 17px;
 }
+.app-todo-perfil{
+    background-color: #e9ebee;
+    margin-top: 5px;
+    border-radius: 3px;
+    width: 100%;
+
+}
+.app-content{
+   
+    background-color: white !important;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 3px;
+    padding-top: 2px;
+    padding-right: 20px;
+
+}
+.app-line{
+    border-bottom: 2px solid #e5e5e5;
+}
+.app-nav{
+    margin-bottom: 1.111%;
+
+
+}
+.app-prin{
+    width: auto;
+}

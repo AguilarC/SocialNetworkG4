@@ -1,0 +1,42 @@
+.chat{
+    background-color: #3b5998;
+    height: 580px;
+    overflow:scroll ;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.chat-li{
+    background-color: #3b5bbb;
+    color:white;
+}
+.chat-li .a:hover{
+    color: #3b5bbb;
+}
+.chat-li{
+    color: white;
+}
+.friendly{
+    
+    color: white;
+}
+.a{
+    color: white;
+}
+.f-li{
+    background-color: #3b9bbb;
+    color: white;
+}
+.posdown{
+    z-index: 10;
+    position: relative;
+}
+.posup{
+    z-index: 500;
+    position: relative;
+}
+.contenedor-msjs{
+        overflow:auto ;
+        height: 200px;
+
+}
