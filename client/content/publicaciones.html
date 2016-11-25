@@ -1,4 +1,5 @@
 <template name="publicaciones">
+    {{#if currentUser}}
     <div class="publi-todo-t">
         <br>
         <form class="form-horizontal" >
@@ -36,4 +37,7 @@
                 </div> 
        </form>       
     </div>
+    {{else}}
+    <p>Logueese para publicar</p>
+    {{/if}}
 </template>

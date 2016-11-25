@@ -4,6 +4,14 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 import './content/chat.js';
 import './content/chat.html';
+Template.mainLayout.onRendered(function(){
+
+    var ancho = $("body").width()
+    var objw = $(".floatwindow").width();
+    console.log(objw);
+
+    $(".floatwindow").css("margin-left",ancho/2);
+});
 Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
@@ -20,8 +28,14 @@ Accounts.ui.config({
           }
         }
     }, {
-        fieldName: 'userlastname',
-        fieldLabel: 'Apellidos',
+        fieldName: 'userlastnamep',
+        fieldLabel: 'Apellido Paterno',
+        inputType: 'text',
+        visible: true,
+    },
+    {
+        fieldName: 'userlastnamem',
+        fieldLabel: 'Apellido Materno',
         inputType: 'text',
         visible: true,
     }, {
@@ -33,14 +47,18 @@ Accounts.ui.config({
         data: [{                    // Array of radio options, all properties are required
     		id: 1,                  // id suffix of the radio element
             label: 'Masculino',          // label for the radio element
-            value: 'm'              // value of the radio element, this will be saved.
+            value: 'Masculino'              // value of the radio element, this will be saved.
           }, {
             id: 2,
             label: 'Femenino',
-            value: 'f',
+            value: 'Femenino',
             checked: 'checked'
         }],
         visible: true
     }]
 });
 accountsUIBootstrap3.setLanguage('es');
+/*
+Accounts.onCreatedUser(function(op,us){
+    console.log('hola mundo');
+});*/

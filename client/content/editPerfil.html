@@ -1,39 +1,38 @@
 <template name="editPerfil">
     <div class="app-principal">
-        <br>
-        <form class="form-horizontal" >
+        <h3 class="text-center"><strong>Datos del usuario</strong></h3>
+        <form class="form-horizontal" id="datossave">
             <div class="row">
                 <div class="col-md-6">
-
+                    {{#if isready}}
+                    {{#each recdatos}}
                     <div class="form-group">
                         <label for="nombre" class="col-md-4">Nombres:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="Nombre" placeholder="Nombres">
+                            <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres" value="{{username}}" disabled="true">
                         </div>
                     </div>
-
-
                     <div class="form-group">
                         <label for="Ap_paterno" class="col-md-4">Apellido Paterno:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="Ap_paterno" placeholder="Apellido Paterno">
+                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{userlastnamep}}" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Ap_materno" class="col-md-4">Apellido Materno:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="Ap_materno" placeholder="Apellido Materno">
+                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{userlastnamem}}" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="sexo" class="col-md-4">Sexo:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                           <select name="sexo"  class="form-control" id="sexo">
-                                <option value="">Masculino</option>
-                                <option value="">Femenino</option>
-                                <option value="">Otros</option>
+                           <select name="regsexo"  class="form-control" id="regsexo">
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="{{gender}}" selected>{{gender}}</option>
                             </select>
                         </div>
                     </div>
@@ -41,36 +40,40 @@
                     <div class="form-group">
                         <label for="telefono" class="col-md-4">Telefono:</label>
                         <div class="col-md-8">
-                            <input type="number" class="form-control" id="telefono" placeholder="telefono">
+                            <input type="number" name="regtelefono" class="form-control" id="regtelefono" placeholder="telefono" value="{{telefono}}" readonly>
                         </div>
                     </div>                
 
                     <div class="form-group">
                         <label for="email" class="col-md-4">Email:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="email" class="form-control" id="email" placeholder="ejemplo@gmail.com">
+                            <input type="email" name="regemail" class="form-control" id="regemail" placeholder="ejemplo@gmail.com" value="{{email}}" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="fecha" class="col-md-4">Fecha Nacimiento:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="date" class="form-control" id="fecha" placeholder="00/00/0000">
+                            <input type="date" name="regdate" class="form-control" id="regdate" value="{{fechaNac}}" placeholder="00/00/0000">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="direcion" class="col-md-4">Direción:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="direccion" placeholder="Direccion">
+                            <input type="text" name="regdireccion" value="{{direccion}}" class="form-control" id="regdireccion" placeholder="Direccion">
                         </div>
                     </div>
+                    {{/each}}
+                    {{else}}
+                    <p>Cargando...</p>
+                    {{/if}}
                 </div>
         
                 <div class="col-md-6">
                     <div class="img-perfil">
                         <figure>
-                            <img src="./avatar.png" alt="profile" class="img-responsive img-centrar ">
+                            <img src="./avatar.png" alt="profile" class="img-responsive img-centrar" name="regimage" id="regimage">
                         </figure>
                     </div> 
                     <div class="row">
@@ -84,16 +87,17 @@
                     </div>
                                       
                 </div>
+                
             </div>
             
 
                 <div class="row">
                     <div class="app-btn-form">
-                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                        <button type="submit" class="btn btn-primary" name="regsave" id="regsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                         
-                        <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-leaf"></span>  Borrar</button>
+                        <button type="reset" class="btn btn-danger" name="regreset" id="regreset"><span class="glyphicon glyphicon-leaf"></span>  Borrar</button>
 
-                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>   Cancelar</a>
+                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>  Cancelar</a>
                     </div>
                      
                 </div>

@@ -186,3 +186,15 @@ div.upload input {
 }
 
 
+.floatwindow{
+    z-index:100;
+    display:inherit;
+    float:left;
+    padding:10px;
+    background-color:#ffffff;
+    position:absolute;
+    margin-left:0px;
+    margin-top:-50px;
+    width:500px;
+
+}

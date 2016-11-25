@@ -2,9 +2,9 @@
     background-color: #3b5998;
     height: 580px;
     overflow:scroll ;
-    padding: 2%;
-    margin: 2%;
-    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
 }
 .chat-li{
     background-color: #3b5bbb;
@@ -20,10 +20,23 @@
     
     color: white;
 }
-a{
+.a{
     color: white;
 }
 .f-li{
     background-color: #3b9bbb;
     color: white;
+}
+.posdown{
+    z-index: 10;
+    position: relative;
+}
+.posup{
+    z-index: 500;
+    position: relative;
+}
+.contenedor-msjs{
+        overflow:auto ;
+        height: 200px;
+
 }
