@@ -36,9 +36,10 @@ accounts-facebook@1.0.11
 accounts-google@1.0.11
 accounts-twitter@1.1.12
 ian:accounts-ui-bootstrap-3
-stylus
+
 
 #colecciones
 aldeed:collection2
 
+#barra de progresocarga
 mrt:nprogress

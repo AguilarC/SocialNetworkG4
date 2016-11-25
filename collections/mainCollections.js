@@ -7,7 +7,8 @@ DATOS_USUARIO = new Mongo.Collection('datos_usuario',{
         if(!!user.profile)
         {
             row.username = user.profile.username;
-            row.userlastname = user.profile.userlastname;
+            row.userlastnamep = user.profile.userlastnamep;
+            row.userlastnamem = user.profile.userlastnamem;
             row.gender = user.profile.gender;             
         }
         if(!!user.emails)
@@ -22,10 +23,11 @@ PUBLICACIONES  = new Mongo.Collection('publicaciones');
 COMENTARIOS = new Mongo.Collection('comentarios');
 GRUPOS = new Mongo.Collection('grupos');
 AMIGOS = new Mongo.Collection('amigos',{
-    transform : function(item){
-        console.log(item);
-        _.extend(item,{user:DATOS_USUARIO.findOne({userId:item.idAmigo})});
-        return item;
+    transform : function(itemA){       
+        _.extend(itemA,
+            {userA:DATOS_USUARIO.findOne({userId:itemA.idAmigo})},
+            {userI:DATOS_USUARIO.findOne({userId:itemA.idUser})});
+        return itemA;
     }
 });
 if (Meteor.isClient) {
@@ -51,6 +53,15 @@ var datos_usuarioSchema =new SimpleSchema({
         type : String
     },
     imageId : {
+        type : String
+    },
+    fechaNac : {
+        type : String
+    },
+    telefono : {
+        type : Number
+    },
+    direccion : {
         type : String
     }
 });
@@ -140,11 +151,8 @@ var gruposSchema = new SimpleSchema({
 });
 GRUPOS.attachSchema(gruposSchema);
 var amigosSchema = new SimpleSchema({
-    _id : {
-        type : String,
-        autoValue : function(){
-            return Meteor.userId();
-        }
+    idUser: {
+        type : String
     },
     idAmigo : {
         type : String

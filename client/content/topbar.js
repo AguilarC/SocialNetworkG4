@@ -8,3 +8,7 @@ Template.topbar.onCreated(function(){
 	    NProgress.start();
 });
 
+
+Template.topbar.events({
+	
+});

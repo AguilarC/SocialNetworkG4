@@ -50,7 +50,7 @@
 </template>
 <template name="itemSol">
     <li>
-        <a class="aceptarSol" id="{{_id}}" href="">{{nombreUsuario}} : Aceptar solicitud</a>
+        <a class="aceptarSol" id="{{idUser}}" href="">{{userI.username}} : Aceptar solicitud</a>
     </li>
 
 </template>
@@ -68,16 +68,30 @@
         {{/if}}
 </template>
 <template name="itemAmigo">
-    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display" id="{{_id}}">{{nombreUsuario}} </a></li><br>
-                <form id="11" action="" style="display:none" method="POST" role="form">
-                    <div class="panel panel-default">
-                    <div class="panel-body">
-                       mensajes Anteriores.: <br>  
-                       msj 1 <br>
-                       msj 2 <br>
-                    </div>
+    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display a" id="{{userA.userId}}">{{userA.username}} </a></li><br>
+        <div id="{{userA.userId}}1" style="display:none" >
+             <form id="formMsj" action=""  method="POST" role="form">
+                <div class="panel panel-default">
+                <div class="panel-body">
+                   Mensajes Anteriores : <br>
+                   <div class="contenedor-msjs">
+                   {{>mensajes}}
+                   </div>
                 </div>
-                    <textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </form>
+            </div>
+                <textarea name="text" id="input" class="form-control" rows="2" required="required"></textarea>
+                <button type="submit" class="btn btn-primary" id="" >Enviar</button>
+            </form>   
+        </div>   
+            
+</template>
+<template name="mensajes" >
+    {{#if ReadyMsj}}
+            {{#each msjList}}
+                        {{remitente}}<br><span name="" id="{{remitente}}" identify="{{remitente}}" class="label label-primary">{{msj}}</span><br>
+                
+            {{/each}}
+    {{else}}
+       <p>Loading....</p>
+    {{/if}}
 </template>
