@@ -8,9 +8,9 @@ Template.chatLayout.onCreated(function(){
         NProgress.start();
 });
 Template.chatLayout.onRendered(function(){
-    this.autorun(()=>{
-        NProgress.done();
-    });
+       Meteor.call('verificarDatos');
+       NProgress.done();
+        //console.log("chat cargado");
 });
 
 Template.users.helpers({
@@ -20,6 +20,9 @@ Template.users.helpers({
     usersList(){
 		return Meteor.users.find({_id:{$ne:Meteor.userId()}});
 	},
+});
+Template.solicitudes.onRendered(function(){
+    
 });
 Template.solicitudes.helpers({
     readyS(){
@@ -34,17 +37,25 @@ Template.listAmigos.helpers({
         return FlowRouter.subsReady("loadAmigos");
     },
     amigosList(){
-        return AMIGOS.find({$and:[{idUser:Meteor.userId()},{aceptado:true}]});
-    }
+        return AMIGOS.find({$and:[{idUser:Meteor.userId()},{aceptado:true}]}).fetch();
+    },
+    
 });
 Template.mensajes.helpers({
     ReadyMsj(){
         return FlowRouter.subsReady("loadMsj");
     },
     msjList(){
-        var idAm = this.userA.userId;
+        var idAm = this.userA._id;
         var idYo = Meteor.userId();
         return MENSAJES.find({$or:[{$and:[{remitente:idYo},{destinatario:idAm}]},{$and:[{destinatario:idYo},{remitente:idAm}]}]});
+    },
+    isRemitente(){
+        var idRem = this.remitente;
+        //console.log(this);
+        if (idRem==Meteor.userId()) {
+            return true;
+        }
     }
 });
 Template.usersItems.events({
@@ -54,42 +65,55 @@ Template.usersItems.events({
         var idUser= e.target.id;
         //console.log(AMIGOS.find({$and:[{idUser:Meteor.userId()},{aceptado:true}]}).fetch());
         //console.log(idUser);
-        Meteor.call('agregarAmigo', idUser);
+        Meteor.call('agregarAmigo', idUser, function(error,result){
+            if (error) {
+                console.log(error.msj+'2');
+            }
+            if (result) {
+                console.log(result.msj+'1');
+            }
+            
+        });
         //alert("Se envio la solicitud");
     }
 });
 Template.mensajes.onRendered(function(){
-        var id=Meteor.userId();
-        $('span').each(function(){
-            
-            if($(this).attr("identify")==id){
-                $(this).css("background-color","#ff0000");    
-            }
-            
-        });
+
 });
 
 Template.chatLayout.events({
-    'click .display': function(e){
+    'click .display': function(){
         var id=event.target.id;
-        
         $('#'+id+"1").fadeToggle("3000");
     },
     'submit #formMsj' : function(e){
         e.preventDefault();
         var texto = e.target.text.value;
-        var idDest = this.userA.userId;
+        var idDest = this.userA._id;
         //console.log(idDest);
         Meteor.call('insertarMsj', texto,idDest);
         e.target.text.value="";
-    },
-
+    }
 });
+
 Template.itemSol.events({
     'click .aceptarSol':function(e){
         e.preventDefault();
         var idUs=e.target.id;
         //console.log(idUs);
-        Meteor.call('aceptarAmigo',idUs);
+        Meteor.call('aceptarAmigo',idUs,function (error,result){
+            if(result){
+                console.log(result.msj);
+            }
+        });
     }
 });
+
+
+//una buena logica jquery x si acaso
+/*$('span').each(function(){
+            if($(this).attr("identify")==Meteor.userId()){
+                $(this).css("background-color","#000000");    
+            }
+            
+        });*/

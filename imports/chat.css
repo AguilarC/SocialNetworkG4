@@ -1,7 +1,7 @@
 .chat{
     background-color: #3b5998;
     height: 580px;
-    overflow:scroll ;
+    overflow:auto ;
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
