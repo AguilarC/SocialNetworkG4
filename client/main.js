@@ -6,11 +6,13 @@ import './content/chat.js';
 import './content/chat.html';
 Template.mainLayout.onRendered(function(){
 
-    var ancho = $("body").width()
+    /*var ancho = $("body").width()
     var objw = $(".floatwindow").width();
     console.log(objw);
 
-    $(".floatwindow").css("margin-left",ancho/2);
+    $(".floatwindow").css("margin-left",ancho/2);*/
+
+    
 });
 Accounts.ui.config({
     requestPermissions: {},

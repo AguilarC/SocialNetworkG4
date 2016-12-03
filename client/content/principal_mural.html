@@ -12,10 +12,7 @@
 <template name="principalmuralform">
 	<form action="" method="POST" role="form" id="principalm">
 		<legend>mural</legend>
-		<div>
-			<button type="button" class="btn btn-primary">button</button>
-			<button type="button" class="btn btn-success">button</button>
-		</div>
+		
 		<div class="form-group">
 			<textarea name="mensaje" id="input" class="form-control" rows="3" required="required" placeholder="¿Que estas pensando?"></textarea>
 			
@@ -32,7 +29,6 @@
 		<ul>		
 		{{#each items}}
 			<li>{{>publicacionesver}}</li>
-
 		{{/each}}
 		</ul>
 	{{else}}
@@ -44,10 +40,10 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<ul>
+				<h4><span>{{amigo.username}}  Publicó :</span></h4><br>
 				<li>
 					<span class ="badge">{{fecha}}</span>
 					<div class="usuariostylos">
-						John Aguilar
 					</div>
 				</li>
 				<li>
@@ -56,10 +52,26 @@
 				{{#if isImage}}
 					<img src="{{media.link}}" class="img-responsive" alt="Image" id ="imagen">
 				{{/if}}
+				{{#if isVideo}}
+				<video autobuffer autoloop loop controls>
+					<source src="{{media.link}}">
+					<object type="{{media.type}}" data="/media/video.oga" width="320" height="240">
+					<param name="src" value="/media/video.oga">
+					<param name="autoplay" value="false">
+					<param name="autoStart" value="0">
+					<p><a href="/media/video.oga">Download this video file.</a></p>
+					</object>
+				</video>
+				{{/if}}
 				<li>
 					<ul>
 						<li>
-							<a href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
+							<span id="{{liked.idLiker}}" >likes : {{like}}</span><br>
+							{{#if isLiked}}
+							<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
+							{{else}}
+							<a id="{{_id}}" class="noMeGusta" href="" ><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Ya No Me Gusta</a>
+							{{/if}}
 						</li>
 						<li>
 							<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon-comment comment" aria-hidden="true" ></span> Comentar</a>

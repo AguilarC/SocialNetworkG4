@@ -26,7 +26,7 @@
 </template>
 <template name="usersItems">
     <div class="">
-        <li class=" f-li list-group-item" >
+        <li class="f-li list-group-item a" >
             {{username}}
             <a title="Enviar solicitud de amistad" class="solAmistad" ><span class="glyphicon glyphicon-plus"  id="{{_id}}" ></span></a>
         </li>   
@@ -52,7 +52,7 @@
 </template>
 <template name="itemSol">
     <li>
-        <a class="aceptarSol" id="{{idUser}}" href="">{{userI.username}} : Aceptar solicitud</a>
+        <a class="aceptarSol" id="{{idUser}}" href="">{{userI.user.username}} : Aceptar solicitud</a>
     </li>
 
 </template>
@@ -60,7 +60,9 @@
     {{#if readyA}}
         <ul>
             {{#each amigosList}}
+                    
                 {{>itemAmigo}}
+                   
             {{else}}
                 <b>no hay amigos ....</b>   
             {{/each}}
@@ -70,8 +72,8 @@
         {{/if}}
 </template>
 <template name="itemAmigo">
-    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display a" id="{{userA.userId}}">{{userA.username}} </a></li><br>
-        <div id="{{userA.userId}}1" style="display:none" >
+    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display a" id="{{idAmigo}}">{{userA.user.username}} </a></li><br>
+        <div id="{{idAmigo}}1" style="display:none" >
              <form id="formMsj" action=""  method="POST" role="form">
                 <div class="panel panel-default">
                 <div class="panel-body">
@@ -90,8 +92,11 @@
 <template name="mensajes" >
     {{#if ReadyMsj}}
             {{#each msjList}}
+                        {{#if isRemitente}}
                         {{remitente}}<br><span name="" id="{{remitente}}" identify="{{remitente}}" class="label label-primary">{{msj}}</span><br>
-                
+                        {{else}}
+                        {{remitente}}<br><span name="" id="{{remitente}}" style="margin-right: 0px" identify="{{remitente}}" class="label label-success">{{msj}}</span><br>
+                        {{/if}} 
             {{/each}}
     {{else}}
        <p>Loading....</p>
