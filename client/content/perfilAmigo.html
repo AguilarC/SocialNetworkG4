@@ -1,20 +1,21 @@
-<template name="perfil">
-
+<template name="perfilAmigo">
+	
 <div class="row app-todo-perfil">
 <section class="main ">
-    {{#if isReady}}
+    
+        {{#if isReady}}
         {{#each recDatos}}
         <aside class="col-md-8">
             <div class="app-content">
                      <form class="form-horizontal">
                         <div class="container-fluid app-content">
-                                <!--{{#each user.profile}}-->
+                                {{#each user.profile}}
                                 <label for="nombre" class="control-label">Nombres:</label>
                                 <input value="{{username}} {{userlastnamep}} {{userlastnamem}}{{user.profile.username}} {{user.profile.userlastnamep}} {{user.profile.userlastnamem}}" class="form-control" type="text" name="nombre">
                                 
                                 <label for="sexo" class="control-label">Sexo:</label>
                                 <input value="{{gender}}{{user.profile.gender}}" class="form-control" type="text" name="sexo">
-                                <!--{{/each}}-->
+                                {{/each}}
                                 {{#each user.emails}}
                                 <label for="email" class="control-label">Email:</label>
                                 <input value="{{address}}" class="form-control" type="email" name="email">
@@ -54,34 +55,26 @@
         <p>Cargando</p>
     {{/if}}
                     <br>
-                    <div class="app-amigos">
-                        <ul class="nav nav-pills app-nav" role="tablist" id="amigos">
-                            <li role="presentation"><a href="#">Amigos <span class="badge">3</span></a></li>  
+                    <div class="app-amigos app-line">
+                        <ul class="nav nav-pills app-nav" role="tablist">
+                            <li role="presentation"><a href="#"><span class="badge"></span></a></li>  
                         </ul>
-                        <div class="verAmigos">
-                            {{>verAmigos}}
-                        </div>
-                    </div>     
+                    </div>    
 
                     <div class="app-grupos app-line">
                         <ul class="nav nav-pills app-nav">
                             <li role="presentation"><a href="#">Grupos <span class="badge">3</span></a></li> 
-                        </ul> 
-
+                        </ul>  
                     </div>
-                           
+                    <div class="app-amigos">
+                        <ul class="nav nav-pills app-nav" role="tablist">
+                            <li role="presentation"><a href="#">Amigos <span class="badge">3</span></a></li>  
+                        </ul>
+                    </div>                  
+
+    
 </section>
-</div>         
-</template>
-<template name="verAmigos">
-    {{#if isReady}}
-        {{#each recAmigos}}
-            
-            <h4><span class="friend" id="{{idAmigo}}" style="background-color: green" >{{idAmigo}}</span></h4>
-        {{else}}
-            <h1>NO HAY AMIGOS</h1>
-        {{/each}}
-    {{else}}
-        <p>loading....</p>
-    {{/if}}
+
+</div>  
+        
 </template>

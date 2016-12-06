@@ -4,9 +4,12 @@ idcommentarios1 = "";
 Template.principalmuralform.events({
 	"submit #principalm":function(e){
 		e.preventDefault();
-		var mensaje= e.target.mensaje.value
-		
-		PUBLICACIONES.insert({texto:mensaje,multimedia:idimagen});
+		var mensaje= e.target.mensaje.value;
+		fecha=new Date();
+		obj={fecha:fecha, texto:mensaje,multimedia:idimagen};
+		Meteor.call('insertarPublicaciones', obj, function (error, result) {
+			if (error) {console.log('no jala')}
+		});
 		e.target.mensaje.value = "";
 		idimagen = "none";
 	}
@@ -14,18 +17,41 @@ Template.principalmuralform.events({
 
 Template.cargarmensajes.helpers({
 	isReady(){
-		return FlowRouter.subsReady("cargarprincipal");
+		return FlowRouter.subsReady("cargarPrincipal");
 	},
 	items(){
-		return PUBLICACIONES.find().fetch().reverse();
+		var userId=Meteor.userId();
+		var amigos = AMIGOS.find({$and:[{idUser:userId},{aceptado:true}]}).fetch();
+		var row=[];
+		//console.log(amigos.length);
+		if (amigos.length>0) {
+				
+			for (var i = 0;i<amigos.length; i++) {
+				var pubA = PUBLICACIONES.find({usuario:amigos[i].idAmigo}).fetch();
+				//console.log(pubA);
+				for (var j = 0;j<pubA.length; j++) {
+					row.push(pubA[j]);
+					//console.log(pubA[j]);
+				}
+			}
+			//console.log(row.reverse());
+		}
+		var pubY = PUBLICACIONES.find({usuario:Meteor.userId()}).fetch()
+		for (var k = 0;k<pubY.length; k++) {
+				row.push(pubY[k]);
+			}
+		row.sort(function(a, b){
+			if (a.fecha>b.fecha) {
+				return 1;
+			}
+			if (a.fecha<b.fecha) {
+				return -1;
+			}
+			return 0;
+		});
+		return row.reverse();
 	},
-	isImage(){
-		var ext = PUBLICACIONES.findOne({_id:this._id}).media.ext;
-		var tipo="jpg";
-		console.log(ext);
-		return true;
-		
-	}
+	
 });
 
 Template.publicacionesver.events({
@@ -43,15 +69,59 @@ Template.publicacionesver.events({
 	"click #imagen":function(e){
 		e.preventDefault();
 		console.log(PUBLICACIONES.findOne({_id:this._id}).media.ext);
-	}
+	},
+	'click .meGusta' : function(e){
+		var idPub = e.target.id;
+		//console.log(idPub);
+		Meteor.call('darLike', idPub, function (error, result) {
+			if (error) {
+				console.log('no jala'+error);
+			}
+		});
+	},
+	'click .noMeGusta' : function(e){
+		var idPub = e.target.id;
+		//console.log(idPub);
+		Meteor.call('quitarLike', idPub, function (error, result) {
+			if (error) {
+				console.log('no jala'+error);
+			}
+		});
+	},
+
 });
 
 Template.publicacionesver.helpers({
-	
-	
+	isImage(){
+		if (this.media!=undefined) {
+			var ext = this.media.ext;
+			var tipo="jpg";
+			//console.log(this.media.ext);
+			if (ext=='jpg'||ext=='png'||ext=='jpeg') {
+				return true;
+			};
+		}else return false;
+	},
+	isVideo(){
+		if (this.media!=undefined) {
+			var ext = this.media.ext;
+			var tipo="3gp";
+			//console.log(this.media.ext);
+			if (ext=='3gp'||ext=='mp4'||ext=='avi') {
+			return true;
+			};
+		}else return false;
+	},
+	isLiked(){
+		var like = LIKES.find({$and:[{idUser:Meteor.userId()},{id:this._id}]}).fetch();
+		//console.log(like.length);
+		if (like.length==0) {
+			return true;
+		}
+	},
 	listadecomentarios(){
 		return COMENTARIOS.find();
-	}
+	},
 });
 
 Template.comentariospublicaciones.events({
@@ -66,7 +136,7 @@ Template.comentariospublicaciones.events({
 
 Template.comentariospublicaciones.helpers({
 	isReady(){
-		return FlowRouter.subsReady("cargarcomentarios");
+		return FlowRouter.subsReady("cargarComentarios");
 	},
 	listadecomentarios(){
 		return COMENTARIOS.find({idPub:this._id});
@@ -74,52 +144,3 @@ Template.comentariospublicaciones.helpers({
 });
 
 
-/* OSTRIO JS START*/
-
-Template.uploadForm.onCreated(function () {
-  this.currentUpload = new ReactiveVar(false);
-});
-
-Template.uploadForm.helpers({
-  currentUpload: function () {
-    return Template.instance().currentUpload.get();
-  }
-});
-
-Template.uploadForm.events({
-  'change #fileInput': function (e, template) {
-    if (e.currentTarget.files && e.currentTarget.files[0]) {
-      // We upload only one file, in case
-      // multiple files were selected
-      var upload = Images.insert({
-        file: e.currentTarget.files[0],
-        streams: 'dynamic',
-        chunkSize: 'dynamic'
-      }, false);
-
-      upload.on('start', function () {
-        template.currentUpload.set(this);
-      });
-
-      upload.on('end', function (error, fileObj) {
-        if (error) {
-          alert('Error during upload: ' + error);
-        } else {
-            idimagen=fileObj._id;
-            alert('File "' + fileObj.name + '" successfully uploaded');
-        }
-        template.currentUpload.set(false);
-      });
-
-      upload.start();
-    }
-  }
-});
-
-Template.IMAGESLIST.helpers({
-  filesimages(){
-    return Images.find();
-  }
-});
-
-/*OSTRIO JS FINALLITY*/

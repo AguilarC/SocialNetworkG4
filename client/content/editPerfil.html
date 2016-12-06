@@ -2,59 +2,61 @@
     <div class="app-principal">
       
         <form class="form-horizontal" id="datossave">
+            {{#if isready}}
+                {{#each recdatos}}
             <div class="row">
                 <div class="col-md-6">
-                    {{#if isready}}
-                    {{#each recdatos}}
+                    
                     <div class="form-group">
                         <label for="nombre" class="col-md-4">Nombres:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres" value="{{username}}" disabled="true">
+                            <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres" value="{{user.username}}" required>
                         </div>
                     </div>
+                    {{#each user.profile}}
                     <div class="form-group">
                         <label for="Ap_paterno" class="col-md-4">Apellido Paterno:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{userlastnamep}}" readonly>
+                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{userlastnamep}}" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Ap_materno" class="col-md-4">Apellido Materno:</label>
                         <div class="col-md-8">
-                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{userlastnamem}}" readonly>
+                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{userlastnamem}}" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="sexo" class="col-md-4">Sexo:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                           <select name="regsexo"  class="form-control" id="regsexo">
+                           <select name="regsexo"  class="form-control" id="regsexo" required>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="{{gender}}" selected>{{gender}}</option>
                             </select>
                         </div>
                     </div>
-
+                    {{/each}}
                     <div class="form-group">
                         <label for="telefono" class="col-md-4">Telefono:</label>
                         <div class="col-md-8">
-                            <input type="number" name="regtelefono" class="form-control" id="regtelefono" placeholder="telefono" value="{{telefono}}" readonly>
+                            <input type="number" name="regtelefono" class="form-control" id="regtelefono" placeholder="telefono" value="{{telefono}}" required>
                         </div>
                     </div>                
-
+                    {{#each user.emails}}
                     <div class="form-group">
                         <label for="email" class="col-md-4">Email:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="email" name="regemail" class="form-control" id="regemail" placeholder="ejemplo@gmail.com" value="{{email}}" readonly>
+                            <input type="email" name="regemail" class="form-control" id="regemail" placeholder="ejemplo@gmail.com" value="{{address}}" disabled>
                         </div>
                     </div>
-
+                    {{/each}}
                     <div class="form-group">
                         <label for="fecha" class="col-md-4">Fecha Nacimiento:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="date" name="regdate" class="form-control" id="regdate" value="{{fechaNac}}" placeholder="00/00/0000">
+                            <input type="date" name="regdate" class="form-control" id="regdate" value="{{fechaNac}}" placeholder="00/00/0000" required>
                         </div>
                     </div>
 
@@ -64,32 +66,34 @@
                             <input type="text" name="regdireccion" value="{{direccion}}" class="form-control" id="regdireccion" placeholder="Direccion">
                         </div>
                     </div>
-                    {{/each}}
-                    {{else}}
-                    <p>Cargando...</p>
-                    {{/if}}
+                    
                 </div>
-        
                 <div class="col-md-6">
+                {{#if image}}
                     <div class="img-perfil">
                         <figure>
-                            <img src="./avatar.png" alt="profile" class="img-responsive img-centrar" name="regimage" id="regimage">
+                            <img src="{{image.link}}" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
                         </figure>
-                    </div> 
+                    </div>
+                {{else}}
+                <div class="img-perfil">
+                        <figure>
+                            <img src="./avatar.png" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
+                        </figure>
+                    </div>
+                {{/if}}
                     <div class="row">
-                        <div class="app-centrar-btn col-xs-12">
-                            <div class="col-xs-8">
-                                <input type="file" class="text-center" name="fileUpload" id="FileUpload" >
-                            <br>                            
-                            <button type="submit" class="btn btn-primary" name="fileUpload" id="fileUpload"><span class="glyphicon glyphicon-arrow-up"></span>Cargar</button>
-                            </div>
-                        </div>   
+                        {{>uploadForm}}
                     </div>
                                       
                 </div>
-                
             </div>
-            
+            {{else}}
+                    <p>No hay datos</p>
+            {{/each}}
+            {{else}}
+                <p>Cargando...</p>
+            {{/if}} 
 
                 <div class="row">
                     <div class="app-btn-form">

@@ -4,26 +4,22 @@ import {Mongo} from "meteor/mongo";
 DATOS_USUARIO = new Mongo.Collection('datos_usuario',{
     transform:function(row){
         //row.username="Ditmaros";
-        var user = Meteor.users.findOne({_id:row.userId})
-        if(!!user.profile)
-        {
-            row.username = user.profile.username;
-            row.userlastnamep = user.profile.userlastnamep;
-            row.userlastnamem = user.profile.userlastnamem;
-            row.gender = user.profile.gender;             
-        }
-        if(!!user.emails)
-        {
-            row.email = user.emails[0].address;
-        }
+        //console.log(user);
+        _.extend(row,{image:Images.findOne({_id:row.imageId})},
+            {user:Accounts.users.findOne({_id:row._id})});
+        //console.log(row);*/
         return row;
+
     }
 });
-
+LIKES= new Mongo.Collection('likes');
 MENSAJES = new Mongo.Collection('mensajes');
 PUBLICACIONES  = new Mongo.Collection('publicaciones',{
     transform: function(item){
-        _.extend(item,{media:Images.findOne({_id:item.multimedia})});
+        _.extend(item,{media:Images.findOne({_id:item.multimedia})},
+            {likes:LIKES.find({id:item._id}).fetch()},
+            {amigo:Meteor.users.findOne({_id:item.usuario})});
+        //console.log(LIKES.find({id:item._id}).fetch());
         return item;
     }
 });
@@ -32,8 +28,8 @@ GRUPOS = new Mongo.Collection('grupos');
 AMIGOS = new Mongo.Collection('amigos',{
     transform : function(itemA){       
         _.extend(itemA,
-            {userA:DATOS_USUARIO.findOne({userId:itemA.idAmigo})},
-            {userI:DATOS_USUARIO.findOne({userId:itemA.idUser})});
+            {userA:DATOS_USUARIO.findOne({_id:itemA.idAmigo})},
+            {userI:DATOS_USUARIO.findOne({_id:itemA.idUser})});
         return itemA;
     }
 });
@@ -46,8 +42,16 @@ if (Meteor.isServer) {
     return DATOS_USUARIO.find();
   });
 }
+var likesSchema =new SimpleSchema({
+    id:{
+        type : String
+    },
+    idUser:{
+        type : String
+    }
+});
 var datos_usuarioSchema =new SimpleSchema({
-    userId : {
+    _id : {
         type : String,
         autoValue : function(){
             return Meteor.userId();
@@ -94,6 +98,7 @@ var mensajesSchema = new SimpleSchema({
     }
 });
 MENSAJES.attachSchema(mensajesSchema);
+
 var publicacionesSchema = new SimpleSchema({
     texto : {
         type:String
@@ -103,31 +108,17 @@ var publicacionesSchema = new SimpleSchema({
         
     },
     fecha : {
-        type:Date,
-        autoValue:function(){
-            return new Date();
-        }
+        type:Date
     },
     usuario : {
-
-        type : String,
-        autoValue : function(){
-            return Meteor.userId();
-
-        }
+        type : String
     },
-    /*like : {
+    like : {
         type : Number,
-    }*/ 
+    }
 });
 
 PUBLICACIONES.attachSchema(publicacionesSchema);
-
-PUBLICACIONES.allow({
-    insert:function(userId,params){
-        return !!userId;
-    }
-});
 var comentariosSchema = new SimpleSchema({
     texto : {
         type : String
@@ -193,10 +184,11 @@ AMIGOS.attachSchema(amigosSchema);
 
 Images = new FilesCollection({
   collectionName: 'Images',
-  allowClientCode: false, // Disallow remove files from Client
+  allowClientCode: false, // Disallow remove files from ge
+  storagePath:'D:/SEMINARIO',
   onBeforeUpload: function (file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats
-    if (file.size <= 10485760 && /png|jpg|jpeg|mp4/i.test(file.extension)) {
+    if (file.size <= 11485760 && /png|jpg|jpeg|mp4|3gp/i.test(file.extension)) {
       return true;
     } else {
       return 'Please upload image, with size equal or less than 10MB';
@@ -213,3 +205,19 @@ if (Meteor.isServer) {
     return Images.find().cursor;
   });
 }
+
+
+
+
+////
+/*if(!!user.profile)
+        {
+            row.username = user.profile.username;
+            row.userlastnamep = user.profile.userlastnamep;
+            row.userlastnamem = user.profile.userlastnamem;
+            row.gender = user.profile.gender;             
+        }
+        if(!!user.emails)
+        {
+            row.email = user.emails[0].address;
+        }*/
