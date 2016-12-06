@@ -1,6 +1,6 @@
 .app-principal{
     
-    background-color: #3498bd;
+    background-color: url('./image/uuu.png');
     border-bottom: 6px solid #eceef1;
     border-top: 6px solid #eceef1;
     padding:35px;
@@ -63,7 +63,7 @@ div.upload input {
     font-size: 17px;
 }
 .app-todo-perfil{
-    background-color: #e9ebee;
+  background-image: url('./image/uuu.png');
     margin-top: 5px;
     border-radius: 3px;
     width: 100%;

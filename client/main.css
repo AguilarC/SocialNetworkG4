@@ -1,7 +1,7 @@
 /*@import url("./client/content/chat.css");*/
 /* CSS declarations go here */
 body{
-    background-color: #3b5998;
+    background-color: #3b5bbb;
     padding: 0px 0px;
     border: 0px 0px;
     margin: 0px 0px;
@@ -95,7 +95,7 @@ div.upload input {
     color: aliceblue !important;
 }
 .app-principal{
-    background-color: #2F748E;
+   background-image: url('./image/uuu.png');
     border-bottom: 8px solid #eceef1;
     border-top: 6px solid #eceef1;
     padding:30px;

@@ -1,8 +1,8 @@
 .chat{
-    background-color: #3b5998;
+    background-image: url('./image/uuu.png');
     height: 580px;
     overflow:scroll ;
-    padding: 5px;
+    padding: 20px;
     margin: 5px;
     border-radius: 5px;
 }

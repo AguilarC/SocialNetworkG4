@@ -1,0 +1,8 @@
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 800px;
+      height: 200px;
+      margin: all;
+      border: 5px solid #eceef2;
+      padding-left:  0px;
+  }

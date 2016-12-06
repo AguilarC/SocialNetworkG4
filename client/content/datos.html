@@ -1,9 +1,7 @@
 <template name="datos">
     {{#if currentUser}}
     <div class="datos-t">
-        <br>
-        <h4>DATOS</h4>
-
+    <br>
             <div class="img-per">
                 <figure>
                     <img src="./perfil.png" alt="" class="img-responsive img-centrar">
@@ -14,36 +12,26 @@
             </div>
                    <br>
             <form class="form-horizontal" >
-                    <div class="form-group">
-                        <div class="col-md-8">
-                        <label for="amigos" class="col-md-4">#AMIGOS</label><br>
-                           <select class="form-control">
-                                <option value="">amigo 1</option>
-                                <option value="">amigo 2</option>
-                                <option value="">amigo 3</option>
-                                <option value="">amigo 4</option>
-                                <option value="">amigo 5</option>
-                            </select>
-                        </div>
-                    </div>
-                      <div class="form-group">
-                        <div class="col-md-8">
-                          <label for="grupos" class="col-md-4">#GRUPOS</label><br>
-                           <select class="form-control">
-                                <option value="">grupo 1</option>
-                                <option value="">grupo 2</option>
-                                <option value="">grupo 3</option>
-                                <option value="">grupo 4</option>
-                                <option value="">grupo 5</option>
-                            </select>
-                        </div>
-                    </div>
-                    
                             
-              <div class="row">
-                    <div class="app-btn-form">
-                        <a href="/editPerfil"><button type="submit" class="btn btn-warning">EDITAR PERFIL</button></a>
-                    </div> 
+              <div class="container">
+                        <a href="#editPerfil" class="btn btn-success btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-wrench "></span> EDITAR PERFIL</a>
+                        <div class="modal fade" id="editPerfil">
+                            <div class="modal-dialog">
+                               
+                                <div class="modal-header" >
+                                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                       &times;
+                                    </button>
+                                    <h2 class="modal-title">DATOS DEL USUARIO</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="editPerfil" >
+                                        {{>editPerfil}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
                 </div> 
                
         
