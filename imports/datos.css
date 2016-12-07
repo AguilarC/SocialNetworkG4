@@ -1,9 +1,10 @@
 .datos-t{
-    background-color: #3b5998;
-    height: 580px;
+   background-image: url('./image/uuu.png');
+    height: 250px;
     padding: 4%;
     margin: 4%;
     border-radius: 5px;
+    color: orange;
 }
 
 .img-per img {
@@ -18,3 +19,6 @@
     color: orange;
     text-align: center;
 }
+.modal-header > .bottom >.close{
+    color:orange;
+} 

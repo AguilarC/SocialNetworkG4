@@ -2,8 +2,10 @@
 	<body style="background-color: black">
 		<div class="topbar">
 			<div class="topbar">
+			
 				{{> Template.dynamic template=topbar}}
-			</div>         
+			   
+			</div>       
 		</div>
 		{{#if currentUser}}
 		<div class="row portada">
@@ -19,6 +21,10 @@
 				{{> Template.dynamic template=right}}
 			</div>
 			
+			 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				{{> Template.dynamic template=hidden}}
+			</div>
+			 
 		</div>
 		{{else}}
 		{{>homeLayout}}
