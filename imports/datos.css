@@ -1,6 +1,6 @@
 .datos-t{
    background-image: url('./image/uuu.png');
-    height: 250px;
+    height: 100%;
     padding: 4%;
     margin: 4%;
     border-radius: 5px;
@@ -8,8 +8,8 @@
 }
 
 .img-per img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     
 }
 
