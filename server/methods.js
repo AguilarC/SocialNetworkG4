@@ -49,7 +49,7 @@ Meteor.startup(() => {
             var idUs=DATOS_USUARIO.findOne({_id:this.userId});
             //console.log(idUs);
             if (idUs==undefined) {
-                DATOS_USUARIO.insert({_id:this.userId,userInterest:"none",slogan:"none",imageId:"none",fechaNac:"none",telefono:0,direccion:"none"},function(error,result){
+                DATOS_USUARIO.insert({_id:this.userId,userInterest:"none",slogan:"none",imageuser:"none",fechaNac:"none",telefono:0,direccion:"none"},function(error,result){
                     if (error){
                         console.log(""+error);
                         
@@ -67,7 +67,7 @@ Meteor.startup(() => {
             }
         },
         actualizarDatos : function(datos,u,idI){
-            DATOS_USUARIO.update({_id:this.userId},{$set:{telefono:datos.telf,fechaNac:datos.fech, direccion:datos.dir, userInterest:"none", slogan:"none", imageId:idI}}, function(error,result){
+            DATOS_USUARIO.update({_id:this.userId},{$set:{telefono:datos.telf,fechaNac:datos.fech, direccion:datos.dir, userInterest:"none", slogan:"none", imageuser:idI}}, function(error,result){
                 if (error){
                     console.log(error)
                 }
@@ -122,7 +122,12 @@ Meteor.startup(() => {
                 if (error) {console.log(error)}
                 if (result) {console.log('se inserto la publicacion')}
             });
-        }
-        
+        },
+        buscarUsers : function(username){
+            //console.log(DATOS_USUARIO.find({slogan:'none'}).fetch());
+            //console.log(username);
+            return DATOS_USUARIO.find({slogan:username}).fetch();
+
+        },
     });
 });

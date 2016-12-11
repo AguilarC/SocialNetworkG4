@@ -5,7 +5,7 @@ DATOS_USUARIO = new Mongo.Collection('datos_usuario',{
     transform:function(row){
         //row.username="Ditmaros";
         //console.log(user);
-        _.extend(row,{image:Images.findOne({_id:row.imageId})},
+        _.extend(row,{imagen:Images.findOne({_id:row.imageuser})},
             {user:Accounts.users.findOne({_id:row._id})});
         //console.log(row);*/
         return row;
@@ -63,7 +63,7 @@ var datos_usuarioSchema =new SimpleSchema({
     slogan : {
         type : String
     },
-    imageId : {
+    imageuser : {
         type : String
     },
     fechaNac : {
@@ -185,7 +185,7 @@ AMIGOS.attachSchema(amigosSchema);
 Images = new FilesCollection({
   collectionName: 'Images',
   allowClientCode: false, // Disallow remove files from ge
-  storagePath:'D:/SEMINARIO',
+  storagePath:'/home/miguel/seminario/data',
   onBeforeUpload: function (file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats
     if (file.size <= 11485760 && /png|jpg|jpeg|mp4|3gp/i.test(file.extension)) {

@@ -13,18 +13,18 @@
                             <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres" value="{{user.username}}" required>
                         </div>
                     </div>
-                    {{#each user.profile}}
+
                     <div class="form-group">
                         <label for="Ap_paterno" class="col-md-4">Apellido Paterno:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{userlastnamep}}" required>
+                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{user.profile.userlastnamep}}" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Ap_materno" class="col-md-4">Apellido Materno:</label>
                         <div class="col-md-8">
-                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{userlastnamem}}" required>
+                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{user.profile.userlastnamem}}" required>
                         </div>
                     </div>
 
@@ -34,11 +34,11 @@
                            <select name="regsexo"  class="form-control" id="regsexo" required>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
-                                <option value="{{gender}}" selected>{{gender}}</option>
+                                <option value="{{user.profile.gender}}" selected>{{user.profile.gender}}</option>
                             </select>
                         </div>
                     </div>
-                    {{/each}}
+                    
                     <div class="form-group">
                         <label for="telefono" class="col-md-4">Telefono:</label>
                         <div class="col-md-8">
@@ -72,13 +72,13 @@
                 {{#if image}}
                     <div class="img-perfil">
                         <figure>
-                            <img src="{{image.link}}" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
+                            <img src="{{imagen.link}}" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageuser}}">
                         </figure>
                     </div>
                 {{else}}
                 <div class="img-perfil">
                         <figure>
-                            <img src="./avatar.png" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
+                            <img src="./avatar.png" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageuser}}">
                         </figure>
                     </div>
                 {{/if}}
@@ -99,9 +99,8 @@
                     <div class="app-btn-form">
                         <button type="submit" class="btn btn-primary" name="regsave" id="regsave"><span class="glyphicon glyphicon-save"></span> Guardar</button>
                         
-                        <button type="reset" class="btn btn-danger" name="regreset" id="regreset"><span class="glyphicon glyphicon-leaf"></span>  Borrar</button>
-
-                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>  Cancelar</a>
+                   
+                 
                     </div>
                      
                 </div>

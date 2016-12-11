@@ -15,8 +15,8 @@ Template.editPerfil.helpers({
 		return DATOS_USUARIO.find({_id:Accounts.userId()});
 	},
 	image(){
-		if (this.image!=undefined) { 
-			console.log(this.image.link);
+		if (this.imagen!=undefined) { 
+			//console.log(this.image.link);
 			return true;
 		}
 	}
@@ -27,7 +27,7 @@ Template.editPerfil.events({
 		//alert("okk")
 		var telefono = e.target.regtelefono.value;
 		var date = e.target.regdate.value;
-		var direccion = e.target.regdireccion.value;
+		var direccion = e.target.regdireccion.value;	
 		var gen = e.target.regsexo.value;
 		var un = e.target.regnombre.value;
 		var unlp = e.target.regappaterno.value;
