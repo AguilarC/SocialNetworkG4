@@ -4,15 +4,17 @@
     box-shadow: 0 8px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .portada{
-    height: 580px;
+    background: url('fondos-graciosos-pc jaimworld.jpg');
+    /*height: 580px;*/
     width: 100%;
-    position: relative;
+     position: relative;
     /*background: -webkit-linear-gradient(bottom, #4E3268, #C69FD6,);*/
     /*background: url('7.jpg');*/
     background-size: cover !important;
     /*background-color: white; opacity: 0.3;*/
     margin-right: 0px;
-    
+
+    padding-top: 120px;
 }
 #derecha{
     padding: 30px;
