@@ -74,7 +74,7 @@ div.upload input {
 
 
 .app-principal{
-   background-image: url('./image/uuu.png');
+    background: -webkit-linear-gradient(#4682b4, #b0e0e0);
     border-bottom: 8px solid #eceef1;
     border-top: 6px solid #eceef1;
     padding:30px;
