@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './chat.html';
 import '../../imports/chat.css';
 
+idAmigoMsj=new ReactiveVar('');
 
 Template.chatLayout.onCreated(function(){
         NProgress.start();
@@ -11,6 +12,7 @@ Template.chatLayout.onRendered(function(){
        Meteor.call('verificarDatos');
        NProgress.done();
         //console.log("chat cargado");
+
 });
 
 Template.users.helpers({
@@ -46,9 +48,10 @@ Template.mensajes.helpers({
         return FlowRouter.subsReady("loadMsj");
     },
     msjList(){
-        var idAm = this.userA._id;
+        var idAm = idAmigoMsj.get();
         var idYo = Meteor.userId();
-        return MENSAJES.find({$or:[{$and:[{remitente:idYo},{destinatario:idAm}]},{$and:[{destinatario:idYo},{remitente:idAm}]}]});
+        //console.log(idAm);
+        return MENSAJES.find({$or:[{$and:[{remitente:idYo},{destinatario:idAm}]},{$and:[{destinatario:idYo},{remitente:idAm}]}]}).fetch().reverse();
     },
     isRemitente(){
         var idRem = this.remitente;
@@ -67,32 +70,37 @@ Template.usersItems.events({
         //console.log(idUser);
         Meteor.call('agregarAmigo', idUser, function(error,result){
             if (error) {
-                console.log(error.msj+'2');
+                alert(error.msj);
             }
             if (result) {
-                console.log(result.msj+'1');
+                alert(result.msj);
             }
             
         });
         //alert("Se envio la solicitud");
     }
 });
-Template.mensajes.onRendered(function(){
-
-});
 
 Template.chatLayout.events({
-    'click .display': function(){
-        var id=event.target.id;
-        $('#'+id+"1").fadeToggle("3000");
+    'click .idAmigo': function(event){
+        idAmigoMsj.set(event.target.id);
+        //console.log(idAmigoMsj);
+        $('#prev').fadeOut('slow', function() {
+            $('#mensajes').fadeIn("3000");
+        });
+        $('#nombrea').text(this.userA.user.username);
+        //console.log(nombre);
+                
     },
     'submit #formMsj' : function(e){
         e.preventDefault();
         var texto = e.target.text.value;
-        var idDest = this.userA._id;
+        //var idDest = this.userA._id;
+        var idDest = idAmigoMsj.get();
         //console.log(idDest);
         Meteor.call('insertarMsj', texto,idDest);
         e.target.text.value="";
+
     }
 });
 

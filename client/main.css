@@ -5,12 +5,12 @@
     height: 100%;
     overflow: auto;
 }
-label h1 b{
-    color: white !important;
-}
+
 .body{
+    width: 100%;
+    height: 100%;
     padding-top: 0px;
-    background: url('network-globe-shutterstock.jpg');
+    background-image: url('');
 }
 body{
     
@@ -33,22 +33,7 @@ body{
     padding: 10px;
     border-radius: 4px;
     }
-.chat{
-    background-color: #3b5998;
-    height: 580px;
-    overflow:scroll ;
-    padding: 2%;
-    margin: 2%;
-    border-radius: 10px;
-}
-.chat-li{
-    background-color: #3b5bbb;
-    color: white;
 
-}
-.chat-li a:hover{
-    color: white;
-}
 .img-perfil {
     width: 250px;
     height: 250px;
