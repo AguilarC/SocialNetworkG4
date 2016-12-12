@@ -6,12 +6,10 @@
     overflow: auto;
 
 }
-label h1 b{
-    color: white !important;
-}
+
 .body{
     width: 100%;
-    height: 100%
+    height: 100%;
     padding-top: 0px;
     background-image: url('');
 }

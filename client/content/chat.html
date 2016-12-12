@@ -1,9 +1,9 @@
 <template  name="chatLayout">
     {{#if currentUser}}
-    <div class="chat">
-            {{>users}}            
-            <center><h1>CHAT</h1></center>
-
+    <div class="chat">            
+            <center><span class="chat-t">CHAT</span><br></center>
+            <span id="nombrea" class="chat-t"></span><br>
+            {{>mensajes}}
             {{>listAmigos}}
     </div>
     {{else}}
@@ -34,7 +34,6 @@
 </template>
 <template name="solicitudes">
     <div>
-        
         {{#if readyS}}
             <label for="">Solicitudes de amistad</label>
             <ul>
@@ -43,10 +42,9 @@
                 {{else}}
                 <b>no hay</b>   
                 {{/each}}
-
             </ul>
         {{else}}
-           <b>no hay solicitudes de amistad</b> 
+           <b>NO HAY SOLICITUDES</b> 
         {{/if}}
     </div>
 </template>
@@ -54,51 +52,51 @@
     <li>
         <a class="aceptarSol" id="{{idUser}}" href="">{{userI.user.username}} : Aceptar solicitud</a>
     </li>
-
 </template>
+
 <template name="listAmigos">
     {{#if readyA}}
-        <ul>
+            <span class="chat-t">LISTA DE AMIGOS</span><br>
             {{#each amigosList}}
-                    
                 {{>itemAmigo}}
-                   
             {{else}}
-                <b>no hay amigos ....</b>   
+                <h4><span class="label label-danger">NO HAY AMIGOS....!</span><br></h4>
+                <h4><span class="label label-danger">AGREGALOS DESDE EL BUSCADOR......</span><br></h4>
             {{/each}}
-        </ul>
+        
         {{else}}
-           <b>cargando Lista de Amigos</b> 
+           <b>CARGANDO LISTA DE AMIGOS.....</b> 
         {{/if}}
 </template>
 <template name="itemAmigo">
-    <li class="list-group-item chat-li" ><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="display a" id="{{idAmigo}}">{{userA.user.username}} </a></li><br>
-        <div id="{{idAmigo}}1" style="display:none" >
-             <form id="formMsj" action=""  method="POST" role="form">
-                <div class="panel panel-default">
-                <div class="panel-body">
-                   Mensajes Anteriores : <br>
-                   <div class="contenedor-msjs">
-                   {{>mensajes}}
-                   </div>
-                </div>
-            </div>
-                <textarea name="text" id="input" class="form-control" rows="2" required="required"></textarea>
-                <button type="submit" class="btn btn-primary" id="" >Enviar</button>
-            </form>   
-        </div>   
-            
+    <div class="list-a">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="chat-li idAmigo" name="{{userA.user.username}}" id="{{idAmigo}}"> {{userA.user.username}}</a><br>
+    </div>              
 </template>
 <template name="mensajes" >
-    {{#if ReadyMsj}}
-            {{#each msjList}}
-                        {{#if isRemitente}}
-                        {{remitente}}<br><span name="" id="{{remitente}}" identify="{{remitente}}" class="label label-primary">{{msj}}</span><br>
-                        {{else}}
-                        {{remitente}}<br><span name="" id="{{remitente}}" style="margin-right: 0px" identify="{{remitente}}" class="label label-success">{{msj}}</span><br>
-                        {{/if}} 
-            {{/each}}
-    {{else}}
-       <p>Loading....</p>
-    {{/if}}
+    <div id="prev">
+        <h4><span class="label label-default">CLICK EN LA LISTA DE AMIGOS</span><br></h4>
+        <h4><span class="label label-default">PARA CHATEAR........!</span><br></h4>
+    </div>
+    <div id="mensajes" style="display: none" class="{{idAmigo}}">
+        <form id="formMsj" action=""  method="POST" role="form">
+                
+         <textarea name="text" id="inputt" class="form-control" rows="1" required="required"></textarea>
+        <center><button type="submit" class="btn-success" id="" style="margin: 2px">Enviar</button></center>
+        </form> 
+        <div class="contenedor-msjs">       
+                {{#if ReadyMsj}}
+                        {{#each msjList}}
+                            {{#if isRemitente}}
+                                <div style="display: table-row;"><span name="" id="{{remitente}}"  class="msj destina">{{msj}}</span><br></div>
+                            {{else}}
+                                <div style="display: table-row;"><span name="" id="{{remitente}}" class="msj remite">{{msj}}</span><br></div>
+                            {{/if}} 
+                        {{/each}}
+                    {{else}}
+                       <p>Loading....</p>
+                    {{/if}}
+                </div>
+           
+        </div>   
 </template>
