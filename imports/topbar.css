@@ -5,7 +5,7 @@
 }
 
 .topbar {
-    background-image: url('./image/555.jpg');
+    /*background-image: url('./B86.jpg');*/
     color: white;
     border-radius: 0;
     opacity: 1;
@@ -15,14 +15,19 @@
     background-color: #3b5998;
     margin-bottom: 0px;
 }
+.navbar{
+    /*padding: 33px;*/
+}
+.navbar-logo {
+    padding: 10px;
 
+}
 .navbar .nav>li>a {
     display: block;
     color: white;
     font-weight: bold;
     border-bottom: none;
 }
-
 .navbar .nav >li>a:hover{
     background-color: #eceef1;
     color: blue !important;
@@ -39,4 +44,34 @@
 }
 #login-dropdown-list a{
     color:white;
+    
+
+}
+#login-dropdown-list{
+    padding-top:14px;
+}
+
+#login-dropdown-list >a:hover{
+    background-color: #eceef1;
+    color: blue !important;
+    border-bottom: none;
+    padding: 15px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.navbar-inverse{
+     box-shadow: 0px 0px 100px white;
+    z-index: 100;
+    
+    width: 100%;
+    height: 120px;
+    background-image:url('./thumb-1920-258211.jpg');
+
+    /*background-color: black;*/
+    border-color: white;
+    border-width: 2px;
+}
+.navbar-estilo{
+    padding: 33px;
 }
