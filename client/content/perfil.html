@@ -48,22 +48,21 @@
                     {{/if}}
         </div> 
         {{else}}
-            <p>NO hay datos</p>
+            <p>No hay datos</p>
         {{/each}}
     {{else}}
         <p>Cargando</p>
     {{/if}}
                     <br>
-                    <div class="app-amigos">
+                    <br>
                         <ul class="nav nav-pills app-nav" role="tablist" id="amigos">
                             <li role="presentation"><a href="#">Amigos <span class="badge">3</span></a></li>  
                         </ul>
                         <div class="verAmigos">
                             {{>verAmigos}}
-                        </div>
-                    </div>     
-
-                    <div class="app-grupos app-line">
+                        
+                     </div>
+                    <div class="app-grupos-app-line">
                         <ul class="nav nav-pills app-nav">
                             <li role="presentation"><a href="#">Grupos <span class="badge">3</span></a></li> 
                         </ul> 
@@ -79,7 +78,7 @@
             
             <h4><span class="friend" id="{{idAmigo}}" style="background-color: green" >{{idAmigo}}</span></h4>
         {{else}}
-            <h1>NO HAY AMIGOS</h1>
+            <h4>NO HAY AMIGOS</h4>
         {{/each}}
     {{else}}
         <p>loading....</p>

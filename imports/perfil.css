@@ -1,8 +1,7 @@
 .app-principal{
-    
-    background-color: url('./image/uuu.png');
+   /* background-color: url('./image/uuu.png');*/
     border-bottom: 6px solid #eceef1;
-    border-top: 6px solid #eceef1;
+    border-top: 1px solid #eceef1;
     padding:35px;
      
 
@@ -31,11 +30,14 @@
     padding-bottom: 15px;
 }
 
-
 .img-perfil {
-    width: 250px;
-    height: 250px;
+    background: -webkit-linear-gradient(#4682b4, #b0e0e0);
+    /*background-color: purple;*/
+    width: 220px;
+    height: 220px;
     margin: auto;
+    padding: 30px;
+
 }
 
 div.upload {
@@ -63,29 +65,28 @@ div.upload input {
     font-size: 17px;
 }
 .app-todo-perfil{
-  background-image: url('./image/uuu.png');
+    background: -webkit-linear-gradient(black, #D3D3D3);
     margin-top: 5px;
     border-radius: 3px;
     width: 100%;
 
 }
 .app-content{
-   
-    background-color: white !important;
-    margin-top: 4px;
+    background: -webkit-linear-gradient(#4682b4, #b0e0e0);
+    /*background-color: orange !important;*/
+    margin-top: 2px;
     margin-bottom: 4px;
     border-radius: 3px;
     padding-top: 2px;
     padding-right: 20px;
-
+    color: orange;
+    border: 4px;
 }
 .app-line{
     border-bottom: 2px solid #e5e5e5;
 }
 .app-nav{
     margin-bottom: 1.111%;
-
-
 }
 .app-prin{
     width: auto;

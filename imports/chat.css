@@ -1,10 +1,11 @@
 .chat{
-    background-image: url('./image/uuu.png');
+    background: -webkit-linear-gradient(#4682b4, #b0e0e0);
     height: 580px;
     overflow:auto ;
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
+    color: orange;
 }
 .chat-li{
     background-color: #3b5bbb;
