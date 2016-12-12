@@ -4,6 +4,7 @@
 .centro{
     height: 100%;
     overflow: auto;
+
 }
 
 .body{
@@ -12,15 +13,15 @@
     padding-top: 0px;
     background-image: url('');
 }
-body{
-    
-    background: url('fondos-graciosos-pc jaimworld.jpg');
+
+body{    
+
+    background: url('fondos-de-pantalla-hd-negros-o-azul-oscuro-imaguiadasd.jpg');
     z-index: 1;
     padding: 0px 0px;
     border: 0px 0px;
     margin: 0px 0px;
     color: black !important;
-
 }
 #main{
     padding-top: 0px;
@@ -28,11 +29,6 @@ body{
     border-top: 0px;
     background-color: black;
 }
-.icono{
-    border: solid 4px white;
-    padding: 10px;
-    border-radius: 4px;
-    }
 
 .img-perfil {
     width: 250px;
@@ -44,6 +40,7 @@ body{
     padding: 4px;
     margin: auto;
 }
+
 .row{
     margin-left: 4px;
     margin-right: -4px; 
@@ -74,35 +71,8 @@ div.upload input {
 }
 
 
-.topbar {
-    background: #3b5998;
-    color: white;
-    border-radius: 0;
-    opacity: 1;
-}
 
-.navbar-app {
-    background-color: #3b5998;
-    margin-bottom: 0px;
-}
 
-.navbar .nav>li>a {
-    display: block;
-    color: white;
-    font-weight: bold;
-    border-bottom: none;
-}
-
-.navbar .nav >li>a:hover{
-    background-color: #eceef1;
-    color: blue !important;
-    border-bottom: none;
-}
-
-.navbar li a:hover,
-.navbar li a:active {
-    color: aliceblue !important;
-}
 .app-principal{
    background-image: url('./image/uuu.png');
     border-bottom: 8px solid #eceef1;
@@ -183,10 +153,7 @@ div.upload input {
     color: orange;
     text-align: center;
 }
-.dropdown-menu{
-    background-color: #337ab7;
 
-}
 .floatwindow{
     z-index:100;
     display:inherit;
