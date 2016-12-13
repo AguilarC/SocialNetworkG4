@@ -20,12 +20,10 @@ Template.users.helpers({
 		return FlowRouter.subsReady("loadUsers");
 	},
     usersList(){
-		return Meteor.users.find({_id:{$ne:Meteor.userId()}});
+		return DATOS_USUARIO.find({_id:{$ne:Meteor.userId()}});
 	},
 });
-Template.solicitudes.onRendered(function(){
-    
-});
+
 Template.solicitudes.helpers({
     readyS(){
 		return FlowRouter.subsReady("loadSolicitudes");
@@ -41,7 +39,6 @@ Template.listAmigos.helpers({
     amigosList(){
         return AMIGOS.find({$and:[{idUser:Meteor.userId()},{aceptado:true}]}).fetch();
     },
-    
 });
 Template.mensajes.helpers({
     ReadyMsj(){
@@ -75,7 +72,6 @@ Template.usersItems.events({
             if (result) {
                 alert(result.msj);
             }
-            
         });
         //alert("Se envio la solicitud");
     }
@@ -88,19 +84,22 @@ Template.chatLayout.events({
         $('#prev').fadeOut('slow', function() {
             $('#mensajes').fadeIn("3000");
         });
-        $('#nombrea').text(this.userA.user.username);
+        $('#nombrea').text(this.userA.username);
         //console.log(nombre);
                 
     },
-    'submit #formMsj' : function(e){
+    'keyup #inputt':function(e){
         e.preventDefault();
-        var texto = e.target.text.value;
-        //var idDest = this.userA._id;
+        var texto = e.target.value;
+        var x = e.keyCode;
         var idDest = idAmigoMsj.get();
         //console.log(idDest);
-        Meteor.call('insertarMsj', texto,idDest);
-        e.target.text.value="";
-
+        if (x==13) {
+            Meteor.call('insertarMsj', texto,idDest);
+            e.target.value="";
+            $('.contenedor-msjs').animate({scrollTop: 0}, 2500);
+        }
+        //console.log(x);
     }
 });
 

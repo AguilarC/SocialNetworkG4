@@ -38,8 +38,8 @@ Meteor.startup(() => {
                             AMIGOS.update({$and:[{idUser:idM},{idAmigo:idUs}]},{$set:{aceptado:true}});
                             console.log("se actualizo el cuate");
                         }else{
-                             AMIGOS.insert({idAmigo:idUs,idUser:idM,aceptado:true});    
-                             console.log("se inserto el cuate");				
+                            AMIGOS.insert({idAmigo:idUs,idUser:idM,aceptado:true});    
+                            console.log("se inserto el cuate");				
                         };
                     return {value:true,msj:'y tu ahora son amigos...!'};
     			};
@@ -75,7 +75,7 @@ Meteor.startup(() => {
                     console.log("Datos actualizados...!");
                 }
             });
-            Meteor.users.update({_id:this.userId},{$set:{username:u.un,profile:[{gender:u.gen,userlastnamem:u.unlm,userlastnamep:u.unlp,username:u.un}]}}, function(error,result){
+            Meteor.users.update({_id:this.userId},{$set:{username:u.un,profile:{gender:u.gen,userlastnamem:u.unlm,userlastnamep:u.unlp,username:u.un}}}, function(error,result){
                 if (error){
                     console.log(error)
                 }
@@ -122,12 +122,6 @@ Meteor.startup(() => {
                 if (error) {console.log(error)}
                 if (result) {console.log('se inserto la publicacion')}
             });
-        },
-        buscarUsers : function(username){
-            //console.log(DATOS_USUARIO.find({slogan:'none'}).fetch());
-            //console.log(username);
-            return DATOS_USUARIO.find({slogan:username}).fetch();
-
         },
     });
 });

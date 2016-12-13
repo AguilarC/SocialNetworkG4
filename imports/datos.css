@@ -6,13 +6,13 @@
     border-radius: 5px;
     color: orange;
     max-width: 120px;
+    height: 580px;
 }
-
 .img-per img {
     width: 100%;
     height: 100%;
-    max-width: 150px;
-    
+    max-width: 150px;   
+   
 }
 
 .form-group-nom{

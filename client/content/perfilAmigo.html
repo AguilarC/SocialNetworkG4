@@ -1,7 +1,7 @@
 <template name="perfilAmigo">
 	
 <div class="row app-todo-perfil">
-<section class="main ">
+<section class="main">
     
         {{#if isReady}}
         {{#each recDatos}}
@@ -9,13 +9,13 @@
             <div class="app-content">
                      <form class="form-horizontal">
                         <div class="container-fluid app-content">
-                                {{#each user.profile}}
+                                
                                 <label for="nombre" class="control-label">Nombres:</label>
-                                <input value="{{username}} {{userlastnamep}} {{userlastnamem}}{{user.profile.username}} {{user.profile.userlastnamep}} {{user.profile.userlastnamem}}" class="form-control" type="text" name="nombre">
+                                <input value="{{username}} {{userlastnamep}} {{userlastnamem}}" class="form-control" type="text" name="nombre">
                                 
                                 <label for="sexo" class="control-label">Sexo:</label>
-                                <input value="{{gender}}{{user.profile.gender}}" class="form-control" type="text" name="sexo">
-                                {{/each}}
+                                <input value="{{gender}}" class="form-control" type="text" name="sexo">
+                                
                                 {{#each user.emails}}
                                 <label for="email" class="control-label">Email:</label>
                                 <input value="{{address}}" class="form-control" type="email" name="email">
@@ -33,18 +33,18 @@
                     </form>       
             </div>    
         </aside>
-        <div class="col-md-4 app-prin">
+        <div class="col-md-4">
                     {{#if image}}
                     <div class="img-perfil">
-                        <figure>
+                        
                             <img src="{{image.link}}" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
-                        </figure>
+                        
                     </div>
                     {{else}}
                     <div class="img-perfil">
-                            <figure>
+                            
                                 <img src="./avatar.png" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
-                            </figure>
+                            
                         </div>
                     {{/if}}
         </div> 

@@ -5,11 +5,16 @@ DATOS_USUARIO = new Mongo.Collection('datos_usuario',{
     transform:function(row){
         //row.username="Ditmaros";
         //console.log(user);
-        _.extend(row,{imagen:Images.findOne({_id:row.imageuser})},
-            {user:Accounts.users.findOne({_id:row._id})});
+        var user = Accounts.users.findOne({_id:row._id})
+            row.username = user.profile.username; 
+            row.userlastnamep = user.profile.userlastnamep;
+            row.userlastnamem = user.profile.userlastnamem;
+            row.gender = user.profile.gender;
+            row.email = user.emails[0].address;
+        
+        _.extend(row,{imagen:Images.findOne({_id:row.imageuser})});
         //console.log(row);*/
         return row;
-
     }
 });
 LIKES= new Mongo.Collection('likes');

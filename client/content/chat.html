@@ -27,7 +27,7 @@
 <template name="usersItems">
     <div class="">
         <li class="f-li list-group-item a" >
-            {{username}}
+            {{username}} {{userlastnamep}}
             <a title="Enviar solicitud de amistad" class="solAmistad" ><span class="glyphicon glyphicon-plus"  id="{{_id}}" ></span></a>
         </li>   
     </div>
@@ -35,22 +35,22 @@
 <template name="solicitudes">
     <div>
         {{#if readyS}}
-            <label for="">Solicitudes de amistad</label>
+            <label >Solicitudes de amistad</label>
             <ul>
                 {{#each solList}}
                     {{>itemSol}}
                 {{else}}
-                <b>no hay</b>   
+                <b>SIN SOLICITUDES PENDIENTES</b>   
                 {{/each}}
             </ul>
         {{else}}
-           <b>NO HAY SOLICITUDES</b> 
+           <b>CARGANDO....</b> 
         {{/if}}
     </div>
 </template>
 <template name="itemSol">
     <li>
-        <a class="aceptarSol" id="{{idUser}}" href="">{{userI.user.username}} : Aceptar solicitud</a>
+        <a class="aceptarSol" id="{{idUser}}" href="">{{userI.username}} : Aceptar solicitud</a>
     </li>
 </template>
 
@@ -60,7 +60,7 @@
             {{#each amigosList}}
                 {{>itemAmigo}}
             {{else}}
-                <h4><span class="label label-danger">NO HAY AMIGOS....!</span><br></h4>
+                <h4><span class="label label-danger">NO HAY LISTA DE AMIGOS....!</span><br></h4>
                 <h4><span class="label label-danger">AGREGALOS DESDE EL BUSCADOR......</span><br></h4>
             {{/each}}
         
@@ -68,35 +68,33 @@
            <b>CARGANDO LISTA DE AMIGOS.....</b> 
         {{/if}}
 </template>
+
 <template name="itemAmigo">
     <div class="list-a">
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="chat-li idAmigo" name="{{userA.user.username}}" id="{{idAmigo}}"> {{userA.user.username}}</a><br>
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span><a class="chat-li idAmigo" name="{{userA.username}}" id="{{idAmigo}}"> {{userA.username}}</a><br>
     </div>              
 </template>
+
 <template name="mensajes" >
     <div id="prev">
-        <h4><span class="label label-default">CLICK EN LA LISTA DE AMIGOS</span><br></h4>
+        <h4><span class="label label-default">CLICK EN UN ENLACE DE LA LISTA</span><br></h4>
         <h4><span class="label label-default">PARA CHATEAR........!</span><br></h4>
     </div>
     <div id="mensajes" style="display: none" class="{{idAmigo}}">
-        <form id="formMsj" action=""  method="POST" role="form">
-                
-         <textarea name="text" id="inputt" class="form-control" rows="1" required="required"></textarea>
-        <center><button type="submit" class="btn-success" id="" style="margin: 2px">Enviar</button></center>
-        </form> 
+        <textarea name="text" id="inputt" class="form-control" rows="1" required="required"></textarea>
         <div class="contenedor-msjs">       
-                {{#if ReadyMsj}}
-                        {{#each msjList}}
-                            {{#if isRemitente}}
-                                <div style="display: table-row;"><span name="" id="{{remitente}}"  class="msj destina">{{msj}}</span><br></div>
-                            {{else}}
-                                <div style="display: table-row;"><span name="" id="{{remitente}}" class="msj remite">{{msj}}</span><br></div>
-                            {{/if}} 
-                        {{/each}}
+            {{#if ReadyMsj}}
+                {{#each msjList}}
+                    {{#if isRemitente}}
+                        <div class="row-msj"><span name="" id="{{remitente}}"  class="msj destina">{{msj}}</span><br></div>
                     {{else}}
-                       <p>Loading....</p>
-                    {{/if}}
-                </div>
+                        <div class="row-msj"><span name="" id="{{remitente}}" class="msj remite">{{msj}}</span><br></div>
+                    {{/if}} 
+                {{/each}}
+            {{else}}
+               <p>Loading....</p>
+            {{/if}}
+        </div>
            
-        </div>   
+    </div>   
 </template>

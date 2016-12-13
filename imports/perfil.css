@@ -2,7 +2,8 @@
    /* background-color: url('./image/uuu.png');*/
     border-bottom: 6px solid #eceef1;
     border-top: 1px solid #eceef1;
-    padding:35px;
+    background: -webkit-linear-gradient(#4682b4, #b0e0e0);
+    padding:30px;
      
 
 }
@@ -36,6 +37,8 @@
     width: 220px;
     height: 220px;
     margin: auto;
+    border: solid 2px white;
+    border-radius: 4px;
     padding: 30px;
 
 }
@@ -65,10 +68,7 @@ div.upload input {
     font-size: 17px;
 }
 .app-todo-perfil{
-    background: -webkit-linear-gradient(black, #D3D3D3);
-    margin-top: 5px;
-    border-radius: 3px;
-    width: 100%;
+    
 
 }
 .app-content{
@@ -86,8 +86,36 @@ div.upload input {
     border-bottom: 2px solid #e5e5e5;
 }
 .app-nav{
-    margin-bottom: 1.111%;
+    margin-bottom: 5px;
 }
 .app-prin{
     width: auto;
+    background-color: white;
+    border-radius: 4px;
+    height: auto;
+    margin-top: 4px;
 }
+
+.app-datos{
+    background-color: white !important;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+    width: auto;
+}
+.app-amigos{
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+    width: auto;
+}
+.app-grupos{
+    background-color: white;
+    border-radius: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+
+    width: auto;
+}
+

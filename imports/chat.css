@@ -6,41 +6,52 @@
     margin: 5px;
     border-radius: 10px;
     border: ridge 2px #181C85;
-    position: fixed;
+    
 }
-.chat-t{ font: italic bold 20px Georgia ; color: ghostwhite;text-shadow: blue 2px 2px;   }
+.chat-t{ 
+    font: italic bold 20px Georgia ; 
+    color:white;
+    text-shadow: blue 2px 2px;
+    margin: 3px;
+    }
 .contenedor-msjs{
+        display: block;
         padding: 2px 15px;
         overflow:auto ;
         height: 200px;
         margin-bottom: 10px;
         border: ridge 2px blue;
         border-radius: 5px;
-        background: -webkit-linear-gradient(bottom,#373BA4,#8BAED5,#B9B6DF,#8BAED5,#373BA4);
+        background: -webkit-linear-gradient(bottom,#6D70BE,#8BAED5,#B9B6DF,#8BAED5,#6D70BE);
 }
-
+.row-msj{
+    clear: both; 
+    
+}
 .destina{
-    float: left;
     clear: left;
+    float: left;
+    margin-left: 0px ;
     text-align: left:  ;
     background-color:#463BBB;    
 }
 .remite{
-    float: right ;
-    clear: right;
+    float: left;
+    float: right;
     text-align: right;
     background-color: #275127;
-    margin-right: 10px;
+    padding-right: 0px;
 
 }
 .msj{
-    word-break: break-all;  
+    max-width: 80%;
+    /*word-break: break-all;  */
     padding: 2px 3px;
-    margin: 2px;
+    margin: 1px;
     color: white;
     border-radius: 5px;
     font-weight: bold;
-    display: table-row; 
+     
 }
 .list-a{
     margin: 2px 55px 2px 25px;
