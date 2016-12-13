@@ -28,7 +28,12 @@ PUBLICACIONES  = new Mongo.Collection('publicaciones',{
         return item;
     }
 });
-COMENTARIOS = new Mongo.Collection('comentarios');
+COMENTARIOS = new Mongo.Collection('comentarios',{
+    transform:function(item){
+        _.extend(item,{user:DATOS_USUARIO.findOne({_id:item.usuario})});
+        return item;
+    }
+});
 GRUPOS = new Mongo.Collection('grupos');
 AMIGOS = new Mongo.Collection('amigos',{
     transform : function(itemA){       
@@ -137,7 +142,6 @@ var comentariosSchema = new SimpleSchema({
     usuario : {
         type : String,
         autoValue : function(){
-
             return Meteor.userId();
 
         }

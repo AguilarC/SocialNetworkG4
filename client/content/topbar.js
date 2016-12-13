@@ -13,15 +13,17 @@ Template.topbar.helpers({
 	},
     usersList(){
     	var word=KeySearch.get();
-    	
-		return DATOS_USUARIO.find({username:/.*word.*/},{_id:{$ne:Meteor.userId()}});
+
+		return DATOS_USUARIO.find({_id:/.*word.*/},{_id:{$ne:Meteor.userId()}});
 	},
 
 });
 Template.topbar.events({
 	'keyup #searchUsers': function (e) {
 		KeySearch.set(e.target.value);
-		console.log(KeySearch.get());
+		var word=xDnwDoBAgAFchHqPW;
+		var pal = /.*/+word+/.*/;
+		console.log(DATOS_USUARIO.find({_id:pal}).fetch());
 		
 	}
 });

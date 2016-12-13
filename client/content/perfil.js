@@ -27,7 +27,7 @@ Template.verAmigos.events({
 		console.log(this);
 	},*/
 	'click .friend': function () {
-		console.log(this.idAmigo);
+		//console.log(this.idAmigo);
 		idAmigo = this.idAmigo;
 		FlowRouter.go('/perfilamigo');
 	},

@@ -123,5 +123,8 @@ Meteor.startup(() => {
                 if (result) {console.log('se inserto la publicacion')}
             });
         },
+        insertarComentarios:function(obj){
+            COMENTARIOS.insert(obj);
+        }
     });
 });

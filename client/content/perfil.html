@@ -4,9 +4,9 @@
 <section class="main ">
     {{#if isReady}}
         {{#each recDatos}}
-        <aside class="col-md-8">
-            <div class="app-content">
-                     <form class="form-horizontal">
+            <div class="row app-content">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <form class="form-horizontal">
                         <div class="container-fluid app-content">
                                 <!--{{#each user.profile}}-->
                                 <label for="nombre" class="control-label">Nombres:</label>
@@ -29,11 +29,11 @@
                                 <br>
 
                         </div>    
-                    </form>       
-            </div>    
-        </aside>
-        <div class="col-md-4">
-                    {{#if image}}
+                    </form>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="alinear">
+                        {{#if image}}
                     <div class="img-perfil">
                         <figure>
                             <img src="{{image.link}}" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
@@ -46,7 +46,11 @@
                             </figure>
                         </div>
                     {{/if}}
-        </div> 
+                    </div>
+                    
+                </div>
+                            
+            </div>    
         {{else}}
             <p>No hay datos</p>
         {{/each}}
@@ -55,32 +59,46 @@
     {{/if}}
                     <br>
                     <br>
-                        <ul class="nav app-nav" role="tablist" id="amigos">
-                            <li role="presentation"><a href="#">Amigos <span class="badge">3</span></a></li>  
-                        </ul>
-                        <div class="verAmigos">
+                    <div class="row title"  id="amigos">
+                        <label class="link-amigo">AMIGOS <span class="badge">3</span></label>
+                    </div>
+                    <div class="row verAmigos">
                             {{>verAmigos}}
-                        
                      </div>
-                    <div class="app-grupos-app-line">
-                        <ul class="nav app-nav">
-                            <li role="presentation"><a href="#">Grupos <span class="badge">3</span></a></li> 
-                        </ul> 
-
+                    <div class="row title"  id="amigos">
+                        <label class="link-amigo">GRUPOS <span class="badge">3</span></label>
                     </div>
                            
 </section>
 </div>         
 </template>
 <template name="verAmigos">
-    {{#if isReady}}
+    <div class="row cont-amigos">
+        {{#if isReady}}
         {{#each recAmigos}}
+                <div class="friend">
+                    {{#if image}}
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <img src="{{userA.imagen.link}}" class="img-responsive img-min">
             
-            <h4><span class="friend" id="{{idAmigo}}" style="background-color: green" >{{idAmigo}}</span></h4>
+                    </div>
+                    {{else}}
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <img src="./avatar.png" class="img-responsive img-min">
+            
+                    </div>
+                    {{/if}}
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                       <span class="link-amigo" id="{{idAmigo}}" >{{userA.username}} {{userA.userlastnamep}} {{userA.userlastnamem}}</span>
+                    </div>
+                </div>
         {{else}}
             <h4>NO HAY AMIGOS</h4>
         {{/each}}
+
     {{else}}
         <p>loading....</p>
     {{/if}}
+    </div>
+    
 </template>

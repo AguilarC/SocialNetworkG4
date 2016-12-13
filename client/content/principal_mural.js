@@ -2,6 +2,7 @@ idimagen = "none";
 var comentarios = new ReactiveVar(false);
 idcommentarios1 = "";
 Template.principalmuralform.events({
+	
 	"submit #principalm":function(e){
 		e.preventDefault();
 		var mensaje= e.target.mensaje.value;
@@ -125,13 +126,30 @@ Template.publicacionesver.helpers({
 });
 
 Template.comentariospublicaciones.events({
-	"submit #comentariosform":function(e){
+	/*"submit #comentariosform":function(e){
 		e.preventDefault();
-		var msn= e.target.comentarios.value
+		var msn= e.target.value
 		var idmsn = this._id;
 		COMENTARIOS.insert({texto:msn,idPub:idmsn});
 		e.target.comentarios.value = "";
-	}
+	},*/
+	'keyup #inputcoment':function(e){
+        e.preventDefault();
+        var obj = {
+        	texto:e.target.value,
+        	idPub:this._id
+        };
+        var x = e.keyCode;
+        //if (e.target.value.length>1&&x!=13){
+	        console.log(e.target.value.length);
+	        if (x==13) {
+	            Meteor.call('insertarComentarios', obj);
+	            e.target.value="";
+	        }
+	        //console.log
+		//}   
+    }
+
 });
 
 Template.comentariospublicaciones.helpers({

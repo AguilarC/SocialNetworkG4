@@ -104,16 +104,13 @@
 	{{else}}
 		<b>CARGANDO...</b>
 	{{/if}}
-	<form action="" method="POST" role="form" id="comentariosform">
-		
-			<textarea name="comentarios" id="input" class="form-control" rows="1" required="required" placeholder="Escribe un comentario"></textarea>
-		<button type="submit" class="btn btn-primary">Enviar</button>
-	</form>
+			<textarea name="comentarios" id="inputcoment" class="form-control" rows="1"  placeholder="Escribe un comentario"></textarea>
+	
 	
 </template>
 
 <template name="itemscomentarios">
 	<li>
-		{{texto}}
+		{{user.username}} : {{texto}}
 	</li>
 </template>
