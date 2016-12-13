@@ -1,11 +1,12 @@
 /*@import url("./client/content/chat.css");*/
 /* CSS declarations go here */
 /*SOLO LOS CAMBIOS MAS IMPORTANTES*/
-.centro{
-    height: 100%;
-    overflow: auto;
 
-}
+
+
+
+
+
 
 .body{
     width: 100%;
@@ -79,3 +80,59 @@ div.upload input {
     width:500px;
 
 }
+/*====================NProgress===========================*/
+/* Make clicks pass-through */
+
+
+
+
+/*==============mural=======================*/
+
+
+.app-todo-perfil{
+    border-radius: 3px;
+    width: 100%;
+
+}
+.imgpubli{
+    text-align: center;
+    max-width: 105px;
+    height: 100px;
+}
+.app-line{
+    border-bottom: 1px solid #e5e5e5;
+}
+.app-lineas{
+    border-bottom: 1px solid #3b5998;
+}
+.app-nav{
+    margin-bottom: 1.111%;
+}
+.app-prin{
+    width: auto;
+}
+.panel-heading, .btn{
+    background-image:url('./thumb-1920-258211.jpg');
+    color: white !important;
+    opacity: 0.8;
+
+}
+.app-articles{
+    background-color: #3b5998 !important;
+    color: white !important;
+    border-bottom: 1px;
+}
+
+.imgcoment{
+    width: 50px;
+    height: 50px;
+    
+}
+.a-style {
+    display: inline-block;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    transition: 0.2s;
+}
+
