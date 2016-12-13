@@ -1,94 +1,118 @@
 <template name="principalmural">
-	<ul>
-		<li>
+	<ul class="row s_perfil">
 			{{>principalmuralform}}
-		</li>
-		<li>
 			{{>cargarmensajes}}			
-		</li>
 	</ul>
 </template>
 
 <template name="principalmuralform">
- <div class="mural">
 	<form action="" method="POST" role="form" id="principalm">
+		 <div class="row app-todo-perfil">
+			<div class="panel panel-default" id="principalm">
+					<div class="panel-heading" >
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{currentUser.username}} 
+	                </div> 
+                <div class="panel-body">
+                    <div class="app-lineas"></div> 
+                   		 <div class="row">
+                    		<div class="media-middle col-md-3">
+                        		<a href="#">
+                            		<img  src="./avatar.png" alt="profile" class="img-responsive imgpubli"></a>
+                   			</div>
+							<div class="form-group col-md-9">
+								<textarea name="mensaje" id="input" class="form-control" rows="4" required="required" placeholder="¿Que estas pensando?"></textarea>
+							</div>
+						</div>
+						<div class="app-lineas"></div>
+						<br>
+						<div>
+								{{>uploadForm}}
+						</div>
 
-		<legend>MURAL</legend>
-		<div class="form-group">
-			<textarea name="mensaje" id="input" class="form-control" rows="3" required="required" placeholder="¿Que estas pensando?"></textarea>
-			
-		</div>
-		<div>
-			{{>uploadForm}}
-		</div>
-		<button type="submit" class="btn btn-primary">ENVIAR</button>
-	</form>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-primary">PUBLICAR</button>
+							<br>
+						</div>
+				</div>
+			</div>
 	</div>
+	</form>
 </template>
 
 <template name ="cargarmensajes">
 	{{#if isReady}}
-		<ul>		
+		
 		{{#each items}}
-			<li>{{>publicacionesver}}</li>
+			{{>publicacionesver}}
 		{{/each}}
-		</ul>
+		
 	{{else}}
 		<b>CARGANDO...</b>
 	{{/if}}
 </template>
 
 <template name="publicacionesver">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<ul>
-				<h4><span>{{amigo.username}}  Publicó :</span></h4><br>
-				<li>
-					<span class ="badge">{{fecha}}</span>
-					<div class="usuariostylos">
-					</div>
-				</li>
-				<li>
+	<div class="row app-todo-perfil">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{amigo.username}} Publicó :</span></h3>
+					<h6><span class ="badge col-md col-sm col-lg">{{fecha}}</span></h6>
+			</div>
+				<div class="panel-body col-sm col-md col-lg">
+				<div class="app-line">
 					{{texto}}
-				</li>
-				{{#if isImage}}
-					<img src="{{media.link}}" class="img-responsive" alt="Image" id ="imagen">
+				</div>
+				<br>
+					{{#if isImage}}
+					<a class="a-style" target="_blank" href="{{media.link}}">
+						<img src="{{media.link}}" class="img img-responsive" alt="Image" id ="imagen">
+					</a>
+					{{/if}}
+					{{#if isVideo}}
+					<video autobuffer autoloop loop controls>
+						<source src="{{media.link}}">
+						<object type="{{media.type}}" data="/media/video.oga" width="320" height="240">
+						<param name="src" value="/media/video.oga">
+						<param name="autoplay" value="false">
+						<param name="autoStart" value="0">
+						<p><a href="/media/video.oga">Download this video file.</a></p>
+						</object>
+					</video>
+
 				{{/if}}
-				{{#if isVideo}}
-				<video autobuffer autoloop loop controls>
-					<source src="{{media.link}}">
-					<object type="{{media.type}}" data="/media/video.oga" width="320" height="240">
-					<param name="src" value="/media/video.oga">
-					<param name="autoplay" value="false">
-					<param name="autoStart" value="0">
-					<p><a href="/media/video.oga">Download this video file.</a></p>
-					</object>
-				</video>
-				{{/if}}
-				<li>
-					<ul>
-						<li>
-							<span id="{{liked.idLiker}}" >likes : {{like}}</span><br>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<span id="{{liked.idLiker}}" >likes : {{like}}</span><br>
+						<div class="app-line"></div>
+						<ul class="nav navbar-nav">		
 							{{#if isLiked}}
-							<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
+							<li class="">
+								<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
+							</li>
 							{{else}}
-							<a id="{{_id}}" class="noMeGusta" href="" ><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Ya No Me Gusta</a>
+							<li class="">
+								<a id="{{_id}}" class="noMeGusta" href="" ><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Ya No Me Gusta</a>
+							</li>
 							{{/if}}
-						</li>
-						<li>
-							<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon-comment comment" aria-hidden="true" ></span> Comentar</a>
-						</li>
-						<!--<li>
-							<a href="" id="{{_id}}" class="editarbtn"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> editar</a>
-						</li>-->
-					</ul>
-				</li>
-			</ul>
-			
+						
+							<li class="">
+								<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon-comment comment" aria-hidden="true" ></span> Comentar</a>
+							</li>
+							<li class="">
+								<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true" ></span> Compartir</a>
+							</li>
+							<li class="">
+								<a href="" id="{{_id}}" class="editarbtn"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span> editar</a>
+							</li>
+						</ul>
+				
+				
+	
+			</div>
 			<div class="comentarios " style="display: none" id ="{{_id}}1">
 				{{>comentariospublicaciones}}
 			</div>
-			
+			</div>
 		</div>
 	</div>
 </template>
@@ -105,12 +129,19 @@
 		<b>CARGANDO...</b>
 	{{/if}}
 			<textarea name="comentarios" id="inputcoment" class="form-control" rows="1"  placeholder="Escribe un comentario"></textarea>
-	
-	
 </template>
 
 <template name="itemscomentarios">
-	<li>
-		{{user.username}} : {{texto}}
-	</li>
+	<div class="media">
+    	<div class="media-left">
+     	 	
+    	</div>
+    	<div class="media-body">
+    		<div class="media-heading control-label">
+    			<p> {{user.username}} : {{texto}}</p>
+    		</div>
+			
+		</div>
+	</div>
+
 </template>
