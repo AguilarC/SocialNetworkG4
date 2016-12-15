@@ -16,8 +16,11 @@
                     <div class="app-lineas"></div> 
                    		 <div class="row">
                     		<div class="media-middle col-md-3">
-                        		<a href="#">
-                            		<img  src="./avatar.png" alt="profile" class="img-responsive imgpubli"></a>
+                        			{{#if isImageUser.value}}
+                        			<img  src="{{isImageUser.imagen.link}}" alt="profile" class="img-responsive imgpubli">
+                        			{{else}}
+                            		<img  src="./avatar.png" alt="profile" class="img-responsive imgpubli">
+                            		{{/if}}
                    			</div>
 							<div class="form-group col-md-9">
 								<textarea name="mensaje" id="input" class="form-control" rows="4" required="required" placeholder="¿Que estas pensando?"></textarea>
@@ -82,16 +85,16 @@
 				{{/if}}
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<span id="{{liked.idLiker}}" >likes : {{like}}</span><br>
+					<span id="{{liked.idLiker}}" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> : {{like}}</span><br>
 						<div class="app-line"></div>
 						<ul class="nav navbar-nav">		
 							{{#if isLiked}}
 							<li class="">
-								<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
+								<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" ></span> Me Gusta</a>
 							</li>
 							{{else}}
 							<li class="">
-								<a id="{{_id}}" class="noMeGusta" href="" ><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Ya No Me Gusta</a>
+								<a id="{{_id}}" class="noMeGusta" href="" > Ya No Me Gusta</a>
 							</li>
 							{{/if}}
 						

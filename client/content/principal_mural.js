@@ -1,6 +1,15 @@
 idimagen = "none";
 var comentarios = new ReactiveVar(false);
 idcommentarios1 = "";
+Template.principalmuralform.helpers({
+	isImageUser() {
+		var imagen = DATOS_USUARIO.findOne({_id:Meteor.userId()});
+		if (imagen.imagen!=undefined) {
+			return {value:true,imagen:imagen.imagen};
+		}
+		
+	}
+});
 Template.principalmuralform.events({
 	
 	"submit #principalm":function(e){
@@ -140,14 +149,10 @@ Template.comentariospublicaciones.events({
         	idPub:this._id
         };
         var x = e.keyCode;
-        //if (e.target.value.length>1&&x!=13){
-	        console.log(e.target.value.length);
 	        if (x==13) {
 	            Meteor.call('insertarComentarios', obj);
-	            e.target.value="";
-	        }
-	        //console.log
-		//}   
+				e.target.value="";
+			}
     }
 
 });

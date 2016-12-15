@@ -62,8 +62,10 @@ Meteor.startup(() => {
             }
         },
         insertarMsj : function(msj,dest){
-            if(Meteor.userId()){
+            if(Meteor.userId()){ 
+                if (msj.length!=1) {
                 MENSAJES.insert({msj:msj,destinatario:dest});
+                }
             }
         },
         actualizarDatos : function(datos,u,idI){
@@ -124,7 +126,37 @@ Meteor.startup(() => {
             });
         },
         insertarComentarios:function(obj){
-            COMENTARIOS.insert(obj);
+            if (obj.texto.length!=1) {
+                COMENTARIOS.insert(obj);
+            }
+        },
+        crearGrupo:function(nombre){
+            GRUPOS.insert({nombreGrupo:nombre},function(error,result){
+                if (error) {console.log(error)}
+                if (result) {
+                    console.log('se creo el grupo');
+                    var idGrupo=result;
+                    GRUPOUSERS.insert({idGrupo:idGrupo,idUsuario:this.userId,aceptado:true,nivel:"administrador",notificaciones:true
+                    },function(error,result){
+                        if (error) {console.log(error)}
+                        if (result) {console.log('se creo el admin')}
+                    });
+                }
+            });  
+        },
+        solicitarUnirseGrupo:function(idGrupo){
+            GRUPOUSERS.insert({idGrupo:idGrupo,idUsuario:this.userId,aceptado:false,nivel:"usuario",notificaciones:false
+                },function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se envio la solicitud')}
+                });
+        },
+        aceptarSolicitudGrupo:function(idGrupo,iduser){
+            GRUPOUSERS.update({$and:[{_id:idGrupo},{idUsuario:idUser}]},{$set:{aceptado:true,notificaciones:true}},
+                function(error,result){
+                if (error) {console.log(error)}
+                if (result) {console.log('se acepto al grupo')}
+            });
         }
     });
 });

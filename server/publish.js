@@ -26,6 +26,12 @@ Meteor.startup(() => {
     Meteor.publish("getComentarios",function(){
         return COMENTARIOS.find();
     });
+    Meteor.publish("getGrupos",function(){
+        return GRUPOS.find();
+    });
+    Meteor.publish("getGrupoUsers",function(){
+        return GRUPOUSERS.find();
+    });
     /*Meteor.publish("getPublicaciones",function(){
         var hayAm = AMIGOS.find({$and:[{idUser:this.userId},{aceptado:true}]}).fetch();
         console.log(hayAm.length);
