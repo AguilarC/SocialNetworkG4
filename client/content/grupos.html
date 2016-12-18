@@ -1,13 +1,63 @@
 <template name="grupos">
-	<div class="row info-group">
-		
-	</div>
-	<button type="button" id="unirseGrupo" class="btn btn-default">button</button>
-	<button type="button" id="actualizarGrupo" class="btn btn-success">updtae</button>
+<div class="row ">
+	{{#if isReady}}
+	{{#each verGrupo}}
+	<div class="row a-styles">
+		<a href="" class="a-styles">
+			<img src="./B30.jpg" aling="center" alt="Cinque Terre" class="img-responsive img-thumbnail imgroupo">
+		</a>
+		<div class="row">
 
+			<div class="app-line"></div>
+			<div class="col-md-4">
+				<h3 id="{{_id}}" class="control-label">{{nombreGrupo}}</h3>
+			</div>
+			{{#if isUserGroup}}
+			<div class="col-md-8">
+				<ul class="nav nav-tabs">
+					  <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-book"></span> Conversaciones</a></li>
+					  <li><a data-toggle="tab" href="#menu1"><span class="glyphicon glyphicon-user"></span> Miembros</a></li>
+					  <li><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-picture"></span> Fotos</a></li>
+					  <li><a data-toggle="tab" href="#menu3"><span class="glyphicon glyphicon-globe"></span> Solicitud</a></li>
+				</ul>
+				<div class="tab-content">
+				  <div id="home" class="tab-pane fade in active">
+				    <h3>HOME</h3>
+				    <p>Some content.</p>
+				  </div>
+				  <div id="menu1" class="tab-pane fade">
+				    <h3>Menu 1</h3>
+				    <p>Some content in menu 1.</p>
+				  </div>
+				  <div id="menu2" class="tab-pane fade">
+				    <h3>Menu 2</h3>
+				    <p>Some content in menu 2.</p>
+				  </div>
+				  <div id="menu3" class="tab-pane fade">
+				    <h3>Menu 3</h3>
+				    {{>solGrupo}}
+				  </div>
+				</div>
+			</div>
+			{{else}}
+				<button type="button" id="{{_id}}" class="solunirg btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Unirte al Grupo</button>
+			{{/if}}
+
+		</div>
+	</div>
+	{{/each}}
+	{{/if}}
+</div>
+	
+	
 </template>
-<template name="soliGrupos" >
+<template name="solGrupo" >
 	<div>
-		<span idgrupo="" iduser=""></span>
+		{{#each listSolGroup}}		
+		<span idgrupo="" iduser="">name :{{idUsuario}}  </span><button type="button" class="btn btn-primary">Aceptar Solicitud</button>
+		{{else}}
+		<p>no hay sol</p>
+		{{/each}}
 	</div>
 </template>
+

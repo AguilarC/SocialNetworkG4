@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
   // code to run on server at startup
+    idGrupo='';
     Meteor.methods({
     	agregarAmigo : function (idA) {
     		var consulta = AMIGOS.find({$and:[{idAmigo:idA},{idUser:Meteor.userId()}]}).fetch();
@@ -130,19 +131,25 @@ Meteor.startup(() => {
                 COMENTARIOS.insert(obj);
             }
         },
-        crearGrupo:function(nombre){
-            GRUPOS.insert({nombreGrupo:nombre},function(error,result){
+        crearGrupo:function(nombre,idUser){
+            var msj='';
+            return GRUPOS.insert({nombreGrupo:nombre},function(error,result){
                 if (error) {console.log(error)}
                 if (result) {
-                    console.log('se creo el grupo');
-                    var idGrupo=result;
-                    GRUPOUSERS.insert({idGrupo:idGrupo,idUsuario:this.userId,aceptado:true,nivel:"administrador",notificaciones:true
-                    },function(error,result){
+                    console.log('se creo el grupo'+result);
+                    idGrupo=result;
+                    GRUPOUSERS.insert({idGrupo:idGrupo,idUsuario:idUser,aceptado:true,nivel:"administrador",notificaciones:true
+                    },function(error,resul){
                         if (error) {console.log(error)}
-                        if (result) {console.log('se creo el admin')}
+                        if (resul) {console.log('se creo el admin');
+                        }
                     });
+
                 }
-            });  
+                return result;
+            });
+            //console.log(idGrupo);
+            //return {idGrupo:msj};  
         },
         solicitarUnirseGrupo:function(idGrupo){
             GRUPOUSERS.insert({idGrupo:idGrupo,idUsuario:this.userId,aceptado:false,nivel:"usuario",notificaciones:false
@@ -150,6 +157,7 @@ Meteor.startup(() => {
                     if (error) {console.log(error)}
                     if (result) {console.log('se envio la solicitud')}
                 });
+            return {msj:'se envio la solicitud'};
         },
         aceptarSolicitudGrupo:function(idGrupo,iduser){
             GRUPOUSERS.update({$and:[{_id:idGrupo},{idUsuario:idUser}]},{$set:{aceptado:true,notificaciones:true}},

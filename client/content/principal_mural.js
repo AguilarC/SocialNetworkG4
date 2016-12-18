@@ -3,14 +3,15 @@ var comentarios = new ReactiveVar(false);
 idcommentarios1 = "";
 Template.principalmuralform.helpers({
 	isImageUser() {
-		var imagen = DATOS_USUARIO.findOne({_id:Meteor.userId()});
-		if (imagen.imagen!=undefined) {
+		var userId=Meteor.userId();
+		var imagen = DATOS_USUARIO.find({_id:userId}).fetch()[0];
+		if (imagen.imageuser!='none') {
 			return {value:true,imagen:imagen.imagen};
 		}
 		
 	}
 });
-Template.principalmuralform.events({
+Template.principalmural.events({
 	
 	"submit #principalm":function(e){
 		e.preventDefault();
