@@ -1,3 +1,4 @@
+import '../../imports/principal_mural.css';
 idimagen = "none";
 var comentarios = new ReactiveVar(false);
 idcommentarios1 = "";
