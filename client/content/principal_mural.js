@@ -2,7 +2,17 @@ import '../../imports/principal_mural.css';
 idimagen = "none";
 var comentarios = new ReactiveVar(false);
 idcommentarios1 = "";
-Template.principalmuralform.events({
+Template.principalmuralform.helpers({
+	isImageUser() {
+		var userId=Meteor.userId();
+		var imagen = DATOS_USUARIO.find({_id:userId}).fetch()[0];
+		if (imagen.imageuser!='none') {
+			return {value:true,imagen:imagen.imagen};
+		}
+		
+	}
+});
+Template.principalmural.events({
 	
 	"submit #principalm":function(e){
 		e.preventDefault();
@@ -141,14 +151,10 @@ Template.comentariospublicaciones.events({
         	idPub:this._id
         };
         var x = e.keyCode;
-        //if (e.target.value.length>1&&x!=13){
-	        console.log(e.target.value.length);
 	        if (x==13) {
 	            Meteor.call('insertarComentarios', obj);
-	            e.target.value="";
-	        }
-	        //console.log
-		//}   
+				e.target.value="";
+			}
     }
 
 });

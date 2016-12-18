@@ -37,6 +37,25 @@
                         </div>
                         
                         <br>
+                        <div class="row">
+                            <a class="label" data-toggle="modal" href='#group'><span class="glyphicon glyphicon-plus"></span> CREAR GRUPO</a>
+                            <div class="modal fade" id="group">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">CREAR NUEVO GRUPO</h4>
+                                        </div>
+                                        
+                                        <div class="modal-body ">
+                                             {{>creargrupo}}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="grupos">
                             <a href="/grupos" class="label btn-md">
                                 <span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user "></span> GRUPOS</a>
@@ -44,12 +63,34 @@
                 </div>  
         
          </form>
+         {{#if isReady}}
+                
+                {{#each verGrupos}}
+                    <a href=""><span id="{{_id}}" class="irgrupo label label-info">{{nombreGrupo}}</span></a><br>
+                {{/each}}
+
+            {{else}}
+            <span>CARGANDO...</span>
+            {{/if}}
          </div>
     </div>
          <div class="row">
             
-         </div>
-         
-    
+         </div>   
 {{/if}}
+</template>
+<template name="creargrupo">
+    <form action="" id="creargrupos" method="POST" class="form-horizontal" role="form">
+            <div class="form-group">
+                <legend>NOMBRE DEL GRUPO : </legend>
+            </div>
+            <input type="text" name="nombre" id="input" class="form-control" value=""  title="">
+            
+            
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button type="submit" id="closecrear" data-dismiss="" class="btn btn-primary">CREAR GRUPO</button>
+                </div>
+            </div>
+    </form>
 </template>

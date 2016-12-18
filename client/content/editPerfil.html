@@ -10,20 +10,20 @@
                     <div class="form-group">
                         <label for="nombre" class="col-md-4">Nombres:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres" value="{{user.username}}" required>
+                            <input type="text" name="regnombre" class="form-control" id="regnombre" placeholder="Nombres" value="{{username}}" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Ap_paterno" class="col-md-4">Apellido Paterno:<span class="app-icon">*</span></label>
                         <div class="col-md-8">
-                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{user.profile.userlastnamep}}" required>
+                            <input type="text" name="regappaterno" class="form-control" id="appaterno" placeholder="Apellido Paterno" value="{{userlastnamep}}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="Ap_materno" class="col-md-4">Apellido Materno:</label>
                         <div class="col-md-8">
-                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{user.profile.userlastnamem}}" required>
+                            <input type="text" name="regapmaterno" class="form-control" id="appaterno" placeholder="Apellido Materno" value="{{userlastnamem}}" required>
                         </div>
                     </div>
 
@@ -33,7 +33,7 @@
                            <select name="regsexo"  class="form-control" id="regsexo" required>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
-                                <option value="{{user.profile.gender}}" selected>{{user.profile.gender}}</option>
+                                <option value="{{gender}}" selected>{{gender}}</option>
                             </select>
                         </div>
                     </div>
