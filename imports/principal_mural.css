@@ -1,57 +1,12 @@
-.s_perfil{
-    overflow: auto ;
-    height: 500px;
+.fechapublic{
+    color: white;
 }
-
-.app-todo-perfil{
-    background-color: #e9ebee;
-    margin-top: 5px;
-    border-radius: 3px;
-    width: 100%;
-
+.fechacoment{
+    width: 5px;
 }
-.imgpubli{
-    text-align: center;
-    width-max: 50px;
-    height: 50px;
+.fontext{
+    color: #3b5998;
 }
-.app-line{
-    border-bottom: 1px solid #e5e5e5;
-}
-.app-lineas{
-    border-bottom: 1px solid #3b5998;
-}
-.app-nav{
-    margin-bottom: 1.111%;
-}
-.app-prin{
-    width: auto;
-}
-.panel-heading, .btn{
-    background-color: #7F1B03 !important;
-    color: white !important;
-
-}
-.app-articles{
-    background-color: #3b5998 !important;
-    color: white !important;
-    border-bottom: 1px;
-}
-
-.imgcoment{
-    width: 50px;
-    height: 50px;
-    
-}
-a {
-    display: inline-block;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    transition: 0.3s;
-}
-
-a:hover {
-    box-shadow: 0 0 2px 1px rgba
-    (0, 140, 186, 0.5);
+.textam{
+    font-size: 12.5px; 
 }
