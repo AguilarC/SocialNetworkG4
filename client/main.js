@@ -4,6 +4,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 import './content/chat.js';
 import './content/chat.html';
+idGrupos=new ReactiveVar('');
 Template.mainLayout.onRendered(function(){
 
     /*var ancho = $("body").width()

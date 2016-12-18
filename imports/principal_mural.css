@@ -1,20 +1,13 @@
-.s_perfil{
-    overflow: auto ;
-    height: 500px;
+.fechapublic{
+    color: white;
+}
+.fechacoment{
+    width: 5px;
+}
+.fontext{
+    color: #3b5998;
 }
 
-.app-todo-perfil{
-    background-color: #e9ebee;
-    margin-top: 5px;
-    border-radius: 3px;
-    width: 100%;
-
-}
-.imgpubli{
-    text-align: center;
-    width-max: 50px;
-    height: 50px;
-}
 .app-line{
     border-bottom: 1px solid #e5e5e5;
 }
@@ -55,3 +48,8 @@ a:hover {
     box-shadow: 0 0 2px 1px rgba
     (0, 140, 186, 0.5);
 }
+
+.textam{
+    font-size: 12.5px; 
+}
+

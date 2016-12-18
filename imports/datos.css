@@ -24,3 +24,7 @@
 .modal-header > .bottom >.close{
     color:orange;
 } 
+.grupos{
+    width: 20%;
+    padding-top: 5px;   
+}

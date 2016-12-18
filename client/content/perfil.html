@@ -10,10 +10,10 @@
                         <div class="container-fluid app-content">
                                 <!--{{#each user.profile}}-->
                                 <label for="nombre" class="control-label">Nombres:</label>
-                                <input value="{{username}} {{userlastnamep}} {{userlastnamem}}{{user.profile.username}} {{user.profile.userlastnamep}} {{user.profile.userlastnamem}}" class="form-control" type="text" name="nombre">
+                                <input value="{{username}} {{userlastnamep}} {{userlastnamem}}" class="form-control" type="text" name="nombre">
                                 
                                 <label for="sexo" class="control-label">Sexo:</label>
-                                <input value="{{gender}}{{user.profile.gender}}" class="form-control" type="text" name="sexo">
+                                <input value="{{gender}}" class="form-control" type="text" name="sexo">
                                 <!--{{/each}}-->
                                 {{#each user.emails}}
                                 <label for="email" class="control-label">Email:</label>
@@ -36,7 +36,7 @@
                         {{#if image}}
                     <div class="img-perfil">
                         <figure>
-                            <img src="{{image.link}}" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
+                            <img src="{{imagen.link}}" alt="profile" class="img-responsive img-centrar" name="regimage" id="{{imageId}}">
                         </figure>
                     </div>
                     {{else}}
@@ -77,9 +77,9 @@
         {{#if isReady}}
         {{#each recAmigos}}
                 <div class="friend">
-                    {{#if image}}
+                    {{#if imageAmigo}}
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                        <img src="{{userA.imagen.link}}" class="img-responsive img-min">
+                        <img src="{{userA.imagen.link}}" id="{{idAmigo}}"  class="img-responsive img-min">
             
                     </div>
                     {{else}}

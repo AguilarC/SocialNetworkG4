@@ -16,8 +16,11 @@
                     <div class="app-lineas"></div> 
                    		 <div class="row">
                     		<div class="media-middle col-md-3">
-                        		<a href="#">
-                            		<img  src="./avatar.png" alt="profile" class="img-responsive imgpubli"></a>
+                        			{{#if isImageUser.value}}
+                        			<img  src="{{isImageUser.imagen.link}}" alt="profile" class="img-responsive imgpubli">
+                        			{{else}}
+                            		<img  src="./avatar.png" alt="profile" class="img-responsive imgpubli">
+                            		{{/if}}
                    			</div>
 							<div class="form-group col-md-9">
 								<textarea name="mensaje" id="input" class="form-control" rows="4" required="required" placeholder="¿Que estas pensando?"></textarea>
@@ -55,8 +58,8 @@
 	<div class="row app-todo-perfil">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{amigo.username}} Publicó :</span></h3>
-					<h6><span class ="badge col-md col-sm col-lg">{{fecha}}</span></h6>
+					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{amigo.username}} Publicó :</span><h5><small><i class="fechapublic">{{fecha}}</i></small></h5></h3>
+					
 			</div>
 				<div class="panel-body col-sm col-md col-lg">
 				<div class="app-line">
@@ -84,16 +87,16 @@
 				{{/if}}
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<span id="{{liked.idLiker}}" >likes : {{like}}</span><br>
+					<span id="{{liked.idLiker}}" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> : {{like}}</span><br>
 						<div class="app-line"></div>
 						<ul class="nav navbar-nav">		
 							{{#if isLiked}}
 							<li class="">
-								<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Me Gusta</a>
+								<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" ></span> Me Gusta</a>
 							</li>
 							{{else}}
 							<li class="">
-								<a id="{{_id}}" class="noMeGusta" href="" ><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Ya No Me Gusta</a>
+								<a id="{{_id}}" class="noMeGusta" href="" > Ya No Me Gusta</a>
 							</li>
 							{{/if}}
 						
@@ -104,11 +107,13 @@
 								<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true" ></span> Compartir</a>
 							</li>
 							<li class="">
+
 								<a href="" id="{{_id}}" class="editbtn"><span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" ></span> Editar</a>
 							</li>
 							<li class="">
 								<a href="" id="{{_id}}" class="removebtn"><span class="glyphicon glyphicon glyphicon-remove-sign" aria-hidden="true" ></span> Eliminar</a>
-							</li>
+              </li>
+	
 							
 						</ul>
 				
@@ -124,7 +129,10 @@
 </template>
 
 <template name ="comentariospublicaciones">
-	<legend>Comentarios Anteriores</legend>
+<legend></legend>
+	<a href="">Comentarios Anteriores</a>
+	<br>
+	<br>
 	{{#if isReady}}
 		{{#each listadecomentarios}}
 			<ul>
@@ -134,20 +142,34 @@
 	{{else}}
 		<b>CARGANDO...</b>
 	{{/if}}
-			<textarea name="comentarios" id="inputcoment" class="form-control" rows="1"  placeholder="Escribe un comentario"></textarea>
+	<div class="media">
+  		<div class="media-left media-middle">
+    		<img src="./avatar.png" class="img-circle" style="width:50px">
+  		</div>
+  		<div class="media-body">
+    		<textarea name="comentarios" id="inputcoment" class="form-control" rows="2"  placeholder="Escribe un comentario"></textarea>
+  		</div>
+  		
+	</div>
+			
 </template>
 
 <template name="itemscomentarios">
 	<div class="media">
-    	<div class="media-left">
-     	 	
-    	</div>
-    	<div class="media-body">
-    		<div class="media-heading control-label">
-    			<p> {{user.username}} : {{texto}}</p>
+  		<div class="media-left media-middle">
+    		<img src="./avatar.png" class="img-circle" style="width:40px">
+  		</div>
+  		<div class="media-body">
+    		<h5 class="media-heading fontext">{{user.username}} 	<span style="color: black">{{texto}}</span> </h5>
+    		<div class="form-inline"> 
+    			<a href="" class="textam">Me gusta    </a>
+    			<a href="" class="textam"> Responder </a>
+    			<small style="font-size: 9px"><i>{{fecha}}</i></small>
+				
     		</div>
-			
-		</div>
+    		
+  		</div>
+  		<legend></legend>
 	</div>
 
 </template>

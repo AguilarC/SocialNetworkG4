@@ -16,8 +16,8 @@ Template.perfil.helpers({
 		return DATOS_USUARIO.find({_id:Accounts.userId()});
 	},
 	image(){
-		if (this.image!=undefined) { 
-			console.log(this.image.link);
+		if (this.imagen!=undefined) { 
+			//console.log(this.image.link);
 			return true;
 		}
 	}
@@ -39,6 +39,11 @@ Template.verAmigos.helpers({
 	recAmigos(){
 		//console.log(AMIGOS.find({$and:[{idUser:Accounts.userId()},{aceptado:true}]}).fetch());
 		return AMIGOS.find({$and:[{idUser:Accounts.userId()},{aceptado:true}]});
+	},
+	imageAmigo(){
+		if (this.userA.imagen!=undefined) { 
+			//console.log(this.image.link);
+			return true;
+		}
 	}
-	
 });

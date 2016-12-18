@@ -34,7 +34,13 @@ COMENTARIOS = new Mongo.Collection('comentarios',{
         return item;
     }
 });
-GRUPOS = new Mongo.Collection('grupos');
+GRUPOUSERS = new Mongo.Collection('gruposusers');
+GRUPOS = new Mongo.Collection('grupos',{
+    transform:function(item){
+        _.extend(item,{users:GRUPOUSERS.find({idGrupo:item._id}).fetch()});
+        return item;
+    }
+});
 AMIGOS = new Mongo.Collection('amigos',{
     transform : function(itemA){       
         _.extend(itemA,
@@ -156,28 +162,29 @@ var comentariosSchema = new SimpleSchema({
 
 COMENTARIOS.attachSchema(comentariosSchema);
 
-COMENTARIOS.allow({
-    insert:function(userId,params){
-        return !!userId;
-    }
-});
 
-var gruposSchema = new SimpleSchema({
-    nombreGrupo : {
+var grupoUsersSchema =new SimpleSchema({
+    idGrupo:{
+        type:String
+    },
+    idUsuario : {
         type : String
     },
     aceptado : {
         type : Boolean
     },
-    idUsuario : {
-        type : String,
-        autoValue : function(){
-            return Meteor.userId();
-        }
-    },
     nivel : {
         type : String
+    },
+    notificaciones:{
+        type : Boolean
     }
+});
+GRUPOUSERS.attachSchema(grupoUsersSchema)
+var gruposSchema = new SimpleSchema({
+    nombreGrupo : {
+        type : String
+    }, 
 });
 GRUPOS.attachSchema(gruposSchema);
 var amigosSchema = new SimpleSchema({

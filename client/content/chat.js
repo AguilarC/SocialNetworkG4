@@ -89,17 +89,15 @@ Template.chatLayout.events({
                 
     },
     'keyup #inputt':function(e){
-        e.preventDefault();
+        //e.preventDefault();
         var texto = e.target.value;
         var x = e.keyCode;
         var idDest = idAmigoMsj.get();
-        //console.log(idDest);
         if (x==13) {
             Meteor.call('insertarMsj', texto,idDest);
-            e.target.value="";
             $('.contenedor-msjs').animate({scrollTop: 0}, 2500);
+            e.target.value="";
         }
-        //console.log(x);
     }
 });
 
