@@ -64,6 +64,8 @@
 				<div class="panel-body col-sm col-md col-lg">
 				<div class="app-line">
 					{{texto}}
+
+
 				</div>
 				<br>
 					{{#if isImage}}
@@ -106,12 +108,13 @@
 							</li>
 							<li class="">
 
-								<a href="" id="" class="editarbtn"><span class="glyphicon glyphicon-pencil edit" aria-hidden="true" ></span> Editar</a>
+								<a href="" id="{{_id}}" class="editbtn"><span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" ></span> Editar</a>
 							</li>
 							<li class="">
-								<a href="" id="{{_id}}" class="editarbtn"><span class="glyphicon glyphicon-trash" aria-hidden="true" ></span> Borrar</a>
-
-							</li>
+								<a href="" id="{{_id}}" class="removebtn"><span class="glyphicon glyphicon glyphicon-remove-sign" aria-hidden="true" ></span> Eliminar</a>
+              </li>
+	
+							
 						</ul>
 				
 				

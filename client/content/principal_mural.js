@@ -17,6 +17,7 @@ Template.principalmural.events({
 	"submit #principalm":function(e){
 		e.preventDefault();
 		var mensaje= e.target.mensaje.value;
+		/*ARTICLE.insert({idPub : publicacionesver. edit: false});*/
 		fecha=new Date();
 		obj={fecha:fecha, texto:mensaje,multimedia:idimagen};
 		Meteor.call('insertarPublicaciones', obj, function (error, result) {
@@ -100,6 +101,25 @@ Template.publicacionesver.events({
 			}
 		});
 	},
+
+
+
+	"click .removebtn":function(e){
+		e.preventDefault();
+		var idp =e.target.id;
+		Meteor.call("eliminarPublicaciones", idp, function (error, result){
+			if(error){
+				console.log('no elimina'+error);
+			}
+		})
+		
+	},
+	"click .eliminar":function(e){
+		e.preventDefault();
+		 var idpu=e.target.id;
+	},
+
+
 
 });
 

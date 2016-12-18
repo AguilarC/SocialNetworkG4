@@ -127,6 +127,7 @@ Meteor.startup(() => {
             });
         },
         insertarComentarios:function(obj){
+
             if (obj.texto.length!=1) {
                 COMENTARIOS.insert(obj);
             }
@@ -165,6 +166,15 @@ Meteor.startup(() => {
                 if (error) {console.log(error)}
                 if (result) {console.log('se acepto al grupo')}
             });
+        },  
+        eliminarPublicaciones:function(ido){
+            PUBLICACIONES.remove({_id: ido},function(error,result){
+                if (error) {console.log(error)}
+                if (result) {console.log('se elimino la publicacion')}
+            });
         }
+    
+
     });
+
 });
