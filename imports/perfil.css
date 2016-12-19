@@ -150,4 +150,12 @@ div.upload input {
 
     width: auto;
 }
+.fondo-galeria{
+    background: -webkit-linear-gradient(#4682b4, #b0e0e0);
+    border: solid 2px ghostwhite;
+    min-height: 50px;
+}
+.img-galeria{
+    max-width: 100px;
+}
 

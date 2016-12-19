@@ -1,7 +1,7 @@
 <template name="principalmural">
 	<ul class="row s_perfil">
 			{{>principalmuralform}}
-			{{>cargarmensajes}}			
+			{{>cargarpublicaciones}}			
 	</ul>
 </template>
 
@@ -29,7 +29,11 @@
 						<div class="app-lineas"></div>
 						<br>
 						<div>
+							<button type="button" id="mostrargaleria" class="btn btn-success">Adjuntar Multimedia</button>
+							<div style="display:block;">
+								{{>galeria}}
 								{{>uploadForm}}
+							</div>
 						</div>
 
 						<div class="col-md-8">
@@ -42,13 +46,21 @@
 	</form>
 </template>
 
-<template name ="cargarmensajes">
+<template name ="cargarpublicaciones">
 	{{#if isReady}}
 		
 		{{#each items}}
 			{{>publicacionesver}}
 		{{/each}}
-		
+	{{else}}
+		<b>CARGANDO...</b>
+	{{/if}}
+</template>
+<template name ="cargarpublicacionesg">
+	{{#if isReady}}
+		{{#each pubGroup}}
+			{{>publicacionesver}}
+		{{/each}}
 	{{else}}
 		<b>CARGANDO...</b>
 	{{/if}}
@@ -58,14 +70,17 @@
 	<div class="row app-todo-perfil">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{amigo.username}} Publicó :</span><h5><small><i class="fechapublic">{{fecha}}</i></small></h5></h3>
+					{{#if userPubGroup}}
+					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{user.username}} publicó en el Grupo : {{grupo}}</span><h5><small><i class="fechapublic">{{fecha}}</i></small></h5></h3>
+					{{else}}
+					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{user.username}} publicó esto :</span><h5><small><i class="fechapublic">{{fecha}}</i></small></h5></h3>
+					{{/if}}
+					
 					
 			</div>
 				<div class="panel-body col-sm col-md col-lg">
 				<div class="app-line">
 					{{texto}}
-
-
 				</div>
 				<br>
 					{{#if isImage}}
@@ -113,12 +128,8 @@
 							<li class="">
 								<a href="" id="{{_id}}" class="removebtn"><span class="glyphicon glyphicon glyphicon-remove-sign" aria-hidden="true" ></span> Eliminar</a>
               </li>
-	
 							
 						</ul>
-				
-				
-	
 			</div>
 			<div class="comentarios " style="display: none" id ="{{_id}}1">
 				{{>comentariospublicaciones}}

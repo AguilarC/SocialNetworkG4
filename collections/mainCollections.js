@@ -21,10 +21,13 @@ LIKES= new Mongo.Collection('likes');
 MENSAJES = new Mongo.Collection('mensajes');
 PUBLICACIONES  = new Mongo.Collection('publicaciones',{
     transform: function(item){
+        var grupo=GRUPOS.findOne({_id:item.idGroup});
+        if (grupo!=undefined) {
+            item.grupo=grupo.nombreGrupo;
+        }
         _.extend(item,{media:Images.findOne({_id:item.multimedia})},
             {likes:LIKES.find({id:item._id}).fetch()},
-            {amigo:Meteor.users.findOne({_id:item.usuario})});
-        //console.log(LIKES.find({id:item._id}).fetch());
+            {user:DATOS_USUARIO.findOne({_id:item.usuario})},);
         return item;
     }
 });
@@ -34,7 +37,12 @@ COMENTARIOS = new Mongo.Collection('comentarios',{
         return item;
     }
 });
-GRUPOUSERS = new Mongo.Collection('gruposusers');
+GRUPOUSERS = new Mongo.Collection('gruposusers',{
+    transform:function(item){
+        _.extend(item,{datos:DATOS_USUARIO.findOne({_id:item.idUsuario})});
+        return item;
+    }
+});
 GRUPOS = new Mongo.Collection('grupos',{
     transform:function(item){
         _.extend(item,{users:GRUPOUSERS.find({idGrupo:item._id}).fetch()});
@@ -132,6 +140,10 @@ var publicacionesSchema = new SimpleSchema({
     like : {
         type : Number,
     },
+    idGroup:{
+        type:String,
+        optional:true
+    }
 });
 
 PUBLICACIONES.attachSchema(publicacionesSchema);
@@ -156,7 +168,8 @@ var comentariosSchema = new SimpleSchema({
         type : String
     },
     edit : {
-        type : Boolean
+        type : Boolean,
+        optional:true
     },
 });
 
@@ -204,7 +217,7 @@ AMIGOS.attachSchema(amigosSchema);
 Images = new FilesCollection({
   collectionName: 'Images',
   allowClientCode: false, // Disallow remove files from ge
-  storagePath:'D:/SEMINARIO',
+  storagePath:'/home/miguel/seminario/data',
   onBeforeUpload: function (file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats
     if (file.size <= 11485760 && /png|jpg|jpeg|mp4|3gp/i.test(file.extension)) {
@@ -214,6 +227,24 @@ Images = new FilesCollection({
     }
   }
 });
+GALERIA = new Mongo.Collection('galeria',{
+    transform:function(item){
+        _.extend(item,{imagen:Images.findOne({_id:item.idImagen})});
+        return item;
+    }
+});
+var galeriaSchema = new SimpleSchema({
+    idUser: {
+        type : String,
+        autoValue : function(){
+            return Meteor.userId();
+        }
+    },
+    idImagen : {
+        type : String
+    }
+});
+GALERIA.attachSchema(galeriaSchema);
 
 if (Meteor.isClient) {
   Meteor.subscribe('files.images.all');

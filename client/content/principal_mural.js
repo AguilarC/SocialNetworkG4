@@ -3,32 +3,38 @@ idimagen = "none";
 var comentarios = new ReactiveVar(false);
 idcommentarios1 = "";
 Template.principalmuralform.helpers({
-	isImageUser() {
+	/*isImageUser() {
 		var userId=Meteor.userId();
 		var imagen = DATOS_USUARIO.find({_id:userId}).fetch()[0];
 		if (imagen.imageuser!='none') {
 			return {value:true,imagen:imagen.imagen};
 		}
 		
-	}
+	}*/
 });
-Template.principalmural.events({
+Template.principalmuralform.events({
 	
 	"submit #principalm":function(e){
 		e.preventDefault();
 		var mensaje= e.target.mensaje.value;
-		/*ARTICLE.insert({idPub : publicacionesver. edit: false});*/
-		fecha=new Date();
-		obj={fecha:fecha, texto:mensaje,multimedia:idimagen};
+		var fecha=new Date();
+		if (this._id!=undefined) {
+			var idGroup=this._id;
+			var obj={fecha:fecha, texto:mensaje,multimedia:idimagen,idGroup:idGroup};
+			//console.log(obj);
+		}else {	
+			var obj={fecha:fecha, texto:mensaje,multimedia:idimagen};
+		}
 		Meteor.call('insertarPublicaciones', obj, function (error, result) {
-			if (error) {console.log('no jala')}
+				if (error) {console.log('error en la llamada')}
 		});
 		e.target.mensaje.value = "";
 		idimagen = "none";
 	}
+
 });
 
-Template.cargarmensajes.helpers({
+Template.cargarpublicaciones.helpers({
 	isReady(){
 		return FlowRouter.subsReady("cargarPrincipal");
 	},
@@ -63,8 +69,17 @@ Template.cargarmensajes.helpers({
 			return 0;
 		});
 		return row.reverse();
+	}
+});
+Template.cargarpublicacionesg.helpers({
+	isReady(){
+		return FlowRouter.subsReady("cargarPrincipal");
 	},
-	
+	pubGroup(){
+		var idG= this._id;
+		//console.log(PUBLICACIONES.find({idGroup:idG}).fetch());
+		return	PUBLICACIONES.find({idGroup:idG}).fetch().reverse();
+	}
 });
 
 Template.publicacionesver.events({
@@ -151,25 +166,24 @@ Template.publicacionesver.helpers({
 			return true;
 		}
 	},
+	userPubGroup(){
+		if (this.idGroup!=undefined) {
+		return true;
+		}
+	},
 	listadecomentarios(){
 		return COMENTARIOS.find();
 	},
 });
 
 Template.comentariospublicaciones.events({
-	/*"submit #comentariosform":function(e){
-		e.preventDefault();
-		var msn= e.target.value
-		var idmsn = this._id;
-		COMENTARIOS.insert({texto:msn,idPub:idmsn});
-		e.target.comentarios.value = "";
-	},*/
 	'keyup #inputcoment':function(e){
         e.preventDefault();
         var obj = {
         	texto:e.target.value,
         	idPub:this._id
         };
+        
         var x = e.keyCode;
 	        if (x==13) {
 	            Meteor.call('insertarComentarios', obj);

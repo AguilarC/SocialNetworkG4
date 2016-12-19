@@ -121,7 +121,7 @@ Meteor.startup(() => {
                 });
         },
         insertarPublicaciones:function(o){
-            PUBLICACIONES.insert({fecha:o.fecha,usuario:this.userId, texto:o.texto,multimedia:o.multimedia,like:0},function(error,result){
+            PUBLICACIONES.insert({fecha:o.fecha,usuario:this.userId,texto:o.texto,multimedia:o.multimedia,like:0,idGroup:o.idGroup},function(error,result){
                 if (error) {console.log(error)}
                 if (result) {console.log('se inserto la publicacion')}
             });
@@ -160,19 +160,35 @@ Meteor.startup(() => {
                 });
             return {msj:'se envio la solicitud'};
         },
-        aceptarSolicitudGrupo:function(idGrupo,iduser){
-            GRUPOUSERS.update({$and:[{_id:idGrupo},{idUsuario:idUser}]},{$set:{aceptado:true,notificaciones:true}},
+        aceptarSolicitudGrupo:function(idGrupo,idUser){
+            GRUPOUSERS.update({$and:[{idGrupo:idGrupo},{idUsuario:idUser}]},{$set:{aceptado:true,notificaciones:true}},
                 function(error,result){
                 if (error) {console.log(error)}
-                if (result) {console.log('se acepto al grupo')}
+                if (result) {console.log('se acepto solcitud al grupo')}
             });
-        },  
+        }, 
+        cancelarsolicitudGrupo:function(idGrupo){
+            GRUPOUSERS.remove({$and:[{idGrupo:idGrupo},{idUsuario:this.userId}]},
+                function(error,result){
+                if (error) {console.log(error)}
+                if (result) {console.log('se cancelo solicitud  al grupo')}
+            });
+            return {msj:'Se cancelo la solicitud'}
+        }, 
+         
         eliminarPublicaciones:function(ido){
             PUBLICACIONES.remove({_id: ido},function(error,result){
                 if (error) {console.log(error)}
                 if (result) {console.log('se elimino la publicacion')}
             });
-        }
+        },
+        insertarGaleria :function(idImagen){
+            return GALERIA.insert({idImagen:idImagen},function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se inserto galeria')}
+                    return {msj:'se inserto en la galeria'};
+                }); 
+        },
     
 
     });

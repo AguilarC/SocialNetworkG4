@@ -32,6 +32,9 @@ Meteor.startup(() => {
     Meteor.publish("getGrupoUsers",function(){
         return GRUPOUSERS.find();
     });
+    Meteor.publish("getGaleria",function(){
+        return GALERIA.find({idUser:this.userId});
+    });
     /*Meteor.publish("getPublicaciones",function(){
         var hayAm = AMIGOS.find({$and:[{idUser:this.userId},{aceptado:true}]}).fetch();
         console.log(hayAm.length);

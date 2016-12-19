@@ -1,0 +1,14 @@
+<template name="galeria">
+	<div class="fondo-galeria">
+        	{{#if isReady}}
+           	{{#each imageGaleria}}
+           	<a href=""><img src="{{imagen.link}}" alt="imagen" class="img-responsive img-galeria" name="" id=""></a>
+           	{{idUser}}
+           	{{else}}
+           	<h3>NO HAY IMAGENES QUE MOSTRAR SUBE UNA.........!</h3>
+        	{{/each}}
+        	{{else}}
+        	<h3>LOADING IMAGES.........</h3>
+        	{{/if}}
+    </div>
+</template>

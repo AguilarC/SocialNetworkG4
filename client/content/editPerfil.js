@@ -1,3 +1,4 @@
+
 Template.editPerfil.onCreated(function(){
         NProgress.start();
     	//Meteor.call('verificarDatos');

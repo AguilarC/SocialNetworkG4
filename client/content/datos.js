@@ -33,9 +33,9 @@ Template.creargrupo.events({
 				alert(error);
 			}
 			if (result) {
-				console.log(result);
+				
 				idGrupos.set(result);
-				alert(idGrupo);
+				
 			}
 		});
 		$('#group').modal('hide');
