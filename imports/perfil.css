@@ -150,4 +150,35 @@ div.upload input {
 
     width: auto;
 }
+/*------------------ESTILOS GALERIA------------*/
+.fondo-galeria{
+    background: -webkit-linear-gradient(#4682b4, #b0e0e0);
+    border: solid 2px ghostwhite;
+    min-height: 50px;
+    padding: 10px;
+}
+.cont-img{
+    display: inline-block;
+    width: 102px;
+    height: 100%;
+    
+
+}
+.cont-icons{
+    padding-left: 25px;
+    color: green;
+    margin-left: 2%;
+    width: 96%;  
+    display: inline-block;
+    background-color: white;
+    border-radius: 3px;
+}   
+.img-galeria{
+    max-height : 99%;
+    margin :auto ; 
+    border: ridge 3px #AAD4D8;
+}
+.glyphicon:hover{
+    cursor: pointer;
+}
 

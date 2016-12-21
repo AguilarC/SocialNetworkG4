@@ -4,43 +4,47 @@
 	{{#each verGrupo}}
 	<div class="row a-styles">
 		<a href="" class="a-styles">
-			<img src="./B30.jpg" aling="center" alt="Cinque Terre" class="img-responsive img-thumbnail imgroupo">
+			<img src="./B30.jpg" aling="center" style="max-height: 250px" alt="Cinque Terre" class="img-responsive img-thumbnail imgroupo">
 		</a>
 		<div class="row">
 
 			<div class="app-line"></div>
-			<div class="col-md-4">
+			<div class="">
 				<h3 id="{{_id}}" class="control-label">{{nombreGrupo}}</h3>
 			</div>
 			{{#if isUserGroup}}
-			<div class="col-md-8">
+			<div class="">
 				<ul class="nav nav-tabs">
-					  <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-book"></span> Conversaciones</a></li>
+					  <li class="active"><a data-toggle="tab" href="#home"><span class="glyphicon glyphicon-book"></span> Publicaciones</a></li>
 					  <li><a data-toggle="tab" href="#menu1"><span class="glyphicon glyphicon-user"></span> Miembros</a></li>
 					  <li><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-picture"></span> Fotos</a></li>
 					  <li><a data-toggle="tab" href="#menu3"><span class="glyphicon glyphicon-globe"></span> Solicitud</a></li>
 				</ul>
 				<div class="tab-content">
 				  <div id="home" class="tab-pane fade in active">
-				    <h3>HOME</h3>
-				    <p>Some content.</p>
+				    {{>principalmuralform}}
+					{{>cargarpublicacionesg}}
 				  </div>
 				  <div id="menu1" class="tab-pane fade">
 				    <h3>Menu 1</h3>
-				    <p>Some content in menu 1.</p>
+				    {{>listUsersGroup}}
 				  </div>
 				  <div id="menu2" class="tab-pane fade">
-				    <h3>Menu 2</h3>
-				    <p>Some content in menu 2.</p>
+				    <h3>FOTOS</h3>
+				    <p>PROXIMAMENTE..........</p>
 				  </div>
 				  <div id="menu3" class="tab-pane fade">
-				    <h3>Menu 3</h3>
+				    <h5>Solicitudees pendientes de aprobar :</h5>
 				    {{>solGrupo}}
 				  </div>
 				</div>
 			</div>
 			{{else}}
+				{{#if solExist}}
+				<button type="button" id="{{_id}}" class="cansolunirg btn btn-success"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Cancelar solicitud</button>
+				{{else}}
 				<button type="button" id="{{_id}}" class="solunirg btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Unirte al Grupo</button>
+				{{/if}}
 			{{/if}}
 
 		</div>
@@ -54,9 +58,26 @@
 <template name="solGrupo" >
 	<div>
 		{{#each listSolGroup}}		
-		<span idgrupo="" iduser="">name :{{idUsuario}}  </span><button type="button" class="btn btn-primary">Aceptar Solicitud</button>
+		<span >{{datos.username}} {{datos.userlastnamep}} {{datos.userlastnamem}} </span><button type="button" class="aceptarsolg btn btn-primary">Aceptar Solicitud</button><br>
 		{{else}}
-		<p>no hay sol</p>
+		<span class="label-success">NO HAY SOLICITUDES PENDIENTES</span>
+		{{/each}}
+	</div>
+</template>
+<template name="listUsersGroup">
+	<div class="container-fluid">
+		{{#each listUsersG}}
+			<div class="friend">
+                    <!--///FALTA COLCAR IMAGEN REAL USUARIO-->
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <img src="./avatar.png" class="img-responsive img-min">
+            
+                    </div>
+                    
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                       <span class="link-amigo" id="" >{{datos.username}} {{datos.userlastnamep}} {{datos.userlastnamem}}   </span><span class="label label-default ">{{nivel}}</span>
+                    </div>
+                </div>
 		{{/each}}
 	</div>
 </template>

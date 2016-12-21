@@ -7,7 +7,11 @@
 .fontext{
     color: #3b5998;
 }
-
+.cont-comp{
+    background-color: #2E5F5D;
+    border-radius:5px; 
+    position: relative;
+}
 
 /*
 .app-line{
@@ -54,4 +58,4 @@ a:hover {
 .textam{
     font-size: 12.5px; 
 }
-
+*/

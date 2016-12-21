@@ -7,66 +7,67 @@
                     <img src="./perfil.png" height="20%" width="20%" alt="" class="img-responsive img-centrar">
                 </div>
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                       <label for="nombre" class="col-md-12"><span>USUARIO</span></label>  
+                       <label for="nombre" class="col-md-12"><span>{{currentUser.username}}</span></label>  
                 </div>     
 
-            </div>
+        </div>
                 
     
-            <br>
-            <div class="row">
-            <form class="form-horizontal" >
-                            
-              <div class="">
-                        <a href="#editPerfil" class="label btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-wrench "></span> EDITAR PERFIL</a>
-                        <div class="modal fade" id="editPerfil">
-                            <div class="modal-dialog">
-                               
-                                <div class="modal-header" >
-                                    <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                       &times;
-                                    </button>
-                                    <h2 class="modal-title">DATOS DEL USUARIO</h2>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="editPerfil" >
-                                        {{>editPerfil}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <br>
-                        <div class="row">
-                            <a class="label" data-toggle="modal" href='#group'><span class="glyphicon glyphicon-plus"></span> CREAR GRUPO</a>
-                            <div class="modal fade" id="group">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">CREAR NUEVO GRUPO</h4>
-                                        </div>
-                                        
-                                        <div class="modal-body ">
-                                             {{>creargrupo}}
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grupos">
-                            <a href="/grupos" class="label btn-md">
-                                <span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user "></span> GRUPOS</a>
-                        </div>
-                </div>  
+        <br>
+        <div class="row">
         
-         </form>
+                        
+            <div class="">
+            <a href="/perfil" class="label btn-sm" ><span class="glyphicon glyphicon-user "></span>MI PERFIL</a>
+                <a href="#editPerfil" class="label btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-wrench "></span> EDITAR PERFIL</a>
+                <div class="modal fade" id="editPerfil">
+                    <div class="modal-dialog">
+                       
+                        <div class="modal-header" >
+                            <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">
+                               &times;
+                            </button>
+                            <h2 class="modal-title">DATOS DEL USUARIO</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="editPerfil" >
+                                {{>editPerfil}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <br>
+                <div class="row">
+                    <a class="label" data-toggle="modal" href='#group'><span class="glyphicon glyphicon-plus"></span> CREAR GRUPO</a>
+                    <div class="modal fade" id="group">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">CREAR NUEVO GRUPO</h4>
+                                </div>
+                                
+                                <div class="modal-body ">
+                                     {{>creargrupo}}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grupos">
+                    <a href="/grupos" class="label btn-md">
+                        <span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user "></span> GRUPOS</a>
+                </div>
+            </div>  
+        
+         
          {{#if isReady}}
                 
                 {{#each verGrupos}}
-                    <a href=""><span id="{{_id}}" class="irgrupo label label-info">{{nombreGrupo}}</span></a><br>
+                    <a href="/{{_id}}"><span id="{{_id}}" class="irgrupo label label-info">{{nombreGrupo}}</span></a><br>
                 {{/each}}
 
             {{else}}

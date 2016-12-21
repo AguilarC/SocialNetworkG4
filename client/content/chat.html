@@ -1,6 +1,6 @@
 <template  name="chatLayout">
     {{#if currentUser}}
-    <div class="chat">            
+    <div class="chat ">            
             <center><span class="chat-t">CHAT</span><br></center>
             <span id="nombrea" class="chat-t"></span><br>
             {{>mensajes}}
@@ -50,13 +50,23 @@
     </div>
 </template>
 <template name="itemSol">
-    <li>
-        <a class="aceptarSol" id="{{idUser}}" href="">{{userI.username}} : Aceptar solicitud</a>
-    </li>
+    <div class="">
+        <img src="./avatar.png" class="img-circle" style="width:30px">
+
+        <span  class="label">{{userI.username}} : </span>
+        <span id="{{idUser}}" title="ACEPTAR" class="aceptarSol glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <span id="{{idUser}}" title="CANCELAR" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </div>
 </template>
 
 <template name="listAmigos">
     {{#if readyA}}
+            <div id="prev">
+        {{#if amigosList}}
+        <h4><span class="label label-default">CLICK EN UN ENLACE DE LA LISTA</span><br></h4>
+        <h4><span class="label label-default">PARA CHATEAR........!</span><br></h4>
+        {{/if}}
+    </div>
             <span class="chat-t">LISTA DE AMIGOS</span><br>
             {{#each amigosList}}
                 {{>itemAmigo}}
@@ -77,10 +87,7 @@
 </template>
 
 <template name="mensajes" >
-    <div id="prev">
-        <h4><span class="label label-default">CLICK EN UN ENLACE DE LA LISTA</span><br></h4>
-        <h4><span class="label label-default">PARA CHATEAR........!</span><br></h4>
-    </div>
+
     <div id="mensajes" style="display: none" class="{{idAmigo}}">
         <textarea name="text" id="inputt" class="form-control" rows="1" required="required"></textarea>
         <div class="contenedor-msjs">       

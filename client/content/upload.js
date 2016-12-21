@@ -52,6 +52,13 @@ Template.uploadForm.events({
             console.log(idimagen);
             //alert('File "' + fileObj.name + '" successfully uploaded');
             toastr.success("Correcto", "Sea subido el archivo con exito");
+
+            //alert('File "' + fileObj.name + '" successfully uploaded');
+            Meteor.call('insertarGaleria', idimagen, function (error, result) {
+              if (result) {
+                //alert('Se inserto tb en la galeria');
+              }
+            });
         }
         template.currentUpload.set(false);
       });

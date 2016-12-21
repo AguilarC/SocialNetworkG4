@@ -1,3 +1,6 @@
+.contenedor{
+    padding: 0% 2%;
+}
 .icono{
     border: solid 4px white;
     padding: 10px;
@@ -7,8 +10,9 @@
 .topbar {
     /*background-image: url('./B86.jpg');*/
     color: white;
-    border-radius: 0;
+    border-radius: 10px;
     opacity: 1;
+    position: absolute;
 }
 
 .navbar-app {
@@ -29,9 +33,11 @@
     border-bottom: none;
 }
 .navbar .nav >li>a:hover{
-    background-color: #eceef1;
+    background: -webkit-linear-gradient(bottom,black,#1B1C34,white,white,#1B1C34,black);
     color: blue !important;
-    border-bottom: none;
+    /*border: ridge 1px white;**/
+    border-radius: 5px;
+    
 }
 
 .navbar li a:hover,
@@ -40,24 +46,23 @@
 }
 
 .dropdown-menu{
-    background-color: #337ab7;
+    background: -webkit-linear-gradient(bottom,black,#1B1C34,white);
 }
 #login-dropdown-list a{
     color:white;
-    
-
 }
 #login-dropdown-list{
-    padding-top:14px;
+    padding:14px 5px;
 }
 
 #login-dropdown-list >a:hover{
-    background-color: #eceef1;
+    background: -webkit-linear-gradient(bottom,black,#1B1C34,white,white,#1B1C34,black);
     color: blue !important;
     border-bottom: none;
-    padding: 15px;
+    padding: 14px 5px;
     text-decoration: none;
     list-style: none;
+    border-radius: 5px;
 }
 
 .navbar-inverse{
@@ -73,5 +78,19 @@
     border-width: 2px;
 }
 .navbar-estilo{
-    padding: 33px;
+    padding: 30px 1%;
+}
+.display-sol{
+    position: relative;
+    width: 100%;
+}
+.cont-sol{
+    background: -webkit-linear-gradient(bottom,black,black,black,white);
+    border-radius: 5px;
+    border: solid 1px white;
+    max-width: 200px;
+}
+
+.aceptarSol{
+    font-size: 100%
 }

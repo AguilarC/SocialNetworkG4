@@ -12,7 +12,7 @@ Meteor.startup(() => {
                 console.log(" Ya existe");
                 msje='Solicitud en proceso';
             }else{
-                AMIGOS.insert({idAmigo:idA,idUser:Meteor.userId(),aceptado:false}, function(err,result){
+                AMIGOS.insert({idAmigo:idA,idUser:Meteor.userId(),aceptado:false,visto:false}, function(err,result){
                     if (err) {
                         console.log('no se pudo insertar Sol Amigos'+err);
                         msje="error en la insercion";
@@ -28,7 +28,7 @@ Meteor.startup(() => {
     	aceptarAmigo : function(idUs){
     		var idM = Meteor.userId(); 
             //console.log(idM+"-"+idUs);
-            AMIGOS.update({$and:[{idAmigo:idM},{idUser:idUs}]},{$set:{aceptado:true}},function(error,result){
+            AMIGOS.update({$and:[{idAmigo:idM},{idUser:idUs}]},{$set:{aceptado:true,visto:true}},function(error,result){
     			if (error){
     				console.log(error);
     			}else{
@@ -36,10 +36,10 @@ Meteor.startup(() => {
                     var consulta = AMIGOS.find({$and:[{idUser:idM},{idAmigo:idUs}]}).fetch();
                     //console.log(consulta.length);
                         if (consulta.length>0) {
-                            AMIGOS.update({$and:[{idUser:idM},{idAmigo:idUs}]},{$set:{aceptado:true}});
+                            AMIGOS.update({$and:[{idUser:idM},{idAmigo:idUs}]},{$set:{aceptado:true,visto:true}});
                             console.log("se actualizo el cuate");
                         }else{
-                            AMIGOS.insert({idAmigo:idUs,idUser:idM,aceptado:true});    
+                            AMIGOS.insert({idAmigo:idUs,idUser:idM,aceptado:true,visto:true});    
                             console.log("se inserto el cuate");				
                         };
                     return {value:true,msj:'y tu ahora son amigos...!'};
@@ -121,7 +121,7 @@ Meteor.startup(() => {
                 });
         },
         insertarPublicaciones:function(o){
-            PUBLICACIONES.insert({fecha:o.fecha,usuario:this.userId, texto:o.texto,multimedia:o.multimedia,like:0},function(error,result){
+            PUBLICACIONES.insert({fecha:o.fecha,usuario:this.userId,texto:o.texto,multimedia:o.multimedia,like:0,idGroup:o.idGroup},function(error,result){
                 if (error) {console.log(error)}
                 if (result) {console.log('se inserto la publicacion')}
             });
@@ -160,27 +160,54 @@ Meteor.startup(() => {
                 });
             return {msj:'se envio la solicitud'};
         },
-        aceptarSolicitudGrupo:function(idGrupo,iduser){
-            GRUPOUSERS.update({$and:[{_id:idGrupo},{idUsuario:idUser}]},{$set:{aceptado:true,notificaciones:true}},
+        aceptarSolicitudGrupo:function(idGrupo,idUser){
+            GRUPOUSERS.update({$and:[{idGrupo:idGrupo},{idUsuario:idUser}]},{$set:{aceptado:true,notificaciones:true}},
                 function(error,result){
                 if (error) {console.log(error)}
-                if (result) {console.log('se acepto al grupo')}
+                if (result) {console.log('se acepto solcitud al grupo')}
             });
-        },  
+        }, 
+        cancelarsolicitudGrupo:function(idGrupo){
+            GRUPOUSERS.remove({$and:[{idGrupo:idGrupo},{idUsuario:this.userId}]},
+                function(error,result){
+                if (error) {console.log(error)}
+                if (result) {console.log('se cancelo solicitud  al grupo')}
+            });
+            return {msj:'Se cancelo la solicitud'}
+        }, 
+         
         eliminarPublicaciones:function(ido){
             PUBLICACIONES.remove({_id: ido},function(error,result){
                 if (error) {console.log(error)}
                 if (result) {console.log('se elimino la publicacion')}
             });
         },
+
         actualizarPublicaciones:function(idP,msn){
             PUBLICACIONES.update({_id:idP},{$set:{texto:msn}},function(error,result){
                 if(error){console.log(error)}
                 if(result){console.log('se actualizo la publicacion')}
             });
-            
+
+        insertarGaleria :function(idImagen){
+            return GALERIA.insert({idImagen:idImagen},function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se inserto galeria')}
+                    return {msj:'se inserto en la galeria'};
+                }); 
+        },
+        eliminarImagen:function(id,idG){
+            GALERIA.remove({_id:idG},function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se elimino galeria')}
+                    return {msj:'se elimino la galeria'};
+            });
+            Images.remove({_id:id}, function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se elimino la imagen')}
+                    return {msj:'se elimino la imagen'};
+            }); 
         }
-    
 
     });
 
