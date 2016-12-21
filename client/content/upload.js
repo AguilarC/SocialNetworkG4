@@ -27,15 +27,36 @@ Template.uploadForm.events({
       });
 
       upload.on('end', function (error, fileObj) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+          }
         if (error) {
-          alert('Error during upload: ' + error);
+          //alert('Error during upload: ' + error);
+          toastr.error("Error", "El archivo no pudo subirse verifique que sea una imagen o video");
         } else {
             idimagen=fileObj._id;
             console.log(idimagen);
-            alert('File "' + fileObj.name + '" successfully uploaded');
+            //alert('File "' + fileObj.name + '" successfully uploaded');
+            toastr.success("Correcto", "Sea subido el archivo con exito");
+
+            //alert('File "' + fileObj.name + '" successfully uploaded');
             Meteor.call('insertarGaleria', idimagen, function (error, result) {
               if (result) {
-                alert('Se inserto tb en la galeria');
+                //alert('Se inserto tb en la galeria');
               }
             });
         }

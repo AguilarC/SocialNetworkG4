@@ -252,7 +252,7 @@ AMIGOS.attachSchema(amigosSchema);
 
 Images = new FilesCollection({
   collectionName: 'Images',
-  allowClientCode: false, // Disallow remove files from ge
+  allowClientCode: false, // Disallow remove files from g
   storagePath:'/home/miguel/seminario/data',
   onBeforeUpload: function (file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats

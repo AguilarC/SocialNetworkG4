@@ -69,17 +69,25 @@
 <template name="publicacionesver">
 	<div class="row app-todo-perfil">
 		<div class="panel panel-default">
-			<div class="panel-heading">
+		
+
+					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{amigo.username}} Publicó :</span><h5><small><i class="fechapublic">{{fecha}}</i></small></h5></h3>
+
 					{{#if userPubGroup}}
 					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{user.username}} publicó en el Grupo : {{grupo}}</span><h5><small><i class="fechapublic">{{fecha}}</i></small></h5></h3>
 					{{else}}
 					<h3><span class="glyphicon glyphicon-user " aria-hidden="true" > {{user.username}} publicó esto :</span><h5><small><i class="fechapublic">{{fecha}}</i></small></h5></h3>
 					{{/if}}
-					
-					
 			</div>
 				<div class="panel-body col-sm col-md col-lg">
 				<div class="app-line">
+				 
+				<form name="actualizar" class="actualizar" id="{{_id}}1" method="POST" 	 role="form"  style="display: none">
+					<textarea name="msn" id="input" class="form-control" rows=1 required="required">{{texto}}</textarea>
+					<button type="submit" class="btn btn-default">Guardar Cambios</button>
+				</form>
+				
+				<br>
 					{{texto}}
 				</div>
 				<br>
@@ -143,6 +151,7 @@
 									</div>
 								</div>
 							</li>
+							{{#each shwoweditremove}}
 							<li class="">
 
 								<a href="" id="{{_id}}" class="editbtn"><span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true" ></span> Editar</a>
@@ -150,15 +159,16 @@
 							<li class="">
 								<a href="" id="{{_id}}" class="removebtn"><span class="glyphicon glyphicon glyphicon-remove-sign" aria-hidden="true" ></span> Eliminar</a>
               				</li>
-							
-						</ul>
+              {{/each}}
+              </ul>
 			</div>
 			<div class="comentarios " style="display: none" id ="{{_id}}1">
 				{{>comentariospublicaciones}}
 			</div>
 			</div>
 		</div>
-	</div>
+
+
 </template>
 
 <template name ="comentariospublicaciones">
@@ -202,7 +212,7 @@
     		</div>
     		
   		</div>
-  		<legend></legend>
-	</div>
+  		
+	    </div>
 
 </template>

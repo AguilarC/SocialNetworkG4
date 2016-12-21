@@ -32,31 +32,10 @@ Meteor.startup(() => {
     Meteor.publish("getGrupoUsers",function(){
         return GRUPOUSERS.find();
     });
+    Meteor.publish("getactualizarcomen",function(){
+        return PUBLICACIONES.find();
+
     Meteor.publish("getGaleria",function(){
         return GALERIA.find({idUser:this.userId});
     });
-    /*Meteor.publish("getPublicaciones",function(){
-        var hayAm = AMIGOS.find({$and:[{idUser:this.userId},{aceptado:true}]}).fetch();
-        console.log(hayAm.length);
-        if (hayAm.length>0) {
-            var amigosp = AMIGOS.find({idUser:this.userId}).fetch();
-            var rows = [];
-            console.log(amigosp);
-            for (var i = 0;i<amigosp.length; i++) {
-                var pubAm = PUBLICACIONES.find({usuario:amigosp[i].idAmigo});
-                //for (var j = 0;j<pubAm.length; j++) {
-                    
-                    //array.push(amigosp[i].idAmigo);
-                    rows.push(pubAm);
-                    console.log(pubAm);
-                    
-                    //cadena+=",{idAmigo:"+amigosp[i].idAmigo+"}";
-                //}
-            }
-            var yo =PUBLICACIONES.find({usuario:this.userId});
-            return rows;
-        }else{
-            return PUBLICACIONES.find({usuario:this.userId});
-        }
-    });*/
 });

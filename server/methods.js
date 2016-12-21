@@ -21,7 +21,7 @@ Meteor.startup(() => {
                         msje="se envio la solicitus";
                     };  
                 });
-                msje='Se envio la scolicitud';
+                msje='Se envio la solicitud';
             };
             return {msj:msje};
     	},
@@ -182,6 +182,13 @@ Meteor.startup(() => {
                 if (result) {console.log('se elimino la publicacion')}
             });
         },
+
+        actualizarPublicaciones:function(idP,msn){
+            PUBLICACIONES.update({_id:idP},{$set:{texto:msn}},function(error,result){
+                if(error){console.log(error)}
+                if(result){console.log('se actualizo la publicacion')}
+            });
+
         insertarGaleria :function(idImagen){
             return GALERIA.insert({idImagen:idImagen},function(error,result){
                     if (error) {console.log(error)}
