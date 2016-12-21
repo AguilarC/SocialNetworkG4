@@ -105,7 +105,7 @@ Template.publicacionesver.events({
 
 
 	"click .removebtn":function(e){
-		e.preventDefault();
+		e.preventDefault()
 		var idp =e.target.id;
 		Meteor.call("eliminarPublicaciones", idp, function (error, result){
 			if(error){
@@ -118,8 +118,27 @@ Template.publicacionesver.events({
 		e.preventDefault();
 		 var idpu=e.target.id;
 	},
-
-
+	"click .editbtn":function(e){
+		e.preventDefault();
+		Meteor.subscribe("getactualizarcomen",this._id);
+		var idP=e.target.id;
+		console.log(idP);
+		$("#"+idP+"1").fadeToggle("4000");
+			//$("#actualizar").css("display", "block");
+		
+	},
+	"submit .actualizar":function(e){
+		e.preventDefault();
+		
+		var textA = e.target.msn.value;
+		var idP= this._id;
+		Meteor.call("actualizarPublicaciones",idP,textA, function(error,result){
+			if(error){
+				console.log('no jala'+ error);
+			}
+		})
+		console.log(idP);
+	}
 
 });
 
@@ -154,6 +173,11 @@ Template.publicacionesver.helpers({
 	listadecomentarios(){
 		return COMENTARIOS.find();
 	},
+	shwoweditremove(){
+		return PUBLICACIONES.find({$and:[{usuario:Meteor.userId()},{_id:this._id}]}).fetch();
+		
+	}
+	
 });
 
 Template.comentariospublicaciones.events({
