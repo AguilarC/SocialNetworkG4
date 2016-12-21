@@ -188,7 +188,7 @@ Meteor.startup(() => {
                 if(error){console.log(error)}
                 if(result){console.log('se actualizo la publicacion')}
             });
-
+        },
         insertarGaleria :function(idImagen){
             return GALERIA.insert({idImagen:idImagen},function(error,result){
                     if (error) {console.log(error)}

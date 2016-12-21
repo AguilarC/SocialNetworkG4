@@ -34,7 +34,7 @@ Meteor.startup(() => {
     });
     Meteor.publish("getactualizarcomen",function(){
         return PUBLICACIONES.find();
-
+    });
     Meteor.publish("getGaleria",function(){
         return GALERIA.find({idUser:this.userId});
     });

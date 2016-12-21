@@ -93,10 +93,7 @@ Template.publicacionesver.events({
 		var id = e.target.id;
 		$("#"+id+"1").fadeToggle("4000");
 	},
-	"click .comment":function(e){
-		e.preventDefault();
-		 var idpu=e.target.id;
-	},
+
 	"click #imagen":function(e){
 		e.preventDefault();
 		console.log(PUBLICACIONES.findOne({_id:this._id}).media.ext);
@@ -122,10 +119,8 @@ Template.publicacionesver.events({
 	'click .display-compartir' : function(e){
 		var id = e.target.id;
 		//console.log(idPub);
-		$('#1'+id).fadeToggle();
+		$('#11'+id).fadeToggle();
 	},
-
-
 
 	"click .removebtn":function(e){
 		e.preventDefault()
@@ -137,16 +132,13 @@ Template.publicacionesver.events({
 		})
 		
 	},
-	"click .eliminar":function(e){
-		e.preventDefault();
-		 var idpu=e.target.id;
-	},
+	
 	"click .editbtn":function(e){
 		e.preventDefault();
 		Meteor.subscribe("getactualizarcomen",this._id);
 		var idP=e.target.id;
 		console.log(idP);
-		$("#"+idP+"1").fadeToggle("4000");
+		$("#1"+idP).fadeToggle("4000");
 			//$("#actualizar").css("display", "block");
 		
 	},
