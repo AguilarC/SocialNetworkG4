@@ -2,9 +2,17 @@
 	<div class="fondo-galeria">
         	{{#if isReady}}
            	{{#each imageGaleria}}
-           	<a href=""><img src="{{imagen.link}}" alt="imagen" class="img-responsive img-galeria" name="" id=""></a>
-           	{{idUser}}
-           	{{else}}
+           	<div class="cont-img">
+              <img src="{{imagen.link}}" alt="imagen" class="img-responsive img-galeriaimg-galeria check-img" name="" id="">
+              <div class="cont-icons" >
+                
+                <span id="{{idImagen}}" class="glyphicon glyphicon-unchecked check-img" aria-hidden="true"></span>
+                
+                &nbsp;&nbsp;&nbsp;
+                <span id="{{_id}}" class="glyphicon glyphicon-remove eliminar-img" aria-hidden="true"></span>
+              </div>
+            </div>
+           	{{else}} 
            	<h3>NO HAY IMAGENES QUE MOSTRAR SUBE UNA.........!</h3>
         	{{/each}}
         	{{else}}

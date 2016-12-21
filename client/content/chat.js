@@ -30,7 +30,7 @@ Template.solicitudes.helpers({
 	},
     solList(){
         return AMIGOS.find({idAmigo:Meteor.userId(),aceptado:false});
-    }
+    },
 });
 Template.listAmigos.helpers({
     readyA() {
@@ -82,7 +82,7 @@ Template.chatLayout.events({
         idAmigoMsj.set(event.target.id);
         //console.log(idAmigoMsj);
         $('#prev').fadeOut('slow', function() {
-            $('#mensajes').fadeIn("3000");
+            $('#mensajes').fadeToggle("3000");
         });
         $('#nombrea').text(this.userA.username);
         //console.log(nombre);

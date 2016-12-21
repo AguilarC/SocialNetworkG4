@@ -7,6 +7,14 @@
 .fontext{
     color: #3b5998;
 }
+.cont-comp{
+    background-color: #2E5F5D;
+    border-radius:5px; 
+    position: relative;
+}
+.abs a{
+    position: absolute;
+}
 /*
 .app-line{
     border-bottom: 1px solid #e5e5e5;

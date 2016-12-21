@@ -16,14 +16,27 @@ Template.topbar.helpers({
 
 		return DATOS_USUARIO.find({_id:/.*word.*/},{_id:{$ne:Meteor.userId()}});
 	},
+	contSol(){
+        return {cont:AMIGOS.find({idAmigo:Meteor.userId(),aceptado:false/*,visto:false*/}).count()};
+    }
 
 });
 Template.topbar.events({
 	'keyup #searchUsers': function (e) {
 		KeySearch.set(e.target.value);
-		var word=xDnwDoBAgAFchHqPW;
-		var pal = /.*/+word+/.*/;
-		console.log(DATOS_USUARIO.find({_id:pal}).fetch());
+		/*var word='xDnwDoBAgAFchHqPW';
+		var pal = word;
+		alert(pal);
+		console.log(DATOS_USUARIO.find({_id:pal}).fetch());*/
 		
-	}
+	},
+	'click .display-sol': function () {
+		
+		$('#solicitudes').fadeToggle("3000");
+	},
+	'click .closesol': function () {
+		
+		$('#solicitudes').fadeOut("3000");
+	},
+
 });

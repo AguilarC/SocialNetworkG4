@@ -31,6 +31,7 @@ PUBLICACIONES  = new Mongo.Collection('publicaciones',{
         return item;
     }
 });
+COMPARTIR = new Mongo.Collection('compartir');
 COMENTARIOS = new Mongo.Collection('comentarios',{
     transform:function(item){
         _.extend(item,{user:DATOS_USUARIO.findOne({_id:item.usuario})});
@@ -49,6 +50,7 @@ GRUPOS = new Mongo.Collection('grupos',{
         return item;
     }
 });
+NOTIFICACIONES = new Mongo.Collection('notificaciones');
 AMIGOS = new Mongo.Collection('amigos',{
     transform : function(itemA){       
         _.extend(itemA,
@@ -147,6 +149,24 @@ var publicacionesSchema = new SimpleSchema({
 });
 
 PUBLICACIONES.attachSchema(publicacionesSchema);
+var compartirSchema = new SimpleSchema({
+    idUser:{
+        type : String,
+        autoValue : function(){
+            return Meteor.userId();
+        }
+    },
+    idPublicacion:{
+        type : String
+    },
+    compartido:{
+        type : String
+    }, 
+    idCompartido:{
+        type : String  
+    }
+});
+COMPARTIR.attachSchema(compartirSchema);
 var comentariosSchema = new SimpleSchema({
     texto : {
         type : String
@@ -161,7 +181,6 @@ var comentariosSchema = new SimpleSchema({
         type : String,
         autoValue : function(){
             return Meteor.userId();
-
         }
     },
     idPub : {
@@ -200,6 +219,20 @@ var gruposSchema = new SimpleSchema({
     }, 
 });
 GRUPOS.attachSchema(gruposSchema);
+var notificacionesSchema = new SimpleSchema({
+    idUser: {
+        type : String
+    },
+    tipo : {
+        type : String
+    },
+    idnoti : {
+        type : String
+    },
+    visto:{
+        type : Boolean
+    }
+});
 var amigosSchema = new SimpleSchema({
     idUser: {
         type : String
@@ -208,6 +241,9 @@ var amigosSchema = new SimpleSchema({
         type : String
     },
     aceptado : {
+        type : Boolean
+    },
+    visto:{
         type : Boolean
     }
 });

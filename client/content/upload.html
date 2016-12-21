@@ -3,7 +3,11 @@
     Uploading <b>{{file.name}}</b>:
     <span id="progress">{{progress.get}}%</span>
   {{else}}
-    <input id="fileInput" type="file" />
+  
+    
+  <span class="btn btn-default btn-file">
+    Subir Multimedia  <input type="file" id="fileInput">
+  </span>
   {{/with}}
   {{>IMAGESLIST}}
 </template>

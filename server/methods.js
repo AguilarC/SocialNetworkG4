@@ -12,7 +12,7 @@ Meteor.startup(() => {
                 console.log(" Ya existe");
                 msje='Solicitud en proceso';
             }else{
-                AMIGOS.insert({idAmigo:idA,idUser:Meteor.userId(),aceptado:false}, function(err,result){
+                AMIGOS.insert({idAmigo:idA,idUser:Meteor.userId(),aceptado:false,visto:false}, function(err,result){
                     if (err) {
                         console.log('no se pudo insertar Sol Amigos'+err);
                         msje="error en la insercion";
@@ -28,7 +28,7 @@ Meteor.startup(() => {
     	aceptarAmigo : function(idUs){
     		var idM = Meteor.userId(); 
             //console.log(idM+"-"+idUs);
-            AMIGOS.update({$and:[{idAmigo:idM},{idUser:idUs}]},{$set:{aceptado:true}},function(error,result){
+            AMIGOS.update({$and:[{idAmigo:idM},{idUser:idUs}]},{$set:{aceptado:true,visto:true}},function(error,result){
     			if (error){
     				console.log(error);
     			}else{
@@ -36,10 +36,10 @@ Meteor.startup(() => {
                     var consulta = AMIGOS.find({$and:[{idUser:idM},{idAmigo:idUs}]}).fetch();
                     //console.log(consulta.length);
                         if (consulta.length>0) {
-                            AMIGOS.update({$and:[{idUser:idM},{idAmigo:idUs}]},{$set:{aceptado:true}});
+                            AMIGOS.update({$and:[{idUser:idM},{idAmigo:idUs}]},{$set:{aceptado:true,visto:true}});
                             console.log("se actualizo el cuate");
                         }else{
-                            AMIGOS.insert({idAmigo:idUs,idUser:idM,aceptado:true});    
+                            AMIGOS.insert({idAmigo:idUs,idUser:idM,aceptado:true,visto:true});    
                             console.log("se inserto el cuate");				
                         };
                     return {value:true,msj:'y tu ahora son amigos...!'};
@@ -189,7 +189,18 @@ Meteor.startup(() => {
                     return {msj:'se inserto en la galeria'};
                 }); 
         },
-    
+        eliminarImagen:function(id,idG){
+            GALERIA.remove({_id:idG},function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se elimino galeria')}
+                    return {msj:'se elimino la galeria'};
+            });
+            Images.remove({_id:id}, function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se elimino la imagen')}
+                    return {msj:'se elimino la imagen'};
+            }); 
+        }
 
     });
 

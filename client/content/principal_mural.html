@@ -29,14 +29,14 @@
 						<div class="app-lineas"></div>
 						<br>
 						<div>
-							<button type="button" id="mostrargaleria" class="btn btn-success">Adjuntar Multimedia</button>
-							<div style="display:block;">
+							<button type="button" id="mostrargaleria" class="display-galeria btn btn-success">Adjuntar Multimedia</button>
+							<div id="galeria" class="galeria" style="display:none;">
 								{{>galeria}}
 								{{>uploadForm}}
 							</div>
 						</div>
 
-						<div class="col-md-8">
+						<div class="">
 							<button type="submit" class="btn btn-primary">PUBLICAR</button>
 							<br>
 						</div>
@@ -104,7 +104,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<span id="{{liked.idLiker}}" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> : {{like}}</span><br>
 						<div class="app-line"></div>
-						<ul class="nav navbar-nav">		
+						<ul class="nav navbar-nav ">		
 							{{#if isLiked}}
 							<li class="">
 								<a id="{{_id}}" class="meGusta" href="" ><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" ></span> Me Gusta</a>
@@ -119,7 +119,29 @@
 								<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon-comment comment" aria-hidden="true" ></span> Comentar</a>
 							</li>
 							<li class="">
-								<a href="" id="{{_id}}" class="comentarbtn"><span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true" ></span> Compartir</a>
+								<a href="" id="{{_id}}" class="display-compartir compartirbtn abs"><span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true" ></span> Compartir</a>
+								<div id="1{{_id}}" class="cont-comp" style="display: none;">
+									<a href="" id="{{_id}}" class="comp-amigos"><span class="label">Amigos</span><br></a>
+									<a href='#modal-comp' id="{{_id}}" class="comp-amigos" data-toggle="modal"  ><span class="label">en un Grupo</span></a>
+				
+									<div class="modal fade" id="modal-comp">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+													<h4 class="modal-title">Modal title</h4>
+												</div>
+												<div class="modal-body">
+													
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Save changes</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</li>
 							<li class="">
 
@@ -127,7 +149,7 @@
 							</li>
 							<li class="">
 								<a href="" id="{{_id}}" class="removebtn"><span class="glyphicon glyphicon glyphicon-remove-sign" aria-hidden="true" ></span> Eliminar</a>
-              </li>
+              				</li>
 							
 						</ul>
 			</div>
@@ -171,7 +193,7 @@
     		<img src="./avatar.png" class="img-circle" style="width:40px">
   		</div>
   		<div class="media-body">
-    		<h5 class="media-heading fontext">{{user.username}} 	<span style="color: black">{{texto}}</span> </h5>
+    		<h5 class="media-heading fontext">{{user.username}} :>	<span style="color: black">{{texto}}</span> </h5>
     		<div class="form-inline"> 
     			<a href="" class="textam">Me gusta    </a>
     			<a href="" class="textam"> Responder </a>

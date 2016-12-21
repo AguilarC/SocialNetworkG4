@@ -13,7 +13,9 @@ Template.principalmuralform.helpers({
 	}*/
 });
 Template.principalmuralform.events({
-	
+	'click .display-galeria':function(){
+		$('#galeria').fadeToggle('slow');
+	},
 	"submit #principalm":function(e){
 		e.preventDefault();
 		var mensaje= e.target.mensaje.value;
@@ -30,6 +32,7 @@ Template.principalmuralform.events({
 		});
 		e.target.mensaje.value = "";
 		idimagen = "none";
+		$('#galeria').fadeOut('slow');
 	}
 
 });
@@ -83,7 +86,7 @@ Template.cargarpublicacionesg.helpers({
 });
 
 Template.publicacionesver.events({
-
+	
 	"click .comentarbtn":function(e){
 		Meteor.subscribe("getcomentarios",this._id);
 		e.preventDefault();
@@ -115,6 +118,11 @@ Template.publicacionesver.events({
 				console.log('no jala'+error);
 			}
 		});
+	},
+	'click .display-compartir' : function(e){
+		var id = e.target.id;
+		//console.log(idPub);
+		$('#1'+id).fadeToggle();
 	},
 
 

@@ -1,11 +1,12 @@
 .chat{
-    background: -webkit-radial-gradient(center,#B9B6DF,#8BAED5,#181C85);
+    background: -webkit-radial-gradient(center,#B9B6DF,#2C2B4B,#0E1031);
     height: 580px;
     overflow:auto ;
     padding: 5px;
     margin: 5px;
     border-radius: 10px;
     border: ridge 2px #181C85;
+    
     
 }
 .chat-t{ 
