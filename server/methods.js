@@ -132,9 +132,9 @@ Meteor.startup(() => {
                 COMENTARIOS.insert(obj);
             }
         },
-        crearGrupo:function(nombre,idUser){
+        crearGrupo:function(nombre,idUser,idImagen){
             var msj='';
-            return GRUPOS.insert({nombreGrupo:nombre},function(error,result){
+            return GRUPOS.insert({nombreGrupo:nombre,idImagen:idImagen},function(error,result){
                 if (error) {console.log(error)}
                 if (result) {
                     console.log('se creo el grupo'+result);

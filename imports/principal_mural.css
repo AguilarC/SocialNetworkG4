@@ -12,7 +12,10 @@
     border-radius:5px; 
     position: relative;
 }
-
+.s_perfil{
+    overflow: auto;
+    max-height: 600px;
+}
 /*
 .app-line{
     border-bottom: 1px solid #e5e5e5;

@@ -63,8 +63,8 @@
     {{#if readyA}}
             <div id="prev">
         {{#if amigosList}}
-        <h4><span class="label label-default">CLICK EN UN ENLACE DE LA LISTA</span><br></h4>
-        <h4><span class="label label-default">PARA CHATEAR........!</span><br></h4>
+        <h4><span class="label ">CLICK EN UN ENLACE DE LA LISTA</span><br></h4>
+        <h4><span class="label ">PARA CHATEAR........!</span><br></h4>
         {{/if}}
     </div>
             <span class="chat-t">LISTA DE AMIGOS</span><br>
@@ -94,7 +94,7 @@
             {{#if ReadyMsj}}
                 {{#each msjList}}
                     {{#if isRemitente}}
-                        <div class="row-msj"><span name="" id="{{remitente}}"  class="msj destina">{{msj}}</span><br></div>
+                        <div class="row-msj"><span name="" id="{{remitente}}"  class="msj destina label-info">{{msj}}</span><br></div>
                     {{else}}
                         <div class="row-msj"><span name="" id="{{remitente}}" class="msj remite">{{msj}}</span><br></div>
                     {{/if}} 

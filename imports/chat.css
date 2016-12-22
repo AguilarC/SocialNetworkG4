@@ -1,6 +1,8 @@
 .chat{
-    background: -webkit-radial-gradient(center,#B9B6DF,#2C2B4B,#0E1031);
-    height: 580px;
+    background-image:url('./thumb-1920-258211.jpg');
+    color: white !important;
+    opacity: 0.8;
+    height: 100%;
     overflow:auto ;
     padding: 5px;
     margin: 5px;
@@ -8,11 +10,11 @@
     border: ridge 2px #181C85;
     
     
-}
+}   
 .chat-t{ 
-    font: italic bold 20px Georgia ; 
-    color:white;
-    text-shadow: blue 2px 2px;
+    font: italic bold 20px Cambria ; 
+    color:orange;
+    text-shadow: #D17F4E 2px 2px;
     margin: 3px;
     }
 .contenedor-msjs{
@@ -21,10 +23,11 @@
         overflow:auto ;
         height: 200px;
         margin-bottom: 10px;
-        border: ridge 2px blue;
+        border: ridge 2px black;
         border-radius: 5px;
-        background: -webkit-linear-gradient(bottom,#6D70BE,#8BAED5,#B9B6DF,#8BAED5,#6D70BE);
-}
+        background-image:url('./stunningmesh-ip.jpg');
+
+    }
 .row-msj{
     clear: both; 
     
@@ -34,7 +37,7 @@
     float: left;
     margin-left: 0px ;
     text-align: left:  ;
-    background-color:#463BBB;    
+    background-color:#2382AA;    
 }
 .remite{
     float: left;
@@ -56,10 +59,12 @@
 }
 .list-a{
     margin: 2px 55px 2px 25px;
-    border: ridge 1px blue;
+    border: ridge 1px silver;
     border-radius: 2px;
-    background: -webkit-linear-gradient(top,#D6D5F0,#A1A0B6);
+    background-image:url('./44065d.jpg');
+    /*background: -webkit-linear-gradient(top,#D6D5F0,#A1A0B6);*/
     padding: 0px 25px;
+    color: white;
 }
 .chat-li:hover{
     color: #56B149;
@@ -71,8 +76,8 @@
     font-size: 24px;
 }
 .chat-li{
-    font:  bold 20px Cambria ; 
-    color: #2C26DA;
+    font:  bold 20px Arial ; 
+    color:white;
     text-shadow: black 1px 1px;
 }
 .friendly{

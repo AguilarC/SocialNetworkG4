@@ -9,23 +9,22 @@
                     <form class="form-horizontal">
                         <div class="container-fluid app-content">
                                 <!--{{#each user.profile}}-->
-                                <label for="nombre" class="control-label">Nombres:</label>
-                                <input value="{{username}} {{userlastnamep}} {{userlastnamem}}" class="form-control" type="text" name="nombre">
                                 
+                                <label for="nombre" class="control-label">Nombres:</label><br>
+                                <h3><span class="label">{{username}} {{userlastnamep}} {{userlastnamem}}</span></h3>
                                 <label for="sexo" class="control-label">Sexo:</label>
-                                <input value="{{gender}}" class="form-control" type="text" name="sexo">
-                                <!--{{/each}}-->
+                                <h3><span class="label">{{gender}}</span></h3>
                                 {{#each user.emails}}
                                 <label for="email" class="control-label">Email:</label>
-                                <input value="{{address}}" class="form-control" type="email" name="email">
+                                <h3><span class="label">{{address}}</span></h3>
                                 {{/each}}
                                 <label for="telefono" class="control-label">Telefono:</label>
-                                <input value="{{telefono}}" class="form-control" type="number" name="telefono">
+                                <h3><span class="label">{{telefono}}</span></h3>
                                 <label for="fecha" class="control-label">Fecha Nacimiento:</label>
-                                <input value="{{fechaNac}}" class="form-control" type="date" name="nacimiento">
+                                <h3><span class="label">{{fechaNac}}</span></h3>
                             
                                 <label for="direccíon" class="control-label">Dirección:</label>
-                                <input value="{{direccion}}" class="form-control" type="text" name="direccion">
+                                <h3><span class="label">{{direccion}}</span></h3>
                                 <br>
 
                         </div>    
@@ -57,17 +56,21 @@
     {{else}}
         <p>Cargando</p>
     {{/if}}
-                    <br>
-                    <br>
-                    <div class="row title"  id="amigos">
-                        <label class="link-amigo">AMIGOS <span class="badge">3</span></label>
-                    </div>
-                    <div class="row verAmigos">
-                            {{>verAmigos}}
-                     </div>
-                    <div class="row title"  id="amigos">
-                        <label class="link-amigo">GRUPOS <span class="badge">3</span></label>
-                    </div>
+    <div class="row ">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="title app-content "  id="amigos">
+                <label class="link-amigo">AMIGOS <span class="badge">3</span></label>
+            </div>
+            <div class="verAmigos">
+                    {{>verAmigos}}
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="title app-content "  id="amigos">
+                <label class="link-amigo">GRUPOS <span class="badge">3</span></label>
+            </div>
+        </div>    
+    </div>
                            
 </section>
 </div>         

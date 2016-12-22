@@ -28,16 +28,15 @@ Template.creargrupo.events({
 		var idGrupo ='';
 		var idUser= Meteor.userId();
 		var nombreG = e.target.nombre.value;
-		Meteor.call('crearGrupo', nombreG,idUser, function (error, result) {
+		Meteor.call('crearGrupo', nombreG,idUser,idimagen, function (error, result) {
 			if (error) {
 				alert(error);
 			}
 			if (result) {
-				
 				idGrupos.set(result);
-				
 			}
 		});
+		idimagen='none';
 		$('#group').modal('hide');
 		
 		FlowRouter.go('/grupos');

@@ -21,13 +21,13 @@
             <a href="/perfil" class="label btn-sm" ><span class="glyphicon glyphicon-user "></span>MI PERFIL</a>
                 <a href="#editPerfil" class="label btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-wrench "></span> EDITAR PERFIL</a>
                 <div class="modal fade" id="editPerfil">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog  edit-perfil">
                        
                         <div class="modal-header" >
                             <button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">
                                &times;
                             </button>
-                            <h2 class="modal-title">DATOS DEL USUARIO</h2>
+                            <center><h2 class="modal-title" style="font: bold 40px arial ;color:black">DATOS DEL USUARIO</h2></center>
                         </div>
                         <div class="modal-body">
                             <div class="editPerfil" >
@@ -42,14 +42,14 @@
                     <a class="label" data-toggle="modal" href='#group'><span class="glyphicon glyphicon-plus"></span> CREAR GRUPO</a>
                     <div class="modal fade" id="group">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content" style="background-color: black;border: solid 2px silver">
                                 <div class="modal-header">
                                     
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">CREAR NUEVO GRUPO</h4>
+                                    <h4 class="modal-title" >CREAR NUEVO GRUPO</h4>
                                 </div>
                                 
-                                <div class="modal-body ">
+                                <div class="modal-body app-content">
                                      {{>creargrupo}}
                                 </div>
                                 
@@ -82,15 +82,16 @@
 </template>
 <template name="creargrupo">
     <form action="" id="creargrupos" method="POST" class="form-horizontal" role="form">
-            <div class="form-group">
-                <legend>NOMBRE DEL GRUPO : </legend>
-            </div>
-            <input type="text" name="nombre" id="input" class="form-control" value=""  title="">
             
+                <legend style="color:orange">NOMBRE DEL GRUPO : </legend>
+            
+            <input type="text" name="nombre" id="input" class="form-control" value=""  title="" required>
+            <legend style="color:orange">IMAGEN : </legend>
+            <button type="submit" id="closecrear" data-dismiss="" class="btn btn-primary">CREAR GRUPO</button>{{>uploadForm}}
             
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">
-                    <button type="submit" id="closecrear" data-dismiss="" class="btn btn-primary">CREAR GRUPO</button>
+                    
                 </div>
             </div>
     </form>

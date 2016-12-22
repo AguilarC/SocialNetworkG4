@@ -46,7 +46,8 @@ GRUPOUSERS = new Mongo.Collection('gruposusers',{
 });
 GRUPOS = new Mongo.Collection('grupos',{
     transform:function(item){
-        _.extend(item,{users:GRUPOUSERS.find({idGrupo:item._id}).fetch()});
+        _.extend(item,{users:GRUPOUSERS.find({idGrupo:item._id}).fetch()},
+            {imagen:Images.findOne({_id:item.idImagen})});
         return item;
     }
 });
@@ -217,6 +218,9 @@ var gruposSchema = new SimpleSchema({
     nombreGrupo : {
         type : String
     }, 
+    idImagen:{
+        type : String
+    }
 });
 GRUPOS.attachSchema(gruposSchema);
 var notificacionesSchema = new SimpleSchema({

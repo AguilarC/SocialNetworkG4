@@ -40,7 +40,8 @@ Template.editPerfil.events({
 		if(idimagen!="none"){
 			idImage=idimagen;
 		}
-		console.log(idimagen);
+		//console.log(idimagen);
 		Meteor.call("actualizarDatos",datos,user,idImage);
+		$('#editPerfil').modal('hide');
 		}
 });

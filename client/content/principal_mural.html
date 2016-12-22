@@ -30,15 +30,11 @@
 						<br>
 						<div>
 							<button type="button" id="mostrargaleria" class="display-galeria btn btn-success">Adjuntar Multimedia</button>
+							<button type="submit" class="btn btn-primary">PUBLICAR</button>
 							<div id="galeria" class="galeria" style="display:none;">
 								{{>galeria}}
 								{{>uploadForm}}
 							</div>
-						</div>
-
-						<div class="">
-							<button type="submit" class="btn btn-primary">PUBLICAR</button>
-							<br>
 						</div>
 				</div>
 			</div>
@@ -59,7 +55,7 @@
 <template name ="cargarpublicacionesg">
 	{{#if isReady}}
 		{{#each pubGroup}}
-			{{>publicacionesverg}}
+			{{>publicacionesver}}
 		{{/each}}
 	{{else}}
 		<b>CARGANDO...</b>

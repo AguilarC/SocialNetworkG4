@@ -38,7 +38,7 @@ Template.galeria.events({
 					console.log(result);
 				}
 			});
-			console.log('çç?')
+			//console.log('çç?');
 		}
 	}
 });
