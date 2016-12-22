@@ -82,7 +82,7 @@
 				</form>
 				
 				<br>
-					{{texto}}
+					<h2>{{texto}}</h2>
 				</div>
 				<br>
 					{{#if isImage}}
@@ -197,9 +197,9 @@
     		<img src="./avatar.png" class="img-circle" style="width:40px">
   		</div>
   		<div class="media-body">
-    		<h5 class="media-heading fontext">{{user.username}} :>	<span style="color: black">{{texto}}</span> </h5>
+    		<h5 class="media-heading fontext">{{user.username}} <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span style="color: black">{{texto}}</span> </h5>
     		<div class="form-inline"> 
-    			<a href="" class="textam">Me gusta    </a>
+    			<a href="" class="textam">Me gusta &nbsp;</a>
     			<a href="" class="textam"> Responder </a>
     			<small style="font-size: 9px"><i>{{fecha}}</i></small>
 				

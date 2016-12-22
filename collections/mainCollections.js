@@ -224,7 +224,7 @@ var gruposSchema = new SimpleSchema({
 });
 GRUPOS.attachSchema(gruposSchema);
 var notificacionesSchema = new SimpleSchema({
-    idUser: {
+    idUser  : {
         type : String
     },
     tipo : {
@@ -237,6 +237,7 @@ var notificacionesSchema = new SimpleSchema({
         type : Boolean
     }
 });
+NOTIFICACIONES.attachSchema(notificacionesSchema);
 var amigosSchema = new SimpleSchema({
     idUser: {
         type : String

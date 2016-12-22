@@ -1,7 +1,4 @@
-.badge-clas{
-    
-    background-color: orange;
-}
+
 .contenedor{
     padding: 0% 2%;
 }
@@ -88,11 +85,34 @@
     position: relative;
     width: 100%;
 }
+.badge-clas{
+    
+    background-color: orange;
+}
+.pubamigos{
+    display: inline-block;
+    max-width: 225px;
+    
+}
 .cont-sol{
-    background: -webkit-linear-gradient(bottom,black,black,black,white);
+    background: -webkit-linear-gradient(bottom,black,black,black,#6F5E5E);
     border-radius: 5px;
     border: solid 1px white;
     max-width: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 200px;  
+}
+.cont-not{
+    display: inline-block;
+    background: -webkit-linear-gradient(bottom,black,black,black,#6F5E5E);
+    border-radius: 5px;
+    border: solid 1px white;
+    width: 110%;
+    max-width: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 200px;  
 }
 
 .aceptarSol{

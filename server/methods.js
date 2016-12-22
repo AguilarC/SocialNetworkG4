@@ -121,9 +121,10 @@ Meteor.startup(() => {
                 });
         },
         insertarPublicaciones:function(o){
-            PUBLICACIONES.insert({fecha:o.fecha,usuario:this.userId,texto:o.texto,multimedia:o.multimedia,like:0,idGroup:o.idGroup},function(error,result){
+            return PUBLICACIONES.insert({fecha:o.fecha,usuario:this.userId,texto:o.texto,multimedia:o.multimedia,like:0,idGroup:o.idGroup},function(error,result){
                 if (error) {console.log(error)}
-                if (result) {console.log('se inserto la publicacion')}
+                if (result) {console.log('se inserto la publicacion'+result);
+                return result;}
             });
         },
         insertarComentarios:function(obj){
@@ -207,8 +208,13 @@ Meteor.startup(() => {
                     if (result) {console.log('se elimino la imagen')}
                     return {msj:'se elimino la imagen'};
             }); 
+        },
+        insertarNotificaciones:function(tipo,idP){
+            NOTIFICACIONES.insert({idUser:this.userId,tipo:tipo,idnoti:idP,visto:false},function(error,result){
+                    if (error) {console.log(error)}
+                    if (result) {console.log('se inserto notif ?'+result)}
+                    return {msj:''};
+            });
         }
-
     });
-
 });

@@ -61,11 +61,11 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#"  class="display-toggle"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notificaciones<span class="badge badge-clas">{{contSol.cont}}</span></a>
-                        <div id="solicitudes" class="cont-sol" style="display: none;">
-                            <button tyle="button" class="close closesol" style="color:#1C182D;" aria-hidden="true">   &times;</button> 
+                        <a href="#"  class="display-not"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Notificaciones<span class="badge badge-clas">{{contNot.cont}}</span></a>
+                        <div id="notificaciones" class="cont-not" style="display: none;">
+                            <button tyle="button" class="close closenot" style="color:#1C182D;" aria-hidden="true">   &times;</button> 
                             <br>
-                            {{>solicitudes}}
+                            {{>publicacionAmigos}}
                         </div>
                     </li>
 
@@ -78,5 +78,41 @@
         </div>
       </nav>
     </div>
+</template>
+<template name="publicacionAmigos">
+      <div class="">
+      <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#amigostab" aria-controls="amigostab" role="tab" data-toggle="tab">AMIGOS</a>
+          </li>
+          <li role="presentation">
+            <a href="#grupostab" aria-controls="grupostab" role="tab" data-toggle="tab">GRUPOS</a>
+          </li>
+        </ul>
+      
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="amigostab">
+             {{#each listPubAmigos}}
+                <a href="/"><span class="label">{{user.username}} publico: {{texto}}</span><span class="glyphicon glyphicon" aria-hidden="true"></span><br></a>
+              {{else}}
+              <span class="label">No hay not</span>
+            {{/each}} 
+          </div>
+          <div role="tabpanel" class="tab-pane" id="grupostab">
+            
+            {{#each listPubGrupos}}
+            <span class="label">{{user.username}} publico: {{texto}}</span><span class="glyphicon glyphicon" aria-hidden="true"></span><br>
+            {{else}}
+
+            <span class="label">No hay not</span>
+            {{/each}} 
+          </div>
+        </div>
+      </div>
+      </div>
+   
 </template>
 

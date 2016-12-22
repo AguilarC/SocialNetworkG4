@@ -19,7 +19,7 @@ Template.galeria.events({
 		});
 		$('#'+idimagen).removeClass('glyphicon-unchecked check-img');
 		$('#'+idimagen).addClass('glyphicon-check uncheck-img');
-		console.log(idimagen);
+		//console.log(idimagen);
 	},
 	'click .uncheck-img': function (e) {
 		idimagen='none';

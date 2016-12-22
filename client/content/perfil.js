@@ -47,3 +47,28 @@ Template.verAmigos.helpers({
 		}
 	}
 });
+Template.verGrupos.helpers({
+	ready() {
+		return FlowRouter.subsReady("loadGrupos");
+	},
+	recGrupos() {
+		var rowGrupo=[];
+		var users =GRUPOUSERS.find({idUsuario:Meteor.userId()}).fetch();
+		if (users.length>0) {
+    		for (var i = 0;i<users.length; i++) {
+				//if (true) {}
+				var pubG = GRUPOS.find({_id:users[i].idGrupo}).fetch();
+				//console.log(pubG);
+				for (var j = 0;j<pubG.length; j++) {
+					rowGrupo.push(pubG[j]);
+					//console.log(pubA[j]);
+				}
+			}
+
+    	}else {console.log(users.length)}
+    	return rowGrupo.reverse();
+	}
+});
+
+
+

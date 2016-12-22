@@ -1,16 +1,19 @@
+import { Template} from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 import '../../imports/principal_mural.css';
 idimagen = "none";
+notiAmigos = new ReactiveVar([]);
 var comentarios = new ReactiveVar(false);
 idcommentarios1 = "";
 Template.principalmuralform.helpers({
-	/*isImageUser() {
+	isImageUser() {
 		var userId=Meteor.userId();
 		var imagen = DATOS_USUARIO.find({_id:userId}).fetch()[0];
 		if (imagen.imageuser!='none') {
 			return {value:true,imagen:imagen.imagen};
 		}
 		
-	}*/
+	}
 });
 Template.principalmuralform.events({
 	'click .display-galeria':function(){
@@ -28,8 +31,16 @@ Template.principalmuralform.events({
 			var obj={fecha:fecha, texto:mensaje,multimedia:idimagen};
 		}
 		Meteor.call('insertarPublicaciones', obj, function (error, result) {
-				if (error) {console.log('error en la llamada')}
-		});
+			if (error) {console.log('error en la llamada')}
+			if (result) {
+				var idP=result;
+				var tipo='publicacion';
+				//console.log(idP+tipo);
+				Meteor.call('insertarNotificaciones', tipo,idP, function (error, result) {
+					if (error) {console.log('error en la llamada')}
+				});
+			}
+		});	
 		e.target.mensaje.value = "";
 		idimagen = "none";
 		$('#galeria').fadeOut('slow');
@@ -43,8 +54,9 @@ Template.cargarpublicaciones.helpers({
 	},
 	items(){
 		var userId=Meteor.userId();
-		var amigos = AMIGOS.find({$and:[{idUser:userId},{aceptado:true}]}).fetch();
+		var amigos = AMIGOS.find({$and:[{idUser:userId},{aceptado:true}],usuario:{$ne:userId}}).fetch();
 		var row=[];
+		var rowa=[];
 		//console.log(amigos.length);
 		if (amigos.length>0) {
 				
@@ -53,9 +65,11 @@ Template.cargarpublicaciones.helpers({
 				//console.log(pubA);
 				for (var j = 0;j<pubA.length; j++) {
 					row.push(pubA[j]);
+					rowa.push(pubA[j]);
 					//console.log(pubA[j]);
 				}
 			}
+			notiAmigos.set(rowa.reverse());
 			//console.log(row.reverse());
 		}
 		var pubY = PUBLICACIONES.find({usuario:Meteor.userId()}).fetch()
@@ -83,6 +97,7 @@ Template.cargarpublicacionesg.helpers({
 		//console.log(PUBLICACIONES.find({idGroup:idG}).fetch());
 		return	PUBLICACIONES.find({idGroup:idG}).fetch().reverse();
 	}
+
 });
 
 Template.publicacionesver.events({
@@ -149,10 +164,12 @@ Template.publicacionesver.events({
 		var idP= this._id;
 		Meteor.call("actualizarPublicaciones",idP,textA, function(error,result){
 			if(error){
-				console.log('no jala'+ error);
+				console.log(error);
 			}
 		})
-		console.log(idP);
+		//console.log(idP);
+		$('.actualizar').fadeOut('4000');
+
 	}
 
 });

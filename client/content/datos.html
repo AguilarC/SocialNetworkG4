@@ -1,7 +1,7 @@
 <template name="datos">
     {{#if currentUser}}
     <div class="datos-t">
-    <br>
+        <br>
         <div class="row img-per">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <img src="./perfil.png" height="20%" width="20%" alt="" class="img-responsive img-centrar">
@@ -11,15 +11,13 @@
                 </div>     
 
         </div>
-                
-    
         <br>
         <div class="row">
         
                         
             <div class="">
-            <a href="/perfil" class="label btn-sm" ><span class="glyphicon glyphicon-user "></span>MI PERFIL</a>
-                <a href="#editPerfil" class="label btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-wrench "></span> EDITAR PERFIL</a>
+            <a href="/perfil" class="label btn-sm" ><span class="glyphicon glyphicon-user "></span>MI PERFIL</a><br>
+            <a href="#editPerfil" class="label btn-sm" data-toggle="modal"><span class="glyphicon glyphicon-wrench "></span> EDITAR PERFIL</a><br>
                 <div class="modal fade" id="editPerfil">
                     <div class="modal-dialog  edit-perfil">
                        
@@ -36,29 +34,27 @@
                         </div>
                     </div>
                 </div>
-                
-                <br>
                 <div class="row">
-                    <a class="label" data-toggle="modal" href='#group'><span class="glyphicon glyphicon-plus"></span> CREAR GRUPO</a>
-                    <div class="modal fade" id="group">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="background-color: black;border: solid 2px silver">
-                                <div class="modal-header">
+                    <a class="label" data-toggle="modal" href='#group'><span class="glyphicon glyphicon-plus"></span> CREAR GRUPO</a><br>
+                        <div class="modal fade" id="group">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="background-color: black;border: solid 2px silver">
+                                    <div class="modal-header">
+                                        
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" >CREAR NUEVO GRUPO</h4>
+                                    </div>
                                     
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" >CREAR NUEVO GRUPO</h4>
+                                    <div class="modal-body app-content">
+                                         {{>creargrupo}}
+                                    </div>
+                                    
                                 </div>
-                                
-                                <div class="modal-body app-content">
-                                     {{>creargrupo}}
-                                </div>
-                                
                             </div>
                         </div>
-                    </div>
                 </div>
                 <div class="grupos">
-                    <a href="/grupos" class="label btn-md">
+                    <a href="" class="label btn-md">
                         <span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user grupos"></span><span class="glyphicon glyphicon-user "></span> GRUPOS</a>
                 </div>
             </div>  
